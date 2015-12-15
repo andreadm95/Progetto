@@ -7,5 +7,9 @@ public class Magazziniere extends UtenteRegistrato {
 	public int getMagazzinoAppartenenza() {
 		return MagazzinoAppartenenza;
 	}
+
+	public void setMagazzinoAppartenenza(int magazzinoAppartenenza) {
+		MagazzinoAppartenenza = magazzinoAppartenenza;
+	}
 	
 }

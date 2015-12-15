@@ -9,5 +9,10 @@ public class CapoProgetto extends UtenteRegistrato {
 	public ArrayList<Progetto> getListaProgettiACarico() {
 		return ListaProgettiACarico;
 	}
+
+	public void setListaProgettiACarico(ArrayList<Progetto> listaProgettiACarico) {
+		ListaProgettiACarico = listaProgettiACarico;
+	}
+
 	
 }

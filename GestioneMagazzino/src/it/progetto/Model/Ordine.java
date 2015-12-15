@@ -8,7 +8,7 @@ public class Ordine {
       public Progetto ProgettoDiRiferimento;
 	  public float SpesaOrdine;
 	  public boolean MagazzinoVicino;
-	
+	  
 	public ArrayList<Prodotto> getListaProdottiAcquisto() {
 		return ListaProdottiAcquisto;
 	}
@@ -33,6 +33,8 @@ public class Ordine {
 	public void setMagazzinoVicino(boolean magazzinoVicino) {
 		MagazzinoVicino = magazzinoVicino;
 	}
+	
+	
 
 	
 }

@@ -8,4 +8,8 @@ public class Dipendente extends UtenteRegistrato {
 		return Progettodiappartenenza;
 	}
 
+	public void setProgettodiappartenenza(String progettodiappartenenza) {
+		Progettodiappartenenza = progettodiappartenenza;
+	}
+
 }

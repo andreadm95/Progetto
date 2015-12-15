@@ -8,8 +8,15 @@ public class Progetto {
 	public String getNome() {
 		return Nome;
 	}
+	public void setNome(String nome) {
+		Nome = nome;
+	}
 	public float getSpesaTotale() {
 		return SpesaTotale;
 	}
+	public void setSpesaTotale(float spesaTotale) {
+		SpesaTotale = spesaTotale;
+	}
 	
+
 }
