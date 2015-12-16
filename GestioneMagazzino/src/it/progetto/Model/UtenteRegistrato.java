@@ -13,6 +13,12 @@ public class UtenteRegistrato {
 		super();
 	}
 	
+	public UtenteRegistrato(String username, String password) {
+		super();
+		Username = username;
+		Password = password;
+	}
+	
 	public UtenteRegistrato(String nome, String cognome, String username, String password) {
 		super();
 		Nome = nome;

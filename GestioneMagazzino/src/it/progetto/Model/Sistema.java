@@ -10,6 +10,4 @@ public class Sistema {
 			   }
 		   return instance;
 	}
-	
-	
 }

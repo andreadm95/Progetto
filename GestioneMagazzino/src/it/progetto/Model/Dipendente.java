@@ -24,7 +24,7 @@ public class Dipendente extends UtenteRegistrato {
 	}
 	
 	public boolean isDipendente(UtenteRegistrato u){
-	return DipendenteDAO.getInstance().userExists(this);	
+	return DipendenteDAO.getInstance().isDipendente(u);	
 	}
 
 //	public boolean login()
