@@ -9,7 +9,7 @@ public class Magazzino {
 	 private int CodiceMagazzino;
 	 
 	public ArrayList<Prodotto> getListaProdotti() {
-		return ListaProdotti;
+		return MagazzinoDAO.getInstance.fornisciCatalogo;
 	}
 	public void setListaProdotti(ArrayList<Prodotto> listaProdotti) {
 		ListaProdotti = listaProdotti;
