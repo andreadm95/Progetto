@@ -1,6 +1,7 @@
 package it.progetto.Model;
 
 import java.util.ArrayList;
+import it.progetto.DAO.MagazzinoDAO;
 
 public class Magazzino {
 
@@ -9,7 +10,7 @@ public class Magazzino {
 	 private int CodiceMagazzino;
 	 
 	public ArrayList<Prodotto> getListaProdotti() {
-		return MagazzinoDAO.getInstance.fornisciCatalogo;
+		return MagazzinoDAO.getInstance.fornisciCatalogoVicino;
 	}
 	public void setListaProdotti(ArrayList<Prodotto> listaProdotti) {
 		ListaProdotti = listaProdotti;

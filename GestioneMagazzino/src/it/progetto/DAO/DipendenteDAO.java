@@ -28,5 +28,12 @@ private static DipendenteDAO instance;
 		return false;
 			}
 	}
+	public int SedeDipendente(UtenteRegistrato u){
+		String username = u.getUsername();
+		Vector<String[]> result=DbConnection.getInstance().eseguiQuery("select CodMagazzino from UtenteRegistrato INNER JOIN Dipendente ON Dipendente.idDipendente=UtenteRegistrato.idUtenteRegistrato where UtenteRegistrato.username=\""+ username +"\"");
+		String[] riga=result.get(0);
+		int sede=Integer.parseInt(riga[0]);
+		return sede;
+	}
 
 }
