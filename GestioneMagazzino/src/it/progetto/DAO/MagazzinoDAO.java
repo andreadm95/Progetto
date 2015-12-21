@@ -4,7 +4,6 @@ import java.util.Vector;
 import java.util.ArrayList;
 import it.progetto.DbConnection.DbConnection;
 import it.progetto.Model.Prodotto;
-import it.progetto.DAO.DipendenteDAO;
 
 public class MagazzinoDAO {
 	

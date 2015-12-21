@@ -11,6 +11,19 @@ public class Prodotto {
 	private String Fornitore;
 	private String Produttore;
 	
+	public Prodotto(String nome, String categoria, String descrizione, float prezzo, int disponibilità,
+			int numeroMaxOrdinabile, String fornitore, String produttore) {
+		super();
+		Nome = nome;
+		Categoria = categoria;
+		Descrizione = descrizione;
+		Prezzo = prezzo;
+		Disponibilità = disponibilità;
+		NumeroMaxOrdinabile = numeroMaxOrdinabile;
+		Fornitore = fornitore;
+		Produttore = produttore;
+	}
+	
 	public String getNome() {
 		return Nome;
 	}
