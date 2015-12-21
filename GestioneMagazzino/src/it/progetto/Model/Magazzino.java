@@ -10,7 +10,7 @@ public class Magazzino {
 	 private int CodiceMagazzino;
 	 
 	public ArrayList<Prodotto> getListaProdotti() {
-		return MagazzinoDAO.getInstance.fornisciCatalogoVicino;
+		return MagazzinoDAO.getInstance().fornisciCatalogoVicino(CodiceMagazzino);
 	}
 	public void setListaProdotti(ArrayList<Prodotto> listaProdotti) {
 		ListaProdotti = listaProdotti;
