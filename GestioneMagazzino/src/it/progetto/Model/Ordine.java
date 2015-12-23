@@ -9,6 +9,12 @@ public class Ordine {
 	  public float SpesaOrdine;
 	  public boolean MagazzinoVicino;
 	  
+    public ArrayList<Prodotto> aggiungiProdottoACarrello(it.progetto.Model.Prodotto Prodotto)
+    {
+    	ListaProdottiAcquisto.add(Prodotto);
+    	return ListaProdottiAcquisto;
+    }
+	  
 	public ArrayList<Prodotto> getListaProdottiAcquisto() {
 		return ListaProdottiAcquisto;
 	}
