@@ -8,12 +8,12 @@ public class Ordine {
       public Progetto ProgettoDiRiferimento;
 	  public float SpesaOrdine;
 	  public boolean MagazzinoVicino;
-	  
-    public ArrayList<Prodotto> aggiungiProdottoACarrello(Prodotto a)
-    {
-    	ListaProdottiAcquisto.add(a);
-    	return ListaProdottiAcquisto;
-    }
+  
+	  public ArrayList<Prodotto> aggiungiProdottoACarrello(Prodotto a)
+	    {
+	    	ListaProdottiAcquisto.add(a);
+	    	return ListaProdottiAcquisto;
+	    }
 	  
 	public ArrayList<Prodotto> getListaProdottiAcquisto() {
 		return ListaProdottiAcquisto;
