@@ -2,6 +2,7 @@ package it.progetto.Model;
 
 import java.util.ArrayList;
 import it.progetto.DAO.MagazzinoDAO;
+import it.progetto.DAO.OrdineDAO;
 
 public class Magazzino {
 
@@ -16,7 +17,7 @@ public class Magazzino {
 		ListaProdotti = listaProdotti;
 	}
 	public ArrayList<Ordine> getListaOrdiniPendenti() {
-		return ListaOrdiniPendenti;
+		return OrdineDAO.getInstance().fornisciOrdiniPendenti();
 	}
 	public void setListaOrdiniPendenti(ArrayList<Ordine> listaOrdiniPendenti) {
 		ListaOrdiniPendenti = listaOrdiniPendenti;

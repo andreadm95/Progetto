@@ -4,21 +4,36 @@ import java.util.ArrayList;
 
 public class Ordine {
 
+	  private int idOrdine;
 	  private ArrayList<Prodotto> ListaProdottiAcquisto;
-      public Progetto ProgettoDiRiferimento;
-	  public float SpesaOrdine;
-	  public boolean MagazzinoVicino;
+      private int ProgettoDiRiferimento;
+	  private float SpesaOrdine;
+	  private int CodiceMagazzino;
+	  private int DipendenteDiRiferimento;
 	  
+	public Ordine(int id, int codmagazzino, int cod_dipendente, int codprogetto){
+		idOrdine=id;
+		CodiceMagazzino=codmagazzino;
+		DipendenteDiRiferimento=cod_dipendente;
+		ProgettoDiRiferimento=codprogetto;
+	}
+	  
+	public int getIdOrdine() {
+		return idOrdine;
+	}
+	public void setIdOrdine(int idOrdine) {
+		this.idOrdine = idOrdine;
+	}
 	public ArrayList<Prodotto> getListaProdottiAcquisto() {
 		return ListaProdottiAcquisto;
 	}
 	public void setListaProdottiAcquisto(ArrayList<Prodotto> listaProdottiAcquisto) {
 		ListaProdottiAcquisto = listaProdottiAcquisto;
 	}
-	public Progetto getProgettoDiRiferimento() {
+	public int getProgettoDiRiferimento() {
 		return ProgettoDiRiferimento;
 	}
-	public void setProgettoDiRiferimento(Progetto progettoDiRiferimento) {
+	public void setProgettoDiRiferimento(int progettoDiRiferimento) {
 		ProgettoDiRiferimento = progettoDiRiferimento;
 	}
 	public float getSpesaOrdine() {
@@ -27,11 +42,19 @@ public class Ordine {
 	public void setSpesaOrdine(float spesaOrdine) {
 		SpesaOrdine = spesaOrdine;
 	}
-	public boolean isMagazzinoVicino() {
-		return MagazzinoVicino;
+	public int getCodiceMagazzino() {
+		return CodiceMagazzino;
 	}
-	public void setMagazzinoVicino(boolean magazzinoVicino) {
-		MagazzinoVicino = magazzinoVicino;
+	public void setCodiceMagazzino(int codmagazzino) {
+		CodiceMagazzino = codmagazzino;
+	}
+
+	public int getDipendenteDiRiferimento() {
+		return DipendenteDiRiferimento;
+	}
+
+	public void setDipendenteDiRiferimento(int dipendenteDiRiferimento) {
+		DipendenteDiRiferimento = dipendenteDiRiferimento;
 	}
 	
 	
