@@ -20,7 +20,7 @@ private static MagazzinoDAO instance;
 	
 	public  ArrayList<Prodotto> fornisciCatalogoVicino(int sede)
 	{
-		Vector<String[]> result=DbConnection.getInstance().eseguiQuery("select * from Prodotto, appartiene where appartiene.CodMagazzino="+sede+" and Prodotto.idprodotto=appartiene.codprodotto");
+		Vector<String[]> result=DbConnection.getInstance().eseguiQuery("select * from Prodotto, Appartiene where Appartiene.CodMagazzino="+sede+" and Prodotto.idprodotto=Appartiene.codprodotto");
 		ArrayList<Prodotto> Catalogo= new ArrayList<Prodotto>();
 		for (int i = 0; i< result.size(); i++ ){
 	         String[] prodotto = result.get(i); //inserisce in array di stringhe il risultato della query

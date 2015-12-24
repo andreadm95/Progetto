@@ -5,6 +5,11 @@ public class Progetto {
 	private String Nome;
 	private float SpesaTotale;
 	
+	public Progetto(String nome, float spesatotale){
+		Nome = nome;
+		SpesaTotale = spesatotale;
+	}
+	
 	public String getNome() {
 		return Nome;
 	}
