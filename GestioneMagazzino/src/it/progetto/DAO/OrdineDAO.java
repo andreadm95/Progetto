@@ -33,4 +33,9 @@ private static OrdineDAO instance;
 		return null;}
 	}
 
+	public boolean ModificaEvadi(int id) {
+		boolean result= DbConnection.getInstance().eseguiAggiornamento("UPDATE Ordine SET Ordine.Evaso=true WHERE Ordine.idOrdine="+id);
+		return result;
+	}
+
 }

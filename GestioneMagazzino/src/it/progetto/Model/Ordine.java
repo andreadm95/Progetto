@@ -2,6 +2,8 @@ package it.progetto.Model;
 
 import java.util.ArrayList;
 
+import it.progetto.DAO.OrdineDAO;
+
 public class Ordine {
 
 	  private int idOrdine;
@@ -65,7 +67,9 @@ public class Ordine {
 		CodiceMagazzino = CodMagazzino;
 	}
 	
-	
+	public boolean EvadiOrdine(int id){
+		return OrdineDAO.getInstance().ModificaEvadi(id);
+	}
 
 	
 }
