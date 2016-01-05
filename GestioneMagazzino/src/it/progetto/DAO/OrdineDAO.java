@@ -37,5 +37,16 @@ private static OrdineDAO instance;
 		boolean result= DbConnection.getInstance().eseguiAggiornamento("UPDATE Ordine SET Ordine.Evaso=true WHERE Ordine.idOrdine="+id);
 		return result;
 	}
-
+	public boolean SalvaProdottoOrdinato(int codprodotto,int codordine, int quantit‡ordinata){
+		boolean result= DbConnection.getInstance().eseguiAggiornamento("INSERT INTO CompostoDa(CodProdotto,CodOrdine,Quantit‡Ordinata) VALUES("+codprodotto+codordine+quantit‡ordinata);
+		return result;
+	}
+	public boolean SalvaOrdine(ArrayList<Prodotto> prodottiordinati, int codmagazzino, int coddipendente, int codprogetto){
+		boolean result= DbConnection.getInstance().eseguiAggiornamento("INSERT INTO Ordine(idOrdine,CodMagazzino,CodDipendente,CodProgetto,Evaso) VALUES(null,"+codmagazzino+coddipendente+codprogetto+"false)");
+		for(int i=0;i<prodottiordinati.size();i++){
+			prodottiordinati.get(i).getIdProdotto();
+		}
+		return result;
+	}
+	
 }

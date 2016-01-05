@@ -2,6 +2,7 @@ package it.progetto.Model;
 
 public class Prodotto {
 
+	private int idProdotto;
 	private String Nome;
 	private String Categoria;
 	private String Descrizione;
@@ -71,6 +72,12 @@ public class Prodotto {
 	}
 	public void setProduttore(String produttore) {
 		Produttore = produttore;
+	}
+	public int getIdProdotto() {
+		return idProdotto;
+	}
+	public void setIdProdotto(int idProdotto) {
+		this.idProdotto = idProdotto;
 	}
 	
 
