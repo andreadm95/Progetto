@@ -28,4 +28,14 @@ private static CapoProgettoDAO instance;
 		return false;
 			}
 	}
+	
+	public Vector<String[]> OrdinaSpeseProgetto(int idCapo){
+		Vector<String[]> result=DbConnection.getInstance().eseguiQuery("SELECT * FROM progetto WHERE CodCapoProgetto=\""+idCapo+"\" ORDER BY idProgetto;");
+		if(result.size()!=0){
+			return result;}
+		else{
+		return null;
+			}
+		
+	}
 }
