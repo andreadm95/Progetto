@@ -10,6 +10,10 @@ public class CapoProgetto extends UtenteRegistrato {
 		super();
 	}
 
+	public CapoProgetto(String nome, String cognome, String password, String username) {
+		super(nome, cognome, username,password);
+	}
+	
 	public CapoProgetto(String nome, String cognome, String password, String username, ArrayList<Progetto> listaProgettiACarico) {
 		super(nome, cognome, username, password);
 		ListaProgettiACarico = listaProgettiACarico;
@@ -22,10 +26,4 @@ public class CapoProgetto extends UtenteRegistrato {
 	public void setListaProgettiACarico(ArrayList<Progetto> listaProgettiACarico) {
 		ListaProgettiACarico = listaProgettiACarico;
 	}
-
-//	public boolean login()
-//	{
-//		return CapoProgettoDAO.getInstance().userExists(this);
-//	}
-	
 }

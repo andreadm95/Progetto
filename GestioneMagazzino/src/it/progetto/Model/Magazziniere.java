@@ -20,10 +20,4 @@ public class Magazziniere extends UtenteRegistrato {
 	public void setMagazzinoAppartenenza(int magazzinoAppartenenza) {
 		MagazzinoAppartenenza = magazzinoAppartenenza;
 	}
-	
-//	public boolean login()
-//	{
-//		return MagazziniereDAO.getInstance().userExists(this);
-//	}
-	
 }

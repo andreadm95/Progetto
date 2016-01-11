@@ -21,7 +21,7 @@ private static UtenteRegistratoDAO instance;
 	public boolean userExists(UtenteRegistrato u) {
 		String username = u.getUsername();
 		String password = u.getPassword();
-		Vector<String[]> result=DbConnection.getInstance().eseguiQuery("select * from UtenteRegistrato where username=\""+ username +"\" and password=\""+password+"\"");
+		Vector<String[]> result=DbConnection.getInstance().eseguiQuery("select * from UtenteRegistrato where username=\""+ username +"\"and password=\""+password+"\"");
 		if(result.size()!=0){
 			return true;
 							}

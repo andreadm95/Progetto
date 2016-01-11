@@ -1,21 +1,25 @@
 package it.progetto.Model;
 
 import java.util.ArrayList;
+import java.util.Vector;
+
 import it.progetto.DAO.MagazzinoDAO;
 import it.progetto.DAO.OrdineDAO;
 
 public class Magazzino {
 
-	 private ArrayList<Prodotto> ListaProdotti;
+	 private Vector<String[]> ListaProdotti;
 	 private ArrayList<Ordine> ListaOrdiniPendenti;
 	 private int CodiceMagazzino;
 	 
-	public ArrayList<Prodotto> getListaProdotti() {
+	public Vector<String[]> getListaProdotti() {
 		return MagazzinoDAO.getInstance().fornisciCatalogoVicino(CodiceMagazzino);
 	}
-	public void setListaProdotti(ArrayList<Prodotto> listaProdotti) {
+	
+	public void setListaProdotti(Vector<String[]> listaProdotti) {
 		ListaProdotti = listaProdotti;
 	}
+
 	public ArrayList<Ordine> getListaOrdiniPendenti() {
 		return OrdineDAO.getInstance().fornisciOrdiniPendenti();
 	}
