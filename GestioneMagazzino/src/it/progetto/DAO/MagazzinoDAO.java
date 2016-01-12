@@ -1,9 +1,7 @@
 package it.progetto.DAO;
 
 import java.util.Vector;
-import java.util.ArrayList;
 import it.progetto.DbConnection.DbConnection;
-import it.progetto.Model.Prodotto;
 
 public class MagazzinoDAO {
 	
@@ -27,6 +25,10 @@ private static MagazzinoDAO instance;
 	public  Vector<String[]> fornisciCatalogo()
 	{
 		Vector<String[]> result=DbConnection.getInstance().eseguiQuery("select * from Prodotto");
+		return result;
+	}
+	public boolean Rifornisci(int idprodotto, int quantitàdarifornire){
+		boolean result= DbConnection.getInstance().eseguiAggiornamento("UPDATE Prodotto SET Prodotto.Disponibilità="+quantitàdarifornire+" WHERE Prodotto.idProdotto="+idprodotto);
 		return result;
 	}
 

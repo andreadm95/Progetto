@@ -31,6 +31,10 @@ private static ProgettoDAO instance;
 		else{
 		return null;}
 	}
+	public boolean aggiornaSpesaProgetto(int idprogetto, int spesa){
+		boolean result=DbConnection.getInstance().eseguiAggiornamento("UPDATE Progetto SET Progetto.SpesaTotate=Progetto.SpesaTotale+"+spesa+"WHERE Progetto.idProgetto="+idprogetto);
+		return result;
+	}
 	
 	
 	
