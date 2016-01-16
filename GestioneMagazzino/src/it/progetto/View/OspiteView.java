@@ -18,7 +18,6 @@ public class OspiteView extends JFrame {
 
 	public OspiteView(Vector<String[]> dati){
 		super("Catalogo");
-		final OspiteView finestra=this;
 		Container c = getContentPane();
 		c.setLayout(new BorderLayout());
 		Vector<String[]> head= new Vector<String[]>();

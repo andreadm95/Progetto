@@ -14,8 +14,8 @@ public class Magazziniere extends UtenteRegistrato {
 		super(username,password);
 	}
 
-	public Magazziniere(String nome, String cognome, String password, String username, int magazzinoAppartenenza) {
-		super(nome, cognome, username, password);
+	public Magazziniere(int id, String nome, String cognome, String password, String username, int magazzinoAppartenenza) {
+		super(id,nome, cognome, username, password);
 		MagazzinoAppartenenza = magazzinoAppartenenza;
 	}
 

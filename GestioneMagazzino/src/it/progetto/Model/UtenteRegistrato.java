@@ -4,6 +4,7 @@ import it.progetto.DAO.UtenteRegistratoDAO;
 
 public class UtenteRegistrato {
 
+	  private int Id;
 	  private String Nome;
 	  private String Cognome;
 	  private String Username;
@@ -19,13 +20,23 @@ public class UtenteRegistrato {
 		Password = password;
 	}
 	
-	public UtenteRegistrato(String nome, String cognome, String username, String password) {
+	public UtenteRegistrato(int id, String nome, String cognome, String username, String password) {
 		super();
+		setId(id);
 		Nome = nome;
 		Cognome = cognome;
 		Username = username;
 		Password = password;
 	}
+	
+	public int getId() {
+		return Id;
+	}
+
+	public void setId(int id) {
+		Id = id;
+	}
+
 	public String getNome() {
 		return Nome;
 	}

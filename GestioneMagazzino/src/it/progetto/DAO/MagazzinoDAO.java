@@ -16,9 +16,15 @@ private static MagazzinoDAO instance;
 		return instance;
 	}
 	
-	public  Vector<String[]> fornisciCatalogoVicino(int sede)
+	public  Vector<String[]> FornisciCatalogoVicino(int sede)
 	{
 		Vector<String[]> result=DbConnection.getInstance().eseguiQuery("select * from Prodotto, Appartiene where Appartiene.CodMagazzino="+sede+" and Prodotto.idprodotto=Appartiene.codprodotto");
+		return result;
+	}
+	
+	public  Vector<String[]> FornisciCatalogoLontano(int sede)
+	{
+		Vector<String[]> result=DbConnection.getInstance().eseguiQuery("select * from Prodotto, Appartiene where Appartiene.CodMagazzino!="+sede+" and Prodotto.idprodotto=Appartiene.codprodotto");
 		return result;
 	}
 	

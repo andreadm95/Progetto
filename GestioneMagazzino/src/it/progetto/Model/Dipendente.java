@@ -10,8 +10,8 @@ public class Dipendente extends UtenteRegistrato {
 		super();
 	}
 
-	public Dipendente(String nome, String cognome, String password,String username, Float spesa) {
-		super(nome, cognome, username, password);
+	public Dipendente(int id, String nome, String cognome, String password,String username, Float spesa) {
+		super(id,nome, cognome, username, password);
 		Spesa = spesa;
 	}
 	

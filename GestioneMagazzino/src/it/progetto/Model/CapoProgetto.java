@@ -16,12 +16,12 @@ public class CapoProgetto extends UtenteRegistrato {
 		super(username,password);
 	}
 
-	public CapoProgetto(String nome, String cognome, String password, String username) {
-		super(nome, cognome, username,password);
+	public CapoProgetto(int id, String nome, String cognome, String password, String username) {
+		super(id,nome, cognome, username,password);
 	}
 	
-	public CapoProgetto(String nome, String cognome, String password, String username, ArrayList<Progetto> listaProgettiACarico) {
-		super(nome, cognome, username, password);
+	public CapoProgetto(int id, String nome, String cognome, String password, String username, ArrayList<Progetto> listaProgettiACarico) {
+		super(id,nome, cognome, username, password);
 		ListaProgettiACarico = listaProgettiACarico;
 	}
 

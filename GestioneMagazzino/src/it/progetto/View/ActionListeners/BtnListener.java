@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Vector;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import it.progetto.DAO.MagazzinoDAO;
@@ -20,22 +21,18 @@ import it.progetto.View.OspiteView;
 public class BtnListener implements ActionListener{
 	
 	private LoginView finestralogin;
-	private OspiteView finestraospite;
+	private JFrame finestrautente;
 	
 	public BtnListener(LoginView finestra) {
 		super();
 		this.finestralogin = finestra;
 	}
-
-
-
-	public BtnListener(OspiteView finestra) {
+	
+	public BtnListener(JFrame finestra) {
 		// TODO Auto-generated constructor stub
 		super();
-		this.finestraospite=finestra;
+		this.finestrautente=finestra;
 	}
-
-
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -64,8 +61,17 @@ public class BtnListener implements ActionListener{
 			new OspiteView(lista);
 		}
 		else if("ACCESSO".equals(e.getActionCommand())){
-			finestraospite.setVisible(false);
+			finestrautente.setVisible(false);
 			new LoginView();
+		}
+		else if("LONTANO".equals(e.getActionCommand())){
+			
+		}
+		else if("AGGIUNGI".equals(e.getActionCommand())){
+			
+		}
+		else if("CARRELLO".equals(e.getActionCommand())){
+			
 		}
 
 }
