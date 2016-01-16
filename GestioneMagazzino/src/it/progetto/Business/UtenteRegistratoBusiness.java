@@ -14,8 +14,9 @@ private static UtenteRegistratoBusiness instance;
 		return instance;
 	}
 	
-	public boolean verificaLogin(UtenteRegistrato p)
+	public boolean verificaLogin(String username,String password)
 	{
+		UtenteRegistrato p=new UtenteRegistrato(username, password);
 		return p.login();
 	}
 	

@@ -4,7 +4,6 @@ import java.util.Vector;
 
 import it.progetto.DbConnection.DbConnection;
 import it.progetto.Model.Magazziniere;
-import it.progetto.Model.UtenteRegistrato;
 
 public class MagazziniereDAO {
 
@@ -19,7 +18,7 @@ private static MagazziniereDAO instance;
 		return instance;
 	}
 	
-	public boolean isMagazziniere(UtenteRegistrato u){
+	public boolean MagazziniereExists(Magazziniere u){
 		String username = u.getUsername();
 		String password = u.getPassword();
 		Vector<String[]> result=DbConnection.getInstance().eseguiQuery("select * from UtenteRegistrato INNER JOIN Magazziniere ON Magazziniere.idMagazziniere=UtenteRegistrato.idUtenteRegistrato where username=\""+ username +"\"and password=\""+password+"\"");
@@ -30,7 +29,7 @@ private static MagazziniereDAO instance;
 			}
 	}
 	
-	public Object RecuperaInfo(UtenteRegistrato u){
+	public Object PrelevaInfo(Magazziniere u){
 		String username = u.getUsername();
 		String password = u.getPassword();
 		Vector<String[]> result=DbConnection.getInstance().eseguiQuery("select * from UtenteRegistrato INNER JOIN Magazziniere ON Magazziniere.idMagazziniere=UtenteRegistrato.idUtenteRegistrato where username=\""+ username +"\"and password=\""+password+"\"");

@@ -19,7 +19,7 @@ private static CapoProgettoDAO instance;
 		return instance;
 	}
 	
-	public boolean isCapoProgetto(UtenteRegistrato u){
+	public boolean CapoProgettoExists(CapoProgetto u){
 		String username = u.getUsername();
 		String password = u.getPassword();
 		Vector<String[]> result=DbConnection.getInstance().eseguiQuery("select * from UtenteRegistrato INNER JOIN CapoProgetto ON CapoProgetto.idCapoProgetto=UtenteRegistrato.idUtenteRegistrato where username=\""+ username +"\"and password=\""+password+"\"");
@@ -30,7 +30,7 @@ private static CapoProgettoDAO instance;
 			}
 	}
 	
-	public Object RecuperaInfo(UtenteRegistrato u) {
+	public Object PrelevaInfo(CapoProgetto u) {
 		String username = u.getUsername();
 		String password = u.getPassword();
 		Vector<String[]> result=DbConnection.getInstance().eseguiQuery("select * from UtenteRegistrato INNER JOIN CapoProgetto ON CapoProgetto.idCapoProgetto=UtenteRegistrato.idUtenteRegistrato where username=\""+ username +"\"and password=\""+password+"\"");

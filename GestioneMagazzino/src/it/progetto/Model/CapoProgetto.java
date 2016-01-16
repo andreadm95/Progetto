@@ -2,12 +2,18 @@ package it.progetto.Model;
 
 import java.util.ArrayList;
 
+import it.progetto.DAO.CapoProgettoDAO;
+
 public class CapoProgetto extends UtenteRegistrato {
 
 	private ArrayList<Progetto> ListaProgettiACarico;
 	
 	public CapoProgetto() {
 		super();
+	}
+	
+	public CapoProgetto(String username, String password) {
+		super(username,password);
 	}
 
 	public CapoProgetto(String nome, String cognome, String password, String username) {
@@ -25,5 +31,13 @@ public class CapoProgetto extends UtenteRegistrato {
 
 	public void setListaProgettiACarico(ArrayList<Progetto> listaProgettiACarico) {
 		ListaProgettiACarico = listaProgettiACarico;
+	}
+	
+	public boolean isCapoProgetto(){
+		return CapoProgettoDAO.getInstance().CapoProgettoExists(this);	
+	}
+	
+	public Object RecuperaInfo(){
+		return CapoProgettoDAO.getInstance().PrelevaInfo(this);
 	}
 }

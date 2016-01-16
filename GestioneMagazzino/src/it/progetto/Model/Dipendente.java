@@ -28,8 +28,12 @@ public class Dipendente extends UtenteRegistrato {
 		Spesa = spesa;
 	}
 	
-	public boolean isDipendente(UtenteRegistrato u){
-	return DipendenteDAO.getInstance().isDipendente(u);	
+	public boolean isDipendente(){
+		return DipendenteDAO.getInstance().DipendenteExists(this);	
+	}
+	
+	public Object RecuperaInfo(){
+		return DipendenteDAO.getInstance().PrelevaInfo(this);
 	}
 	
 }

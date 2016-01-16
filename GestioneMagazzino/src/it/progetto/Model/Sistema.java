@@ -1,5 +1,8 @@
 package it.progetto.Model;
 
+import it.progetto.Business.CapoProgettoBusiness;
+import it.progetto.Business.DipendenteBusiness;
+import it.progetto.Business.MagazziniereBusiness;
 import it.progetto.Business.UtenteRegistratoBusiness;
 import it.progetto.DAO.CapoProgettoDAO;
 import it.progetto.DAO.DipendenteDAO;
@@ -17,13 +20,12 @@ public class Sistema {
 	}
 	
 	public Object Autenticazione(String username, String password){
-		UtenteRegistrato p=new UtenteRegistrato(username, password);
-		boolean UtenteEsiste= UtenteRegistratoBusiness.getInstance().verificaLogin(p);
+		boolean UtenteEsiste= UtenteRegistratoBusiness.getInstance().verificaLogin(username,password);
 		if (UtenteEsiste){
-			if(DipendenteDAO.getInstance().isDipendente(p)){return DipendenteDAO.getInstance().RecuperaInfo(p);}
-			else if(MagazziniereDAO.getInstance().isMagazziniere(p)){return MagazziniereDAO.getInstance().RecuperaInfo(p);}
-			else {return CapoProgettoDAO.getInstance().RecuperaInfo(p);}
+			if(DipendenteBusiness.getInstance().isDipendente(username, password)){return DipendenteBusiness.getInstance().RecuperoInfo(username,password);}
+			else if(MagazziniereBusiness.getInstance().isMagazziniere(username, password)){return MagazziniereBusiness.getInstance().RecuperoInfo(username, password);}
+			else {return CapoProgettoBusiness.getInstance().RecuperoInfo(username, password);}
 		}
-		else {return -1;}
+		else {return null;}
 	}
 }

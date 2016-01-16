@@ -19,7 +19,7 @@ private static DipendenteDAO instance;
 		return instance;
 	}
 	
-	public boolean isDipendente(UtenteRegistrato u){
+	public boolean DipendenteExists(Dipendente u){
 		String username = u.getUsername();
 		String password = u.getPassword();
 		Vector<String[]> result=DbConnection.getInstance().eseguiQuery("select * from UtenteRegistrato INNER JOIN Dipendente ON Dipendente.idDipendente=UtenteRegistrato.idUtenteRegistrato where username=\""+ username +"\"and password=\""+password+"\"");
@@ -30,7 +30,7 @@ private static DipendenteDAO instance;
 			}
 	}
 	
-	public Object RecuperaInfo(UtenteRegistrato u){
+	public Object PrelevaInfo(Dipendente u){
 		String username = u.getUsername();
 		String password = u.getPassword();
 		Vector<String[]> result=DbConnection.getInstance().eseguiQuery("select * from UtenteRegistrato INNER JOIN Dipendente ON Dipendente.idDipendente=UtenteRegistrato.idUtenteRegistrato where username=\""+ username +"\"and password=\""+password+"\"");
@@ -43,7 +43,7 @@ private static DipendenteDAO instance;
 			}
 	}
 	
-	public int SedeDipendente(UtenteRegistrato u){
+	public int SedeDipendente(Dipendente u){
 		String username = u.getUsername();
 		Vector<String[]> result=DbConnection.getInstance().eseguiQuery("select CodMagazzino from UtenteRegistrato INNER JOIN Dipendente ON Dipendente.idDipendente=UtenteRegistrato.idUtenteRegistrato where UtenteRegistrato.username=\""+ username +"\"");
 		String[] riga=result.get(0);
