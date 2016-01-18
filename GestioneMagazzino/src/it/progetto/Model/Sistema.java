@@ -4,9 +4,6 @@ import it.progetto.Business.CapoProgettoBusiness;
 import it.progetto.Business.DipendenteBusiness;
 import it.progetto.Business.MagazziniereBusiness;
 import it.progetto.Business.UtenteRegistratoBusiness;
-import it.progetto.DAO.CapoProgettoDAO;
-import it.progetto.DAO.DipendenteDAO;
-import it.progetto.DAO.MagazziniereDAO;
 
 public class Sistema {
 	
@@ -19,13 +16,12 @@ public class Sistema {
 		   return instance;
 	}
 	
-	public Object Autenticazione(String username, String password){
+	public void Autenticazione(String username, String password){
 		boolean UtenteEsiste= UtenteRegistratoBusiness.getInstance().verificaLogin(username,password);
 		if (UtenteEsiste){
-			if(DipendenteBusiness.getInstance().isDipendente(username, password)){return DipendenteBusiness.getInstance().RecuperoInfo(username,password);}
-			else if(MagazziniereBusiness.getInstance().isMagazziniere(username, password)){return MagazziniereBusiness.getInstance().RecuperoInfo(username, password);}
-			else {return CapoProgettoBusiness.getInstance().RecuperoInfo(username, password);}
+			if(DipendenteBusiness.getInstance().isDipendente(username, password)){DipendenteBusiness.getInstance().RecuperoInfo(username,password);}
+			else if(MagazziniereBusiness.getInstance().isMagazziniere(username, password)){MagazziniereBusiness.getInstance().RecuperoInfo(username, password);}
+			else {CapoProgettoBusiness.getInstance().RecuperoInfo(username, password);}
 		}
-		else {return null;}
 	}
 }

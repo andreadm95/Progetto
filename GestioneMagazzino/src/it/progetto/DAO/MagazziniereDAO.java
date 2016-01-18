@@ -35,8 +35,11 @@ private static MagazziniereDAO instance;
 		Vector<String[]> result=DbConnection.getInstance().eseguiQuery("select * from UtenteRegistrato INNER JOIN Magazziniere ON Magazziniere.idMagazziniere=UtenteRegistrato.idUtenteRegistrato where username=\""+ username +"\"and password=\""+password+"\"");
 		if(result.size()!=0){
 			String[] info= result.get(0);
-			Magazziniere mag= new Magazziniere(Integer.parseInt(info[0]),info[1],info[2],info[3],info[4],Integer.parseInt(info[6]));
-			return mag;}
+			u.setId(Integer.parseInt(info[0]));
+			u.setNome(info[1]);
+			u.setCognome(info[2]);
+			u.setMagazzinoAppartenenza(Integer.parseInt(info[6]));
+			return u;}
 		else{
 		return null;
 			}

@@ -6,7 +6,7 @@ import it.progetto.Model.CapoProgetto;
 
 public class CapoProgettoView extends JFrame {
 	
-	public CapoProgettoView(CapoProgetto p){
+	public CapoProgettoView(){
 		super("Riordina spese");
 		setSize(800,800);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);

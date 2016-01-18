@@ -1,6 +1,7 @@
 package it.progetto.Business;
 
 import it.progetto.Model.CapoProgetto;
+import it.progetto.Model.Sessione;
 
 public class CapoProgettoBusiness {
 	
@@ -18,8 +19,8 @@ private static CapoProgettoBusiness instance;
 		return u.isCapoProgetto();
 	}
 	
-	public Object RecuperoInfo(String username,String password){
+	public void RecuperoInfo(String username,String password){
 		CapoProgetto c= new CapoProgetto(username,password);
-		return c.RecuperaInfo();
+		Sessione.getInstance().session.put("utente_corrente", c.RecuperaInfo());
 	}
 }

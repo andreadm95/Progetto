@@ -36,8 +36,10 @@ private static CapoProgettoDAO instance;
 		Vector<String[]> result=DbConnection.getInstance().eseguiQuery("select * from UtenteRegistrato INNER JOIN CapoProgetto ON CapoProgetto.idCapoProgetto=UtenteRegistrato.idUtenteRegistrato where username=\""+ username +"\"and password=\""+password+"\"");
 		if(result.size()!=0){
 			String[] info= result.get(0);
-			CapoProgetto mag= new CapoProgetto(Integer.parseInt(info[0]),info[1],info[2],info[3],info[4]);
-			return mag;}
+			u.setId(Integer.parseInt(info[0]));
+			u.setNome(info[1]);
+			u.setCognome(info[2]);
+			return u;}
 		else{
 		return null;
 			}

@@ -43,8 +43,11 @@ private static OrdineDAO instance;
 	}
 	public boolean SalvaOrdine(ArrayList<Prodotto> prodottiordinati, int codmagazzino, int coddipendente, int codprogetto){
 		boolean result= DbConnection.getInstance().eseguiAggiornamento("INSERT INTO Ordine(idOrdine,CodMagazzino,CodDipendente,CodProgetto,Evaso) VALUES(null,"+codmagazzino+coddipendente+codprogetto+"false)");
+		Vector<String[]> recuperocodordine= DbConnection.getInstance().eseguiQuery("SELECT idOrdine FROM Ordine WHERE Max(idOrdine)");
+		int codordine= Integer.parseInt(recuperocodordine.get(0).toString());
 		for(int i=0;i<prodottiordinati.size();i++){
-			prodottiordinati.get(i).getIdProdotto();
+			int codprodotto=prodottiordinati.get(i).getIdProdotto();
+			boolean risultato= SalvaProdottoOrdinato(codprodotto,codordine,5);
 		}
 		return result;
 	}

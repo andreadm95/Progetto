@@ -6,7 +6,7 @@ import it.progetto.Model.Magazziniere;
 
 public class MagazziniereView extends JFrame{
 	
-	public MagazziniereView(Magazziniere p){
+	public MagazziniereView(){
 		super("Effettua un operazione");
 		setSize(800,800);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);

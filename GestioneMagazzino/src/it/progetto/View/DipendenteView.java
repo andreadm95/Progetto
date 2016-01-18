@@ -2,7 +2,7 @@ package it.progetto.View;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
-import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.util.Vector;
 
 import javax.swing.BoxLayout;
@@ -16,44 +16,78 @@ import javax.swing.table.DefaultTableModel;
 
 import it.progetto.Model.Dipendente;
 import it.progetto.Model.Magazzino;
+import it.progetto.Model.Sessione;
 import it.progetto.View.ActionListeners.BtnListener;
 
 public class DipendenteView extends JFrame {
 	
-	public DipendenteView(Dipendente p){
+//	private JPanel catvicino= new JPanel();
+//	private JPanel catlontano= new JPanel();
+//
+//	public JPanel getCatvicino() {
+//		return catvicino;
+//	}
+//
+//	public JPanel getCatlontano() {
+//		return catlontano;
+//	}
+	
+	public DipendenteView(){
 		super("Effettua un ordine");
 		Container c = getContentPane();
 		c.setLayout(new BorderLayout());
+		Dipendente dip=(Dipendente) Sessione.getInstance().session.get("utente_corrente");
+		JLabel text= new JLabel("Accesso effettuato come: "+dip.getNome()+" "+dip.getCognome()+".");
+		c.add(text, BorderLayout.NORTH);
 		Vector<String[]> head= new Vector<String[]>();
 		String[] columnNames = {"Id","Nome", "Categoria", "Descrizione","Disponibilità","MaxOrdinabile","Fornitore","Produttore","Prezzo"};
 		head.addElement(columnNames);
-		DefaultTableModel model = new DefaultTableModel() {
+		JPanel catvicino= new JPanel(){
+		JPanel catlontano= new JPanel();
+		//organizzo catalogo vicino
+		DefaultTableModel model1= new DefaultTableModel() {
 		    @Override
 		    public boolean isCellEditable(int row, int column) {
 		       return false;
 		    }
 		};
-		model.setColumnIdentifiers(columnNames);
-		Vector<String[]> lista= Magazzino.getInstance().getListaProdottiVicini(p.getId());
+		model1.setColumnIdentifiers(columnNames);
+		Vector<String[]> lista= Magazzino.getInstance().getListaProdottiVicini(dip.getId());
 		for(int i=0; i<lista.size();i++){
-			model.addRow(lista.get(i));}
-		final JTable catalogovicino= new JTable(model);
-		JScrollPane s=new JScrollPane(catalogovicino);
-		c.add(s, BorderLayout.CENTER);
-		JLabel text= new JLabel("Accesso effettuato come: "+p.getNome()+" "+p.getCognome()+".");
-		c.add(text, BorderLayout.NORTH);
-		JButton catlontano=new JButton("Altro Catalogo");
-		catlontano.setActionCommand("LONTANO");
-		catlontano.addActionListener(new BtnListener(this));
+			model1.addRow(lista.get(i));}
+		final JTable catalogovicino= new JTable(model1);
+		JScrollPane s1=new JScrollPane(catalogovicino);
+		catvicino.setLayout(new GridLayout(1,1));
+		catvicino.add(s1);
+		c.add(catvicino, BorderLayout.CENTER);
+		//organizzo catalogo lontano
+		DefaultTableModel model2= new DefaultTableModel() {
+		    @Override
+		    public boolean isCellEditable(int row, int column) {
+		       return false;
+		    }
+		};
+		model2.setColumnIdentifiers(columnNames);
+		Vector<String[]> lista2= Magazzino.getInstance().getListaProdottiLontano(dip.getId());
+		for(int i=0; i<lista2.size();i++){
+			model2.addRow(lista2.get(i));}
+		final JTable catalogolontano= new JTable(model1);
+		JScrollPane s2=new JScrollPane(catalogolontano);
+		catlontano.setLayout(new GridLayout(1,1));
+		catlontano.add(s2);
+		JButton altrocat=new JButton("Altro Catalogo");
+		altrocat.setActionCommand("LONTANO");
+		altrocat.addActionListener(new BtnListener(this));
+		//bottoni laterali
+		JPanel bottoni= new JPanel();
 		JButton aggiungi=new JButton("Aggiungi al Carrello");
 		aggiungi.setActionCommand("AGGIUNGI");
 		aggiungi.addActionListener(new BtnListener(this));
 		JButton apricarrello=new JButton("Vai al Carrello");
 		apricarrello.setActionCommand("APRICARRELLO");
 		apricarrello.addActionListener(new BtnListener(this));
-		JPanel bottoni= new JPanel();
 		bottoni.setLayout(new BoxLayout(bottoni, BoxLayout.Y_AXIS));
-		bottoni.add(catlontano);
+		bottoni.add(altrocat);
 		bottoni.add(aggiungi);
 		bottoni.add(apricarrello);
 		c.add(bottoni, BorderLayout.EAST);
