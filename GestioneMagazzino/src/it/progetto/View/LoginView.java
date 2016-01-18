@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import it.progetto.View.ActionListeners.BtnListener;
+import it.progetto.View.ActionListeners.LoginBtnListener;
 
 public class LoginView extends JFrame {
 
@@ -36,10 +36,10 @@ public class LoginView extends JFrame {
 		sud.setLayout(new FlowLayout());
 		JButton login= new JButton("Accedi");
 		login.setActionCommand("REGISTRATO");
-		login.addActionListener(new BtnListener(this));
+		login.addActionListener(new LoginBtnListener(this));
 		JButton ospite= new JButton("Accedi come Ospite");
 		ospite.setActionCommand("OSPITE");
-		ospite.addActionListener(new BtnListener(this));
+		ospite.addActionListener(new LoginBtnListener(this));
 		
 		c.add(text1, BorderLayout.NORTH);
 		ovest.add(text2);

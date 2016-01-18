@@ -13,7 +13,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import it.progetto.Model.Magazzino;
-import it.progetto.View.ActionListeners.BtnListener;
+import it.progetto.View.ActionListeners.LoginBtnListener;
 
 public class OspiteView extends JFrame {
 
@@ -43,7 +43,7 @@ public class OspiteView extends JFrame {
 		bottoni.setLayout(new FlowLayout());
 		JButton Loginbtn=new JButton("Effettua il Login");
 		Loginbtn.setActionCommand("ACCESSO");
-		Loginbtn.addActionListener(new BtnListener(this));
+		Loginbtn.addActionListener(new LoginBtnListener(this));
 		bottoni.add(Loginbtn);
 		c.add(bottoni, BorderLayout.EAST);
 		
