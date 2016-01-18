@@ -25,7 +25,7 @@ public class DipendenteView extends JFrame {
 		Container c = getContentPane();
 		c.setLayout(new BorderLayout());
 		Vector<String[]> head= new Vector<String[]>();
-		String[] columnNames = {"Id","Nome", "Categoria", "Descrizione","Disponibilità","Numero Ordinabile","Fornitore","Produttore","Prezzo"};
+		String[] columnNames = {"Id","Nome", "Categoria", "Descrizione","Disponibilità","MaxOrdinabile","Fornitore","Produttore","Prezzo"};
 		head.addElement(columnNames);
 		DefaultTableModel model = new DefaultTableModel() {
 		    @Override
@@ -42,7 +42,7 @@ public class DipendenteView extends JFrame {
 		c.add(s, BorderLayout.CENTER);
 		JLabel text= new JLabel("Accesso effettuato come: "+p.getNome()+" "+p.getCognome()+".");
 		c.add(text, BorderLayout.NORTH);
-		JButton catlontano=new JButton("Magazzino Lontano");
+		JButton catlontano=new JButton("Altro Catalogo");
 		catlontano.setActionCommand("LONTANO");
 		catlontano.addActionListener(new BtnListener(this));
 		JButton aggiungi=new JButton("Aggiungi al Carrello");

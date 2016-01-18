@@ -16,6 +16,10 @@ private static Magazzino instance;
 			   }
 		   return instance;
 	}
+	
+	public Vector<String[]> getListaProdottiTot(){
+		return MagazzinoDAO.getInstance().fornisciCatalogo();
+	}
 	 
 	public Vector<String[]> getListaProdottiVicini(int sede) {
 		return MagazzinoDAO.getInstance().FornisciCatalogoVicino(sede);

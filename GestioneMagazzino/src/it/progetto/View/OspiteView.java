@@ -12,16 +12,17 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import it.progetto.Model.Magazzino;
 import it.progetto.View.ActionListeners.BtnListener;
 
 public class OspiteView extends JFrame {
 
-	public OspiteView(Vector<String[]> dati){
+	public OspiteView(){
 		super("Catalogo");
 		Container c = getContentPane();
 		c.setLayout(new BorderLayout());
 		Vector<String[]> head= new Vector<String[]>();
-		String[] columnNames = {"Id","Nome", "Categoria", "Descrizione","Disponibilità","Numero Ordinabile","Fornitore","Produttore","Prezzo"};
+		String[] columnNames = {"Id","Nome", "Categoria", "Descrizione","Disponibilità","MaxOrdinabile","Fornitore","Produttore","Prezzo"};
 		head.addElement(columnNames);
 		DefaultTableModel model = new DefaultTableModel() {
 		    @Override
@@ -30,8 +31,9 @@ public class OspiteView extends JFrame {
 		    }
 		};
 		model.setColumnIdentifiers(columnNames);
-		for(int i=0;i<dati.size();i++){
-		model.addRow(dati.get(i));}
+		Vector<String[]> lista=Magazzino.getInstance().getListaProdottiTot();
+		for(int i=0;i<lista.size();i++){
+		model.addRow(lista.get(i));}
 		final JTable catalogo= new JTable(model);
 		JScrollPane p=new JScrollPane(catalogo);
 		c.add(p, BorderLayout.CENTER);

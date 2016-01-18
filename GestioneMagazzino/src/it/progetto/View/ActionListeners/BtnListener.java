@@ -11,6 +11,7 @@ import it.progetto.DAO.MagazzinoDAO;
 import it.progetto.Model.CapoProgetto;
 import it.progetto.Model.Dipendente;
 import it.progetto.Model.Magazziniere;
+import it.progetto.Model.Magazzino;
 import it.progetto.Model.Sistema;
 import it.progetto.View.CapoProgettoView;
 import it.progetto.View.DipendenteView;
@@ -38,6 +39,7 @@ public class BtnListener implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 
+		//I LISTENER VANNO SEPARATI IN BASE AL TIPO DI AZIONE CHE EFFETTUANO!!!
 		if("REGISTRATO".equals(e.getActionCommand())){
 			String username = finestralogin.username.getText();
 			String password = finestralogin.password.getText();
@@ -57,8 +59,7 @@ public class BtnListener implements ActionListener{
 		}
 		else if("OSPITE".equals(e.getActionCommand())){
 			finestralogin.setVisible(false);
-			Vector<String[]> lista=MagazzinoDAO.getInstance().fornisciCatalogo();
-			new OspiteView(lista);
+			new OspiteView();
 		}
 		else if("ACCESSO".equals(e.getActionCommand())){
 			finestrautente.setVisible(false);
