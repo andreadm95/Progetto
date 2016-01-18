@@ -73,7 +73,7 @@ public class BtnListener implements ActionListener{
 		else if("LONTANO".equals(e.getActionCommand())){
 		BorderLayout l=(BorderLayout) finestrautente.getContentPane().getLayout();
 		finestrautente.getContentPane().remove(l.getLayoutComponent(BorderLayout.CENTER));
-		//finestrautente.getContentPane().add(finestrautente.getCatlontano(),BorderLayout.CENTER);
+		finestrautente.getContentPane().add(finestrautente.getCatlontano(),BorderLayout.CENTER);
 		finestrautente.repaint();
 		finestrautente.revalidate();
 		}

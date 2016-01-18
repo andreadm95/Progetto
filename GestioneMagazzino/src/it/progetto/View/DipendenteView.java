@@ -21,16 +21,16 @@ import it.progetto.View.ActionListeners.BtnListener;
 
 public class DipendenteView extends JFrame {
 	
-//	private JPanel catvicino= new JPanel();
-//	private JPanel catlontano= new JPanel();
-//
-//	public JPanel getCatvicino() {
-//		return catvicino;
-//	}
-//
-//	public JPanel getCatlontano() {
-//		return catlontano;
-//	}
+	private JPanel catvicino= new JPanel();
+	private JPanel catlontano= new JPanel();
+
+	public JPanel getCatvicino() {
+		return catvicino;
+	}
+
+	public JPanel getCatlontano() {
+		return catlontano;
+	}
 	
 	public DipendenteView(){
 		super("Effettua un ordine");
@@ -42,8 +42,6 @@ public class DipendenteView extends JFrame {
 		Vector<String[]> head= new Vector<String[]>();
 		String[] columnNames = {"Id","Nome", "Categoria", "Descrizione","Disponibilità","MaxOrdinabile","Fornitore","Produttore","Prezzo"};
 		head.addElement(columnNames);
-		JPanel catvicino= new JPanel(){
-		JPanel catlontano= new JPanel();
 		//organizzo catalogo vicino
 		DefaultTableModel model1= new DefaultTableModel() {
 		    @Override
@@ -69,9 +67,9 @@ public class DipendenteView extends JFrame {
 		};
 		model2.setColumnIdentifiers(columnNames);
 		Vector<String[]> lista2= Magazzino.getInstance().getListaProdottiLontano(dip.getId());
-		for(int i=0; i<lista2.size();i++){
-			model2.addRow(lista2.get(i));}
-		final JTable catalogolontano= new JTable(model1);
+		for(int j=0; j<lista2.size();j++){
+			model2.addRow(lista2.get(j));}
+		final JTable catalogolontano= new JTable(model2);
 		JScrollPane s2=new JScrollPane(catalogolontano);
 		catlontano.setLayout(new GridLayout(1,1));
 		catlontano.add(s2);
@@ -97,6 +95,5 @@ public class DipendenteView extends JFrame {
 		setSize(800,800);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
-	}
-
-}
+		}
+		}
