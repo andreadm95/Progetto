@@ -1,6 +1,7 @@
 package it.progetto.Model;
 
 import java.util.ArrayList;
+import java.util.Vector;
 
 import it.progetto.DAO.CapoProgettoDAO;
 
@@ -39,5 +40,17 @@ public class CapoProgetto extends UtenteRegistrato {
 	
 	public Object RecuperaInfo(){
 		return CapoProgettoDAO.getInstance().PrelevaInfo(this);
+	}
+	
+	public boolean HasPiuDueProgetti(int idCapo){
+		return CapoProgettoDAO.getInstance().PiùDiDueProgetti(idCapo);
+	}
+	
+	public Vector<String[]> OrdinaSpeseProgetto(int idCapo){
+		return CapoProgettoDAO.getInstance().OrdinaSpeseProgetto(idCapo);
+	}
+	
+	public Vector<String[]> OrdinaSpeseDipendente(int idCapo){
+		return CapoProgettoDAO.getInstance().OrdinaSpeseDipendente(idCapo);
 	}
 }

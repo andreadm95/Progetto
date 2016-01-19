@@ -1,6 +1,7 @@
 package it.progetto.View;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Container;
 import java.awt.GridLayout;
 import java.util.Vector;
@@ -12,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 import it.progetto.Model.Dipendente;
@@ -42,6 +44,19 @@ public class DipendenteView extends JFrame {
 		return catlontano;
 	}
 	
+	public Component findDescendentByName(Container cnt, String name) {
+		  if (cnt == null) return null;
+		  if (name.equals(cnt.getName())) return cnt;
+		  for (int i = 0; i < cnt.getComponentCount(); ++i) {
+		    Component cmp = cnt.getComponent(i);
+		    if (cmp instanceof Container) {
+		      cmp = findDescendentByName((Container) cmp, name);
+		      if (cmp != null) return cmp;
+		    } else if (name.equals(cmp.getName())) return cmp;
+		  }
+		  return null;
+		}
+	
 	public DipendenteView(){
 		super("Effettua un ordine");
 		Container c = getContentPane();
@@ -69,6 +84,8 @@ public class DipendenteView extends JFrame {
 		for(int i=0; i<lista.size();i++){
 			model1.addRow(lista.get(i));}
 		final JTable catalogovicino= new JTable(model1);
+		catalogovicino.setName("catalogo_vicino");
+		catalogovicino.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		JScrollPane s1=new JScrollPane(catalogovicino);
 		c.add(s1, BorderLayout.CENTER);
 		catvicino.setLayout(new GridLayout(1,1));
@@ -90,6 +107,8 @@ public class DipendenteView extends JFrame {
 		for(int j=0; j<lista2.size();j++){
 			model2.addRow(lista2.get(j));}
 		final JTable catalogolontano= new JTable(model2);
+		catalogolontano.setName("catalogo_lontano");
+		catalogolontano.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		JScrollPane s2=new JScrollPane(catalogolontano);
 		catlontano.setLayout(new GridLayout(1,1));
 		catlontano.add(s2);

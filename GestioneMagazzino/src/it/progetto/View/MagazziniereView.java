@@ -9,6 +9,7 @@ import java.util.Vector;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -77,9 +78,9 @@ public class MagazziniereView extends JFrame{
 		    }
 		};
 		model_ordine.setColumnIdentifiers(columnNames_ordine);
-		Vector<String[]> lista_ordini= Magazzino.getInstance().getListaOrdiniPendenti(mag.getMagazzinoAppartenenza());
-		for(int i=0;i<lista_ordini.size();i++){
-			model_ordine.addRow(lista_ordini.get(i));}
+//		Vector<String[]> lista_ordini= Magazzino.getInstance().getListaOrdiniPendenti(mag.getMagazzinoAppartenenza());
+//			for(int i=0;i<lista_ordini.size();i++){
+//				model_ordine.addRow(lista_ordini.get(i));}
 		final JTable cat_ordine= new JTable(model_ordine);
 		JScrollPane s2= new JScrollPane(cat_ordine);
 		catalogo_ordini.setLayout(new GridLayout(1,1));

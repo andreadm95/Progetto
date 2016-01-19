@@ -20,6 +20,8 @@ public class MagazziniereBtnListener implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if("ORDINI_PENDENTI".equals(e.getActionCommand())){
+			BorderLayout layout=(BorderLayout) finestramag.getContentPane().getLayout();
+			finestramag.getContentPane().remove(layout.getLayoutComponent(BorderLayout.CENTER));
 			finestramag.getContentPane().add(finestramag.getCatalogo_ordini(),BorderLayout.CENTER);
 			finestramag.repaint();
 			finestramag.revalidate();
