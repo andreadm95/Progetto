@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
 import it.progetto.Model.Dipendente;
 import it.progetto.Model.Magazzino;
 import it.progetto.Model.Sessione;
-import it.progetto.View.ActionListeners.BtnListener;
+import it.progetto.View.ActionListeners.DipendenteBtnListener;
 
 public class DipendenteView extends JFrame {
 	
@@ -52,6 +52,7 @@ public class DipendenteView extends JFrame {
 		Vector<String[]> head= new Vector<String[]>();
 		String[] columnNames = {"Id","Nome", "Categoria", "Descrizione","Disponibilità","MaxOrdinabile","Fornitore","Produttore","Prezzo"};
 		head.addElement(columnNames);
+		DipendenteBtnListener listener=new DipendenteBtnListener(this);
 		//organizzo catalogo vicino
 		DefaultTableModel model1= new DefaultTableModel() {
 			
@@ -95,13 +96,13 @@ public class DipendenteView extends JFrame {
 		//pulsantiera primaria
 		JButton altrocat=new JButton("Altro Catalogo");
 		altrocat.setActionCommand("LONTANO");
-		altrocat.addActionListener(new BtnListener(this));
+		altrocat.addActionListener(listener);
 		JButton aggiungi=new JButton("Aggiungi al Carrello");
-		aggiungi.setActionCommand("AGGIUNGI");
-		aggiungi.addActionListener(new BtnListener(this));
+		aggiungi.setActionCommand("AGGIUNGI1");
+		aggiungi.addActionListener(listener);
 		JButton apricarrello=new JButton("Vai al Carrello");
 		apricarrello.setActionCommand("APRICARRELLO");
-		apricarrello.addActionListener(new BtnListener(this));
+		apricarrello.addActionListener(listener);
 		pulsantiera1.setLayout(new BoxLayout(pulsantiera1, BoxLayout.Y_AXIS));
 		pulsantiera1.add(altrocat);
 		pulsantiera1.add(aggiungi);
@@ -110,13 +111,13 @@ public class DipendenteView extends JFrame {
 		//pulsantiera secondaria
 		JButton catprincipale= new JButton("Catalogo vicino");
 		catprincipale.setActionCommand("CATPRINCIPALE");
-		catprincipale.addActionListener(new BtnListener(this));
+		catprincipale.addActionListener(listener);
 		JButton aggiungi2=new JButton("Aggiungi al Carrello");
-		aggiungi2.setActionCommand("AGGIUNGI");
-		aggiungi2.addActionListener(new BtnListener(this));
+		aggiungi2.setActionCommand("AGGIUNGI2");
+		aggiungi2.addActionListener(listener);
 		JButton apricarrello2=new JButton("Vai al Carrello");
 		apricarrello2.setActionCommand("APRICARRELLO");
-		apricarrello2.addActionListener(new BtnListener(this));
+		apricarrello2.addActionListener(listener);
 		pulsantiera2.setLayout(new BoxLayout(pulsantiera2, BoxLayout.Y_AXIS));
 		pulsantiera2.add(catprincipale);
 		pulsantiera2.add(aggiungi2);

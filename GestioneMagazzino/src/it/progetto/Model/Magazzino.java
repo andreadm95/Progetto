@@ -29,7 +29,7 @@ private static Magazzino instance;
 		return MagazzinoDAO.getInstance().FornisciCatalogoLontano(sede);
 	}
 
-	public ArrayList<Ordine> getListaOrdiniPendenti() {
-		return OrdineDAO.getInstance().fornisciOrdiniPendenti();
+	public Vector<String[]> getListaOrdiniPendenti(int codmag) {
+		return OrdineDAO.getInstance().fornisciOrdiniPendenti(codmag);
 	}
 }
