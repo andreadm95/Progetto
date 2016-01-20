@@ -20,15 +20,10 @@ private static OrdineDAO instance;
 		return instance;
 	}
 
-	public ArrayList<Ordine> fornisciOrdiniPendenti() {
-		Vector<String[]> result=DbConnection.getInstance().eseguiQuery("select * from Ordine where Ordine.Evaso=false");
+	public Vector<String[]> fornisciOrdiniPendenti(int idmag) {
+		Vector<String[]> result=DbConnection.getInstance().eseguiQuery("select * from Ordine where Evaso=false and CodMagazzino=\""+idmag+"\"");
 		if(result.size()!=0){
-			ArrayList<Ordine> ListaOrdiniPendenti= new ArrayList<Ordine>();
-			for (int i = 0; i< result.size(); i++ ){
-		         String[] ordine = result.get(i);
-			ListaOrdiniPendenti.add(new Ordine(Integer.parseInt(ordine[1]),Integer.parseInt(ordine[2]),Integer.parseInt(ordine[3]),Integer.parseInt(ordine[4]))); 
-			}
-			return ListaOrdiniPendenti;}
+			return result;}
 		else{
 		return null;}
 	}
@@ -43,8 +38,11 @@ private static OrdineDAO instance;
 	}
 	public boolean SalvaOrdine(ArrayList<Prodotto> prodottiordinati, int codmagazzino, int coddipendente, int codprogetto){
 		boolean result= DbConnection.getInstance().eseguiAggiornamento("INSERT INTO Ordine(idOrdine,CodMagazzino,CodDipendente,CodProgetto,Evaso) VALUES(null,"+codmagazzino+coddipendente+codprogetto+"false)");
+		Vector<String[]> recuperocodordine= DbConnection.getInstance().eseguiQuery("SELECT idOrdine FROM Ordine WHERE Max(idOrdine)");
+		int codordine= Integer.parseInt(recuperocodordine.get(0).toString());
 		for(int i=0;i<prodottiordinati.size();i++){
-			prodottiordinati.get(i).getIdProdotto();
+			int codprodotto=prodottiordinati.get(i).getIdProdotto();
+			boolean risultato= SalvaProdottoOrdinato(codprodotto,codordine,5);
 		}
 		return result;
 	}

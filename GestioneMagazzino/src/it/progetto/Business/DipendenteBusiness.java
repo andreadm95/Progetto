@@ -1,6 +1,7 @@
 package it.progetto.Business;
 
 import it.progetto.Model.Dipendente;
+import it.progetto.Model.Sessione;
 
 public class DipendenteBusiness {
 	
@@ -18,9 +19,9 @@ private static DipendenteBusiness instance;
 		return u.isDipendente();
 	}
 	
-	public Object RecuperoInfo(String username,String password){
+	public void RecuperoInfo(String username,String password){
 		Dipendente d= new Dipendente(username,password);
-		return d.RecuperaInfo();
+		Sessione.getInstance().session.put("utente_corrente", d.RecuperaInfo());
 	}
 
 }

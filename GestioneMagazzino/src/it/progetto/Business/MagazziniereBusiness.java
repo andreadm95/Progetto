@@ -1,6 +1,7 @@
 package it.progetto.Business;
 
 import it.progetto.Model.Magazziniere;
+import it.progetto.Model.Sessione;
 
 public class MagazziniereBusiness {
 
@@ -19,8 +20,8 @@ private static MagazziniereBusiness instance;
 		return u.isMagazziniere();
 	}
 	
-	public Object RecuperoInfo(String username,String password){
+	public void RecuperoInfo(String username,String password){
 		Magazziniere m= new Magazziniere(username,password);
-		return m.RecuperaInfo();
+		Sessione.getInstance().session.put("utente_corrente", m.RecuperaInfo());
 	}
 }

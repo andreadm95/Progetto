@@ -36,8 +36,11 @@ private static DipendenteDAO instance;
 		Vector<String[]> result=DbConnection.getInstance().eseguiQuery("select * from UtenteRegistrato INNER JOIN Dipendente ON Dipendente.idDipendente=UtenteRegistrato.idUtenteRegistrato where username=\""+ username +"\"and password=\""+password+"\"");
 		if(result.size()!=0){
 			String[] info= result.get(0);
-			Dipendente dip= new Dipendente(Integer.parseInt(info[0]),info[1],info[2],info[3],info[4],Float.parseFloat(info[7]));
-			return dip;}
+			u.setId(Integer.parseInt(info[0]));
+			u.setNome(info[1]);
+			u.setCognome(info[2]);
+			u.setSpesa(Float.parseFloat(info[7]));
+			return u;}
 		else{
 		return null;
 			}

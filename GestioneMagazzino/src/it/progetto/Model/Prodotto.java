@@ -12,9 +12,10 @@ public class Prodotto {
 	private String Fornitore;
 	private String Produttore;
 	
-	public Prodotto(String nome, String categoria, String descrizione, float prezzo, int disponibilità,
+	public Prodotto(int id,String nome, String categoria, String descrizione, float prezzo, int disponibilità,
 			int numeroMaxOrdinabile, String fornitore, String produttore) {
 		super();
+		idProdotto=id;
 		Nome = nome;
 		Categoria = categoria;
 		Descrizione = descrizione;
