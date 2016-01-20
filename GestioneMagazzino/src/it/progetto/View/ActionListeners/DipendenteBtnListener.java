@@ -1,12 +1,18 @@
 package it.progetto.View.ActionListeners;
 
 import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTable;
 
+import it.progetto.Model.Carrello;
 import it.progetto.View.DipendenteView;
 
 
@@ -48,11 +54,28 @@ public class DipendenteBtnListener implements ActionListener{
 			int riga=tabella.getSelectedRow();
 			int n_col=tabella.getColumnCount();
 			ArrayList<String> prodotto=new ArrayList<String>();
-			for(int i=0;i<n_col;i++){
-				prodotto.add((String) tabella.getValueAt(riga, i));
-			}
+			try{
+				tabella.getValueAt(riga, 0);
+				for(int i=0;i<n_col;i++){
+					prodotto.add((String) tabella.getValueAt(riga, i));
+				}
+				JPanel finestraquantità=new JPanel(new FlowLayout());
+				QntBtnListener listener=new QntBtnListener(finestraquantità);
+				int disponibile= Integer.parseInt(prodotto.get(5));
+				if(disponibile>0){
+					for(int j=1;j<=disponibile;j++){
+						JButton a= new JButton(""+j);
+						a.addActionListener(listener);
+						finestraquantità.add(a);}
+						JOptionPane.showOptionDialog(finestradip, finestraquantità,"Selezionare la quantità:", JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE, null, new Object[]{}, null);
+						//JOptionPane.showMessageDialog(finestradip, finestraquantità);
+						//Carrello.getInstance().aggiungiProdottoACarrello(prodotto, quantità);
+						}
+				else{JOptionPane.showMessageDialog(finestradip, "Prodotto non disponibile.");}
+				}
+				catch(Exception q){JOptionPane.showMessageDialog(finestradip, "Selezionare una riga.");}
 			
-			
+		
 		}
 		else if("AGGIUNGI2".equals(e.getActionCommand())){
 		}

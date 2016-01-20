@@ -1,32 +1,22 @@
 package it.progetto.Model;
 
-import java.util.ArrayList;
-import java.util.Map;
-
 import it.progetto.DAO.OrdineDAO;
 
 public class Ordine {
 
 	  private int idOrdine;
-	  private ArrayList<Map<Prodotto,Integer>> ListaProdottiAcquisto;
       private int ProgettoDiRiferimento;
 	  private float SpesaOrdine;
 	  private int CodiceMagazzino;
 	  private int DipendenteDiRiferimento;
 
-	public void aggiungiProdottoACarrello(ArrayList<String> a,int quantità)
-	    {
-			Prodotto ordinato=new Prodotto(Integer.parseInt(a.get(0)), a.get(1), a.get(2),a.get(3),Float.parseFloat(a.get(8)),Integer.parseInt(a.get(4)),Integer.parseInt(a.get(5)),a.get(6),a.get(7));
-			Map<Prodotto,Integer> prodotto_ord = null;
-			prodotto_ord.put(ordinato, quantità);
-	    	ListaProdottiAcquisto.add(prodotto_ord);
-	    }
 	
-	public Ordine(int id, int codmagazzino, int cod_dipendente, int codprogetto){
+	public Ordine(int id, int codmagazzino, int cod_dipendente, int codprogetto, float spesa){
 		idOrdine=id;
 		CodiceMagazzino=codmagazzino;
 		DipendenteDiRiferimento=cod_dipendente;
 		ProgettoDiRiferimento=codprogetto;
+		SpesaOrdine=spesa;
 	}
 	  
 	 public int getIdOrdine() {
