@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.util.Vector;
 
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
@@ -23,6 +24,7 @@ public class DipendenteBtnListener implements ActionListener{
 		this.finestradip=finestra;
 	}
 
+	@SuppressWarnings("static-access")
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
@@ -57,10 +59,17 @@ public class DipendenteBtnListener implements ActionListener{
 					for(int j=1;j<=disponibile;j++){
 						quantita.addElement(j);
 						}
-					JComboBox scelta=new JComboBox<>(quantita);
+					JComboBox<Integer> scelta=new JComboBox<>(quantita);
+					scelta.addActionListener(null);
+					JLabel text= new JLabel("Selezionare la quantità:");
+					pannello.add(text);
 					pannello.add(scelta);
-					pannello.setVisible(true);
-					pannello.setSize(100,100);
+					//ritorna 0 se premo ok, altrimenti -1
+					int result= JOptionPane.showOptionDialog(null, pannello, null, JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
+					System.out.println(result);
+//					JOptionPane scegliqnt= new JOptionPane();
+//					scegliqnt.showMessageDialog(finestradip, pannello);
+					
 					}
 				else{JOptionPane.showMessageDialog(finestradip, "Prodotto non disponibile.");}
 				}
