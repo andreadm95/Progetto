@@ -17,7 +17,7 @@ private static ArrayList<HashMap<Prodotto,Integer>> ListaProdottiAcquisto;
 		}
 		return instance;		
 	}
-	
+	//da testare
 	public void aggiungiProdottoACarrello(ArrayList<String> a,int quantità)
     {
 		Prodotto ordinato=new Prodotto(Integer.parseInt(a.get(0)), a.get(1), a.get(2),a.get(3),Float.parseFloat(a.get(8)),Integer.parseInt(a.get(4)),Integer.parseInt(a.get(5)),a.get(6),a.get(7));
