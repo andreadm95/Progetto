@@ -14,6 +14,7 @@ private static HashMap<Prodotto,Integer> ListaProdottiAcquisto;
 		if(instance==null)
 		{
 			instance = new Carrello();
+			ListaProdottiAcquisto= new HashMap<Prodotto,Integer>();
 		}
 		return instance;		
 	}
