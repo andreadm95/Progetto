@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.JComboBox;
@@ -12,6 +13,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 
+import it.progetto.Model.Carrello;
 import it.progetto.View.DipendenteView;
 
 public class DipendenteBtnListener implements ActionListener{
@@ -24,7 +26,6 @@ public class DipendenteBtnListener implements ActionListener{
 		this.finestradip=finestra;
 	}
 
-	@SuppressWarnings("static-access")
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
@@ -51,32 +52,84 @@ public class DipendenteBtnListener implements ActionListener{
 		else if("AGGIUNGI1".equals(e.getActionCommand())){
 			JTable tabella=(JTable) finestradip.findDescendentByName(finestradip, "catalogo_vicino");
 			int riga=tabella.getSelectedRow();
-			try{
-				int disponibile= Integer.parseInt((String)tabella.getValueAt(riga, 4));
-				if(disponibile>0){
-					JPanel pannello= new JPanel(new FlowLayout());
-					Vector<Integer> quantita = new Vector<Integer>();
-					for(int j=1;j<=disponibile;j++){
-						quantita.addElement(j);
+				try{
+					int disponibile= Integer.parseInt((String)tabella.getValueAt(riga, 4));
+					int max_ordinabile=Integer.parseInt((String)tabella.getValueAt(riga, 5));
+					if(disponibile>0){
+						JPanel pannello= new JPanel(new FlowLayout());
+						JLabel text= new JLabel("Selezionare la quantità:");
+						pannello.add(text);
+						Vector<Integer> disponibilità = new Vector<Integer>();
+						int n_col=tabella.getColumnCount();
+						ArrayList<String> prodotto= new ArrayList<String>();
+						for(int i=0;i<n_col;i++){prodotto.add((String) tabella.getValueAt(riga, i));}
+						if(disponibile<=max_ordinabile){
+							for(int j=1;j<=disponibile;j++){
+								disponibilità.addElement(j);
+								}
+							JComboBox<Integer> scelta=new JComboBox<>(disponibilità);
+							pannello.add(scelta);
+							//ritorna 0 se premo ok, altrimenti -1
+							int result= JOptionPane.showOptionDialog(null, pannello, null, JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
+							if(result==0){int qnt_ordinata=(int)scelta.getSelectedItem();
+							Carrello.getInstance().aggiungiProdottoACarrello(prodotto,qnt_ordinata);}
 						}
-					JComboBox<Integer> scelta=new JComboBox<>(quantita);
-					scelta.addActionListener(null);
-					JLabel text= new JLabel("Selezionare la quantità:");
-					pannello.add(text);
-					pannello.add(scelta);
-					//ritorna 0 se premo ok, altrimenti -1
-					int result= JOptionPane.showOptionDialog(null, pannello, null, JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
-					System.out.println(result);
-//					JOptionPane scegliqnt= new JOptionPane();
-//					scegliqnt.showMessageDialog(finestradip, pannello);
-					
+						else{
+							for(int j=1;j<=max_ordinabile;j++){
+								disponibilità.addElement(j);
+								}
+							JComboBox<Integer> scelta=new JComboBox<>(disponibilità);
+							pannello.add(scelta);
+							//ritorna 0 se premo ok, altrimenti -1
+							int result= JOptionPane.showOptionDialog(null, pannello, null, JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
+							if(result==0){int qnt_ordinata=(int)scelta.getSelectedItem();
+							Carrello.getInstance().aggiungiProdottoACarrello(prodotto,qnt_ordinata);}
+							}	
 					}
-				else{JOptionPane.showMessageDialog(finestradip, "Prodotto non disponibile.");}
+					else{JOptionPane.showMessageDialog(finestradip, "Prodotto non disponibile.");}
 				}
-			catch(Exception q){JOptionPane.showMessageDialog(finestradip, "Selezionare una riga.");}
-			
+				catch(Exception q){JOptionPane.showMessageDialog(finestradip, "Selezionare una riga.");}	
 		}
 		else if("AGGIUNGI2".equals(e.getActionCommand())){
+			JTable tabella=(JTable) finestradip.findDescendentByName(finestradip, "catalogo_lontano");
+			int riga=tabella.getSelectedRow();
+			try{
+				int disponibile= Integer.parseInt((String)tabella.getValueAt(riga, 4));
+				int max_ordinabile=Integer.parseInt((String)tabella.getValueAt(riga, 5));
+				if(disponibile>0){
+					JPanel pannello= new JPanel(new FlowLayout());
+					JLabel text= new JLabel("Selezionare la quantità:");
+					pannello.add(text);
+					Vector<Integer> disponibilità = new Vector<Integer>();
+					int n_col=tabella.getColumnCount();
+					ArrayList<String> prodotto= new ArrayList<String>();
+					for(int i=0;i<n_col;i++){prodotto.add((String) tabella.getValueAt(riga, i));}
+					if(disponibile<=max_ordinabile){
+						for(int j=1;j<=disponibile;j++){
+							disponibilità.addElement(j);
+							}
+						JComboBox<Integer> scelta=new JComboBox<>(disponibilità);
+						pannello.add(scelta);
+						//ritorna 0 se premo ok, altrimenti -1
+						int result= JOptionPane.showOptionDialog(null, pannello, null, JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
+						if(result==0){int qnt_ordinata=(int)scelta.getSelectedItem();
+						Carrello.getInstance().aggiungiProdottoACarrello(prodotto,qnt_ordinata);}
+					}
+					else{
+						for(int j=1;j<=max_ordinabile;j++){
+							disponibilità.addElement(j);
+							}
+						JComboBox<Integer> scelta=new JComboBox<>(disponibilità);
+						pannello.add(scelta);
+						//ritorna 0 se premo ok, altrimenti -1
+						int result= JOptionPane.showOptionDialog(null, pannello, null, JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
+						if(result==0){int qnt_ordinata=(int)scelta.getSelectedItem();
+						Carrello.getInstance().aggiungiProdottoACarrello(prodotto,qnt_ordinata);}
+						}	
+				}
+				else{JOptionPane.showMessageDialog(finestradip, "Prodotto non disponibile.");}
+			}
+			catch(Exception q){JOptionPane.showMessageDialog(finestradip, "Selezionare una riga.");}
 		}
 		else if("APRICARRELLO".equals(e.getActionCommand())){
 			
