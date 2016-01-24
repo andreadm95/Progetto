@@ -2,7 +2,12 @@ package it.progetto.Model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
 import java.util.Vector;
+
+
 
 public class Carrello {
 
@@ -25,9 +30,22 @@ private static HashMap<Prodotto,Integer> ListaProdottiAcquisto;
 		ListaProdottiAcquisto.put(ordinato, quantità);
     }
 	
-	public HashMap<Prodotto,Integer> getListaProdottiAcquisto() {
+	public Vector<String[]> getListaProdottiAcquisto() {
 		Vector<String[]> lista= new Vector<String[]>();
-		return ListaProdottiAcquisto;
+		Set<Prodotto> keySet=ListaProdottiAcquisto.keySet();
+		Iterator<Prodotto> it= keySet.iterator();
+		while(it.hasNext()){
+			Prodotto key= it.next();
+			String[] elem= new String[6];
+			elem[0]=key.getNome();
+			elem[1]=key.getDescrizione();
+			elem[2]=Integer.toString(key.getDisponibilità());
+			elem[3]=Integer.toString(key.getNumeroMaxOrdinabile());
+			elem[4]=Float.toString(key.getPrezzo());
+			elem[5]=Integer.toString(ListaProdottiAcquisto.get(key));
+			lista.addElement(elem);
+		}
+		return lista;
 		}
 	
 	

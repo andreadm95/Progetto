@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 
 import it.progetto.Model.Carrello;
+import it.progetto.View.CarrelloView;
 import it.progetto.View.DipendenteView;
 
 public class DipendenteBtnListener implements ActionListener{
@@ -132,6 +133,7 @@ public class DipendenteBtnListener implements ActionListener{
 			catch(Exception q){JOptionPane.showMessageDialog(finestradip, "Selezionare una riga.");}
 		}
 		else if("APRICARRELLO".equals(e.getActionCommand())){
+			new CarrelloView();
 			
 		}
 
