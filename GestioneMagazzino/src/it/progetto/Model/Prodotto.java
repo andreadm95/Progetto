@@ -80,6 +80,20 @@ public class Prodotto {
 	public void setIdProdotto(int idProdotto) {
 		this.idProdotto = idProdotto;
 	}
-	
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((Categoria == null) ? 0 : Categoria.hashCode());
+		result = prime * result + ((Descrizione == null) ? 0 : Descrizione.hashCode());
+		result = prime * result + Disponibilità;
+		result = prime * result + ((Fornitore == null) ? 0 : Fornitore.hashCode());
+		result = prime * result + ((Nome == null) ? 0 : Nome.hashCode());
+		result = prime * result + NumeroMaxOrdinabile;
+		result = prime * result + Float.floatToIntBits(Prezzo);
+		result = prime * result + ((Produttore == null) ? 0 : Produttore.hashCode());
+		result = prime * result + idProdotto;
+		return result;
+	}
 }
