@@ -48,13 +48,17 @@ private static HashMap<Prodotto,Integer> ListaProdottiAcquisto;
 		Iterator<Prodotto> it= keySet.iterator();
 		while(it.hasNext()){
 			Prodotto key= it.next();
-			String[] elem= new String[6];
-			elem[0]=key.getNome();
-			elem[1]=key.getDescrizione();
-			elem[2]=Integer.toString(key.getDisponibilità());
-			elem[3]=Integer.toString(key.getNumeroMaxOrdinabile());
-			elem[4]=Float.toString(key.getPrezzo());
-			elem[5]=Integer.toString(ListaProdottiAcquisto.get(key));
+			String[] elem= new String[10];
+			elem[0]=Integer.toString(key.getIdProdotto());
+			elem[1]=key.getNome();
+			elem[2]=key.getCategoria();
+			elem[3]=key.getDescrizione();
+			elem[4]=Integer.toString(key.getDisponibilità());
+			elem[5]=Integer.toString(key.getNumeroMaxOrdinabile());
+			elem[6]=key.getFornitore();
+			elem[7]=key.getProduttore();
+			elem[8]=Float.toString(key.getPrezzo());
+			elem[9]=Integer.toString(ListaProdottiAcquisto.get(key));
 			lista.addElement(elem);
 		}
 		return lista;
