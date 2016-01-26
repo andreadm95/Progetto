@@ -78,8 +78,9 @@ public class CarrelloView extends JFrame{
 		JButton conferma= new JButton("Conferma Ordine");
 		conferma.setActionCommand("CONFERMA");
 		conferma.addActionListener(listener);
-		float spesa_totale=Carrello.getInstance().getSpesaTotale();
-		JLabel spesa= new JLabel("La spesa totale è:"+spesa_totale);
+		float spesa_totale=Carrello.getInstance().calcoloSpesaTotale();
+		String troncamento= String.format("%.2f", spesa_totale);
+		JLabel spesa= new JLabel("La spesa totale è:"+troncamento);
 		spesa.setName("Spesa");
 		pulsantiera.add(modifica_qnt);
 		pulsantiera.add(rimuovi);

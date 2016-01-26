@@ -58,7 +58,8 @@ public class CarrelloBtnListener implements ActionListener{
 				Carrello.getInstance().aggiungiProdottoACarrello(prodotto,qnt_ordinata);
 				tabella.setValueAt(Integer.toString((int) scelta.getSelectedItem()), riga , 9);
 				JLabel spesa= (JLabel) finestra.findDescendentByName(finestra, "Spesa");
-				spesa.setText("La spesa totale è:"+Carrello.getInstance().getSpesaTotale());}
+				String troncamento= String.format("%.2f", Carrello.getInstance().calcoloSpesaTotale());
+				spesa.setText("La spesa totale è:"+troncamento);}
 			}
 			catch(ArrayIndexOutOfBoundsException q){JOptionPane.showMessageDialog(finestra, "Selezionare una riga.");}
 		}
@@ -72,7 +73,9 @@ public class CarrelloBtnListener implements ActionListener{
 			DefaultTableModel model= (DefaultTableModel) tabella.getModel();
 			model.removeRow(riga);
 			tabella.setModel(model);
-
+			JLabel spesa= (JLabel) finestra.findDescendentByName(finestra, "Spesa");
+			String troncamento= String.format("%.2f", Carrello.getInstance().calcoloSpesaTotale());
+			spesa.setText("La spesa totale è:"+troncamento);
 		}
 		else if("CONFERMA".equals(e.getActionCommand())){
 			

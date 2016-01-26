@@ -12,7 +12,6 @@ public class Carrello {
 
 private static Carrello instance;
 private static HashMap<Prodotto,Integer> ListaProdottiAcquisto;
-private float SpesaTotale=(float) 0.0;
 	
 	public static Carrello getInstance()
 	{
@@ -32,18 +31,12 @@ private float SpesaTotale=(float) 0.0;
 			while(it.hasNext()){
 				Prodotto key= it.next();
 				if(ordinato.hashCode()==key.hashCode()){
-					for(int i=0;i<ListaProdottiAcquisto.get(key);i++){
-						SpesaTotale=SpesaTotale-key.getPrezzo();}
 					ListaProdottiAcquisto.remove(key);
 					ListaProdottiAcquisto.put(ordinato, quantità);
-					for(int j=0;j<quantità;j++){
-						SpesaTotale=SpesaTotale+ordinato.getPrezzo();}
 					break;
 				}
 			}
 		ListaProdottiAcquisto.put(ordinato, quantità);
-		for(int i=0;i<quantità;i++){
-			SpesaTotale=SpesaTotale+ordinato.getPrezzo();}
     }
 	
 	public Vector<String[]> getListaProdottiAcquisto() {
@@ -80,7 +73,15 @@ private float SpesaTotale=(float) 0.0;
 				}
 	}
 	
-	public Float getSpesaTotale() {
+	public Float calcoloSpesaTotale() {
+		float SpesaTotale= (float) 0.0;
+		Set<Prodotto> keySet=ListaProdottiAcquisto.keySet();
+		Iterator<Prodotto> it= keySet.iterator();
+		while(it.hasNext()){
+			Prodotto key= it.next();
+			for(int i=0;i<ListaProdottiAcquisto.get(key);i++){
+			SpesaTotale=SpesaTotale+key.getPrezzo();}
+		}
 		return SpesaTotale;
 	}
 }
