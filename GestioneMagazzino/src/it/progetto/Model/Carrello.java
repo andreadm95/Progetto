@@ -64,5 +64,16 @@ private static HashMap<Prodotto,Integer> ListaProdottiAcquisto;
 		return lista;
 		}
 	
-	
+	public void rimuoviProdotto(ArrayList<String> a)
+    {
+		Prodotto ordinato=new Prodotto(Integer.parseInt(a.get(0)), a.get(1), a.get(2),a.get(3),Float.parseFloat(a.get(8)),Integer.parseInt(a.get(4)),Integer.parseInt(a.get(5)),a.get(6),a.get(7));
+		Set<Prodotto> keySet=ListaProdottiAcquisto.keySet();
+		Iterator<Prodotto> it= keySet.iterator();
+			while(it.hasNext()){
+				Prodotto key= it.next();
+				if(ordinato.hashCode()==key.hashCode()){
+					ListaProdottiAcquisto.remove(key);
+					break;}
+				}
+	}
 }

@@ -53,8 +53,8 @@ public class CarrelloBtnListener implements ActionListener{
 					int result= JOptionPane.showOptionDialog(null, pannello, null, JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
 					if(result==0){int qnt_ordinata=(int)scelta.getSelectedItem();
 					Carrello.getInstance().aggiungiProdottoACarrello(prodotto,qnt_ordinata);
-					DefaultTableModel model= (DefaultTableModel) tabella.getModel();
-					model.fireTableDataChanged();}
+					tabella.setValueAt(Integer.toString((int) scelta.getSelectedItem()), riga , 9);
+					}
 				}
 				else{
 					for(int j=1;j<=max_ordinabile;j++){
@@ -66,14 +66,21 @@ public class CarrelloBtnListener implements ActionListener{
 					int result= JOptionPane.showOptionDialog(null, pannello, null, JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
 					if(result==0){int qnt_ordinata=(int)scelta.getSelectedItem();
 					Carrello.getInstance().aggiungiProdottoACarrello(prodotto,qnt_ordinata);
-					}
+					tabella.setValueAt(Integer.toString((int) scelta.getSelectedItem()), riga , 9);}
 					}	
 				}
 			catch(Exception q){JOptionPane.showMessageDialog(finestra, "Selezionare una riga.");}
-			//update jtble
 		}
 		else if("RIMUOVI".equals(e.getActionCommand())){
-			
+			JTable tabella=(JTable) finestra.findDescendentByName(finestra, "lista_prodotti");
+			int riga=tabella.getSelectedRow();
+			int n_col=tabella.getColumnCount();
+			ArrayList<String> prodotto= new ArrayList<String>();
+			for(int i=0;i<n_col;i++){prodotto.add((String) tabella.getValueAt(riga, i));}
+			Carrello.getInstance().rimuoviProdotto(prodotto);
+			DefaultTableModel model= (DefaultTableModel) tabella.getModel();
+			model.removeRow(riga);
+			tabella.setModel(model);
 		}
 		else if("CONFERMA".equals(e.getActionCommand())){
 			

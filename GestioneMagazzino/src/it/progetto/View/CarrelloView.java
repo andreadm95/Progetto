@@ -13,6 +13,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 
 import it.progetto.Model.Carrello;
@@ -21,7 +23,7 @@ import it.progetto.Model.Sessione;
 import it.progetto.View.ActionListeners.CarrelloBtnListener;
 
 public class CarrelloView extends JFrame {
-	
+
 	public Component findDescendentByName(Container cnt, String name) {
 		  if (cnt == null) return null;
 		  if (name.equals(cnt.getName())) return cnt;
@@ -54,16 +56,13 @@ public class CarrelloView extends JFrame {
 		    public boolean isCellEditable(int row, int column) {
 		    	return false;
 			    }
-		    public void AggiornaTable(){
-		    	//rimuovi tutto e reinserisci
-		    }
-			};
+		   };
 		model.setColumnIdentifiers(columnNames);
 		Vector<String[]> lista=Carrello.getInstance().getListaProdottiAcquisto();
 		for(int i=0;i<lista.size();i++){
 			model.addRow(lista.get(i));
 		}
-		final JTable lista_acquisto= new JTable(model);
+		 JTable lista_acquisto= new JTable(model);
 		lista_acquisto.setName("lista_prodotti");
 		lista_acquisto.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		JScrollPane s1=new JScrollPane(lista_acquisto);
