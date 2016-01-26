@@ -53,5 +53,18 @@ private static DipendenteDAO instance;
 		int sede=Integer.parseInt(riga[0]);
 		return sede;
 	}
+	
+	public Vector<String> fornisciProgettiDelDipendente(int id_dip) {
+		Vector<String[]> result=DbConnection.getInstance().eseguiQuery("SELECT * FROM progetto INNER JOIN lavorasu ON CodDipendente=\""+ id_dip +"\" WHERE CodProgetto=idprogetto;");
+		if(result.size()!=0){
+			Vector<String> ListaProgettiDelDipendente= new Vector<String>();
+			for (int i=0; i< result.size(); i++) {
+				String[] progetto = result.get(i);
+				ListaProgettiDelDipendente.add(progetto[1]);
+			}
+			return ListaProgettiDelDipendente;}
+		else{
+		return null;}
+	} 
 
 }

@@ -1,6 +1,5 @@
 package it.progetto.View.ActionListeners;
 
-import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,6 +14,8 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import it.progetto.Model.Carrello;
+import it.progetto.Model.Dipendente;
+import it.progetto.Model.Sessione;
 import it.progetto.View.CarrelloView;
 
 public class CarrelloBtnListener implements ActionListener{
@@ -35,9 +36,6 @@ public class CarrelloBtnListener implements ActionListener{
 			try{
 				int disponibile= Integer.parseInt((String)tabella.getValueAt(riga, 4));
 				int max_ordinabile=Integer.parseInt((String)tabella.getValueAt(riga, 5));
-				JPanel pannello= new JPanel(new FlowLayout());
-				JLabel text= new JLabel("Selezionare la quantità:");
-				pannello.add(text);
 				Vector<Integer> disponibilità = new Vector<Integer>();
 				int n_col=tabella.getColumnCount();
 				ArrayList<String> prodotto= new ArrayList<String>();
@@ -50,16 +48,19 @@ public class CarrelloBtnListener implements ActionListener{
 					for(int j=1;j<=max_ordinabile;j++){
 						disponibilità.addElement(j);
 						}}
+				JPanel pannello= new JPanel(new FlowLayout());
+				JLabel text= new JLabel("Selezionare la quantità:");
+				pannello.add(text);
 				JComboBox<Integer> scelta=new JComboBox<>(disponibilità);
 				pannello.add(scelta);
 				//ritorna 0 se premo ok, altrimenti -1
 				int result= JOptionPane.showOptionDialog(null, pannello, null, JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
-				if(result==0){int qnt_ordinata=(int)scelta.getSelectedItem();
-				Carrello.getInstance().aggiungiProdottoACarrello(prodotto,qnt_ordinata);
-				tabella.setValueAt(Integer.toString((int) scelta.getSelectedItem()), riga , 9);
-				JLabel spesa= (JLabel) finestra.findDescendentByName(finestra, "Spesa");
-				String troncamento= String.format("%.2f", Carrello.getInstance().calcoloSpesaTotale());
-				spesa.setText("La spesa totale è:"+troncamento);}
+				if(result==0){
+					int qnt_ordinata=(int)scelta.getSelectedItem();
+					Carrello.getInstance().aggiungiProdottoACarrello(prodotto,qnt_ordinata);
+					tabella.setValueAt(Integer.toString((int) scelta.getSelectedItem()), riga , 9);
+					JLabel spesa= (JLabel) finestra.findDescendentByName(finestra, "Spesa");
+					spesa.setText("La spesa totale è:"+Carrello.getInstance().calcoloSpesaTotale());}
 			}
 			catch(ArrayIndexOutOfBoundsException q){JOptionPane.showMessageDialog(finestra, "Selezionare una riga.");}
 		}
@@ -74,10 +75,23 @@ public class CarrelloBtnListener implements ActionListener{
 			model.removeRow(riga);
 			tabella.setModel(model);
 			JLabel spesa= (JLabel) finestra.findDescendentByName(finestra, "Spesa");
-			String troncamento= String.format("%.2f", Carrello.getInstance().calcoloSpesaTotale());
-			spesa.setText("La spesa totale è:"+troncamento);
+			spesa.setText("La spesa totale è:"+Carrello.getInstance().calcoloSpesaTotale());
 		}
 		else if("CONFERMA".equals(e.getActionCommand())){
+			Dipendente dip=(Dipendente) Sessione.getInstance().session.get("utente_corrente");
+			Vector<String> progetti= new Vector<String>(dip.progettiDipendente(dip.getId()));
+			JComboBox<String> scelta_progetto= new JComboBox<>(progetti);
+			JPanel pannello= new JPanel(new FlowLayout());
+			JLabel text= new JLabel("Selezionare il progetto su cui scaricare la spesa:");
+			pannello.add(text);
+			pannello.add(scelta_progetto);
+			int result= JOptionPane.showOptionDialog(null, pannello, null, JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
+			if(result==0){
+				String progetto_scelto= (String) scelta_progetto.getSelectedItem();
+				//salvare ordine
+			}
+			
+			
 			
 		}
 	}

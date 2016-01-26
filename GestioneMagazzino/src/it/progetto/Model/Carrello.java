@@ -73,7 +73,7 @@ private static HashMap<Prodotto,Integer> ListaProdottiAcquisto;
 				}
 	}
 	
-	public Float calcoloSpesaTotale() {
+	public String calcoloSpesaTotale() {
 		float SpesaTotale= (float) 0.0;
 		Set<Prodotto> keySet=ListaProdottiAcquisto.keySet();
 		Iterator<Prodotto> it= keySet.iterator();
@@ -82,6 +82,7 @@ private static HashMap<Prodotto,Integer> ListaProdottiAcquisto;
 			for(int i=0;i<ListaProdottiAcquisto.get(key);i++){
 			SpesaTotale=SpesaTotale+key.getPrezzo();}
 		}
-		return SpesaTotale;
+		String troncamento= String.format("%.2f", SpesaTotale);
+		return troncamento;
 	}
 }

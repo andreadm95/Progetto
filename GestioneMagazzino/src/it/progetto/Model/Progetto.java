@@ -22,6 +22,4 @@ public class Progetto {
 	public void setSpesaTotale(float spesaTotale) {
 		SpesaTotale = spesaTotale;
 	}
-	
-
 }

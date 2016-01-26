@@ -1,5 +1,7 @@
 package it.progetto.Model;
 
+import java.util.Vector;
+
 import it.progetto.DAO.DipendenteDAO;
 
 public class Dipendente extends UtenteRegistrato {
@@ -34,6 +36,10 @@ public class Dipendente extends UtenteRegistrato {
 	
 	public Object RecuperaInfo(){
 		return DipendenteDAO.getInstance().PrelevaInfo(this);
+	}
+	
+	public Vector<String> progettiDipendente(int id_dip){
+		return DipendenteDAO.getInstance().fornisciProgettiDelDipendente(id_dip);
 	}
 	
 }
