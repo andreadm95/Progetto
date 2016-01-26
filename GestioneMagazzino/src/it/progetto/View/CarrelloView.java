@@ -13,8 +13,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
-import javax.swing.event.TableModelEvent;
-import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 
 import it.progetto.Model.Carrello;
@@ -22,7 +20,7 @@ import it.progetto.Model.Dipendente;
 import it.progetto.Model.Sessione;
 import it.progetto.View.ActionListeners.CarrelloBtnListener;
 
-public class CarrelloView extends JFrame {
+public class CarrelloView extends JFrame{
 
 	public Component findDescendentByName(Container cnt, String name) {
 		  if (cnt == null) return null;
@@ -80,9 +78,13 @@ public class CarrelloView extends JFrame {
 		JButton conferma= new JButton("Conferma Ordine");
 		conferma.setActionCommand("CONFERMA");
 		conferma.addActionListener(listener);
+		float spesa_totale=Carrello.getInstance().getSpesaTotale();
+		JLabel spesa= new JLabel("La spesa totale è:"+spesa_totale);
+		spesa.setName("Spesa");
 		pulsantiera.add(modifica_qnt);
 		pulsantiera.add(rimuovi);
 		pulsantiera.add(conferma);
+		pulsantiera.add(spesa);
 		c.add(pulsantiera, BorderLayout.EAST);
 		
 		setSize(800,800);

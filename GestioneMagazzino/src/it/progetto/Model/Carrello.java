@@ -12,6 +12,7 @@ public class Carrello {
 
 private static Carrello instance;
 private static HashMap<Prodotto,Integer> ListaProdottiAcquisto;
+private float SpesaTotale=(float) 0.0;
 	
 	public static Carrello getInstance()
 	{
@@ -28,18 +29,21 @@ private static HashMap<Prodotto,Integer> ListaProdottiAcquisto;
 		Prodotto ordinato=new Prodotto(Integer.parseInt(a.get(0)), a.get(1), a.get(2),a.get(3),Float.parseFloat(a.get(8)),Integer.parseInt(a.get(4)),Integer.parseInt(a.get(5)),a.get(6),a.get(7));
 		Set<Prodotto> keySet=ListaProdottiAcquisto.keySet();
 		Iterator<Prodotto> it= keySet.iterator();
-		if(ListaProdottiAcquisto.isEmpty()){ListaProdottiAcquisto.put(ordinato, quantità);}
-		else{
 			while(it.hasNext()){
 				Prodotto key= it.next();
 				if(ordinato.hashCode()==key.hashCode()){
+					for(int i=0;i<ListaProdottiAcquisto.get(key);i++){
+						SpesaTotale=SpesaTotale-key.getPrezzo();}
 					ListaProdottiAcquisto.remove(key);
 					ListaProdottiAcquisto.put(ordinato, quantità);
+					for(int j=0;j<quantità;j++){
+						SpesaTotale=SpesaTotale+ordinato.getPrezzo();}
 					break;
 				}
 			}
 		ListaProdottiAcquisto.put(ordinato, quantità);
-		}
+		for(int i=0;i<quantità;i++){
+			SpesaTotale=SpesaTotale+ordinato.getPrezzo();}
     }
 	
 	public Vector<String[]> getListaProdottiAcquisto() {
@@ -59,8 +63,7 @@ private static HashMap<Prodotto,Integer> ListaProdottiAcquisto;
 			elem[7]=key.getProduttore();
 			elem[8]=Float.toString(key.getPrezzo());
 			elem[9]=Integer.toString(ListaProdottiAcquisto.get(key));
-			lista.addElement(elem);
-		}
+			lista.addElement(elem);}
 		return lista;
 		}
 	
@@ -75,5 +78,9 @@ private static HashMap<Prodotto,Integer> ListaProdottiAcquisto;
 					ListaProdottiAcquisto.remove(key);
 					break;}
 				}
+	}
+	
+	public Float getSpesaTotale() {
+		return SpesaTotale;
 	}
 }

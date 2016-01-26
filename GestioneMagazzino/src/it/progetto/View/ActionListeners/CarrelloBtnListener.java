@@ -1,7 +1,6 @@
 package it.progetto.View.ActionListeners;
 
-import java.awt.Component;
-import java.awt.Container;
+import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -46,30 +45,22 @@ public class CarrelloBtnListener implements ActionListener{
 				if(disponibile<=max_ordinabile){
 					for(int j=1;j<=disponibile;j++){
 						disponibilità.addElement(j);
-						}
-					JComboBox<Integer> scelta=new JComboBox<>(disponibilità);
-					pannello.add(scelta);
-					//ritorna 0 se premo ok, altrimenti -1
-					int result= JOptionPane.showOptionDialog(null, pannello, null, JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
-					if(result==0){int qnt_ordinata=(int)scelta.getSelectedItem();
-					Carrello.getInstance().aggiungiProdottoACarrello(prodotto,qnt_ordinata);
-					tabella.setValueAt(Integer.toString((int) scelta.getSelectedItem()), riga , 9);
-					}
-				}
+						}}
 				else{
 					for(int j=1;j<=max_ordinabile;j++){
 						disponibilità.addElement(j);
-						}
-					JComboBox<Integer> scelta=new JComboBox<>(disponibilità);
-					pannello.add(scelta);
-					//ritorna 0 se premo ok, altrimenti -1
-					int result= JOptionPane.showOptionDialog(null, pannello, null, JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
-					if(result==0){int qnt_ordinata=(int)scelta.getSelectedItem();
-					Carrello.getInstance().aggiungiProdottoACarrello(prodotto,qnt_ordinata);
-					tabella.setValueAt(Integer.toString((int) scelta.getSelectedItem()), riga , 9);}
-					}	
-				}
-			catch(Exception q){JOptionPane.showMessageDialog(finestra, "Selezionare una riga.");}
+						}}
+				JComboBox<Integer> scelta=new JComboBox<>(disponibilità);
+				pannello.add(scelta);
+				//ritorna 0 se premo ok, altrimenti -1
+				int result= JOptionPane.showOptionDialog(null, pannello, null, JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
+				if(result==0){int qnt_ordinata=(int)scelta.getSelectedItem();
+				Carrello.getInstance().aggiungiProdottoACarrello(prodotto,qnt_ordinata);
+				tabella.setValueAt(Integer.toString((int) scelta.getSelectedItem()), riga , 9);
+				JLabel spesa= (JLabel) finestra.findDescendentByName(finestra, "Spesa");
+				spesa.setText("La spesa totale è:"+Carrello.getInstance().getSpesaTotale());}
+			}
+			catch(ArrayIndexOutOfBoundsException q){JOptionPane.showMessageDialog(finestra, "Selezionare una riga.");}
 		}
 		else if("RIMUOVI".equals(e.getActionCommand())){
 			JTable tabella=(JTable) finestra.findDescendentByName(finestra, "lista_prodotti");
@@ -81,6 +72,7 @@ public class CarrelloBtnListener implements ActionListener{
 			DefaultTableModel model= (DefaultTableModel) tabella.getModel();
 			model.removeRow(riga);
 			tabella.setModel(model);
+
 		}
 		else if("CONFERMA".equals(e.getActionCommand())){
 			

@@ -89,7 +89,7 @@ public class DipendenteBtnListener implements ActionListener{
 					}
 					else{JOptionPane.showMessageDialog(finestradip, "Prodotto non disponibile.");}
 				}
-				catch(Exception q){JOptionPane.showMessageDialog(finestradip, "Selezionare una riga.");}	
+				catch(ArrayIndexOutOfBoundsException q){JOptionPane.showMessageDialog(finestradip, "Selezionare una riga.");}	
 		}
 		else if("AGGIUNGI2".equals(e.getActionCommand())){
 			JTable tabella=(JTable) finestradip.findDescendentByName(finestradip, "catalogo_lontano");
@@ -130,7 +130,7 @@ public class DipendenteBtnListener implements ActionListener{
 				}
 				else{JOptionPane.showMessageDialog(finestradip, "Prodotto non disponibile.");}
 			}
-			catch(Exception q){JOptionPane.showMessageDialog(finestradip, "Selezionare una riga.");}
+			catch(ArrayIndexOutOfBoundsException q){JOptionPane.showMessageDialog(finestradip, "Selezionare una riga.");}
 		}
 		else if("APRICARRELLO".equals(e.getActionCommand())){
 			new CarrelloView();
