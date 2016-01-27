@@ -1,23 +1,36 @@
 package it.progetto.Model;
 
+import java.util.ArrayList;
+import java.util.Vector;
+
 import it.progetto.DAO.OrdineDAO;
 
 public class Ordine {
 
 	  private int idOrdine;
-      private int ProgettoDiRiferimento;
+      private String ProgettoDiRiferimento;
 	  private float SpesaOrdine;
 	  private int CodiceMagazzino;
 	  private int DipendenteDiRiferimento;
+	  private Vector<String[]> ListaProdotti;
 
-	
-	public Ordine(int id, int codmagazzino, int cod_dipendente, int codprogetto, float spesa){
+	public Ordine(int id,String progetto, float spesa, int codmagazzino, int cod_dipendente, Vector<String[]> lista){
 		idOrdine=id;
 		CodiceMagazzino=codmagazzino;
 		DipendenteDiRiferimento=cod_dipendente;
-		ProgettoDiRiferimento=codprogetto;
+		ProgettoDiRiferimento=progetto;
 		SpesaOrdine=spesa;
+		ListaProdotti=lista;
 	}
+	
+	public Ordine(String progetto, float spesa, int codmagazzino, int cod_dipendente, Vector<String[]> lista){
+		CodiceMagazzino=codmagazzino;
+		DipendenteDiRiferimento=cod_dipendente;
+		ProgettoDiRiferimento=progetto;
+		SpesaOrdine=spesa;
+		ListaProdotti=lista;
+	}
+
 	  
 	 public int getIdOrdine() {
 			return idOrdine;
@@ -35,10 +48,10 @@ public class Ordine {
 			DipendenteDiRiferimento = dipendenteDiRiferimento;
 		}
 			
-		public int getProgettoDiRiferimento() {
+		public String getProgettoDiRiferimento() {
 			return ProgettoDiRiferimento;
 		}
-		public void setProgettoDiRiferimento(int progettoDiRiferimento) {
+		public void setProgettoDiRiferimento(String progettoDiRiferimento) {
 			ProgettoDiRiferimento = progettoDiRiferimento;
 		}
 		public float getSpesaOrdine() {
@@ -52,6 +65,17 @@ public class Ordine {
 		}
 		public void setCodiceMagazzino(int CodMagazzino) {
 			CodiceMagazzino = CodMagazzino;
+		}
+		public Vector<String[]> getListaProdotti() {
+			return ListaProdotti;
+		}
+
+		public void setListaProdotti(Vector<String[]> listaProdotti) {
+			ListaProdotti = listaProdotti;
+		}
+		
+		public boolean SalvaOrdine(Vector<String[]> prodottiordinati, int codmagazzino, int coddipendente, String progetto,float spesa){
+			return OrdineDAO.getInstance().SalvaOrdine(prodottiordinati, codmagazzino, coddipendente, progetto,spesa);
 		}
 		
 		public boolean EvadiOrdine(int id){

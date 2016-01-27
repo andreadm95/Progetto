@@ -9,7 +9,6 @@ import java.util.Vector;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -63,6 +62,8 @@ public class MagazziniereView extends JFrame{
 		nord.add(mostraordini);
 		nord.add(opera_rif);
 		c.add(nord, BorderLayout.NORTH);
+		JPanel pannello_centrale=new JPanel();
+		c.add(pannello_centrale, BorderLayout.CENTER);
 		//organizzo table ordine
 		Vector<String[]> head_ordine= new Vector<String[]>();
 		String[] columnNames_ordine = {"Id","Magazzino", "Dipendente", "Progetto","Evaso"};
@@ -90,7 +91,6 @@ public class MagazziniereView extends JFrame{
 		String[] columnNames = {"Id","Nome", "Categoria", "Descrizione","Disponibilità","MaxOrdinabile","Fornitore","Produttore","Prezzo"};
 		head_rif.addElement(columnNames);
 		DefaultTableModel model_rif= new DefaultTableModel() {
-			
 			public Class getColumnClass(int index) {
 				return String.class;
 			}

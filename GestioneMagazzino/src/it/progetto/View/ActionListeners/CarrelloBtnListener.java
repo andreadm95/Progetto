@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import it.progetto.Business.OrdineBusiness;
 import it.progetto.Model.Carrello;
 import it.progetto.Model.Dipendente;
 import it.progetto.Model.Sessione;
@@ -88,7 +89,7 @@ public class CarrelloBtnListener implements ActionListener{
 			int result= JOptionPane.showOptionDialog(null, pannello, null, JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
 			if(result==0){
 				String progetto_scelto= (String) scelta_progetto.getSelectedItem();
-				//salvare ordine
+				OrdineBusiness.getInstance().salvaOrdine(progetto_scelto, Float.parseFloat(Carrello.getInstance().calcoloSpesaTotale()), 1, dip.getId(), Carrello.getInstance().getListaProdottiAcquisto());
 			}
 			
 			

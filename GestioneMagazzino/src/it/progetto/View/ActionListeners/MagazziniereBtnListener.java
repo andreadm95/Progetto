@@ -27,6 +27,11 @@ public class MagazziniereBtnListener implements ActionListener{
 			finestramag.revalidate();
 		}
 		else if("RIFORNIMENTO".equals(e.getActionCommand())){
+			BorderLayout layout=(BorderLayout) finestramag.getContentPane().getLayout();
+			finestramag.getContentPane().remove(layout.getLayoutComponent(BorderLayout.CENTER));
+			finestramag.getContentPane().add(finestramag.getCatalogorif(),BorderLayout.CENTER);
+			finestramag.repaint();
+			finestramag.revalidate();
 			
 		}
 		else if("MOSTRA_ORDINE".equals(e.getActionCommand())){
