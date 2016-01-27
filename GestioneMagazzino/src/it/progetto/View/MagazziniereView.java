@@ -79,13 +79,19 @@ public class MagazziniereView extends JFrame{
 		    }
 		};
 		model_ordine.setColumnIdentifiers(columnNames_ordine);
-//		Vector<String[]> lista_ordini= Magazzino.getInstance().getListaOrdiniPendenti(mag.getMagazzinoAppartenenza());
-//			for(int i=0;i<lista_ordini.size();i++){
-//				model_ordine.addRow(lista_ordini.get(i));}
-		final JTable cat_ordine= new JTable(model_ordine);
-		JScrollPane s2= new JScrollPane(cat_ordine);
-		catalogo_ordini.setLayout(new GridLayout(1,1));
-		catalogo_ordini.add(s2);
+		Vector<String[]> lista_ordini=new Vector<String[]>();
+		lista_ordini= Magazzino.getInstance().getListaOrdiniPendenti(mag.getMagazzinoAppartenenza());
+		try{
+			for(int i=0;i<lista_ordini.size();i++){
+				model_ordine.addRow(lista_ordini.get(i));}
+			final JTable cat_ordine= new JTable(model_ordine);
+			JScrollPane s2= new JScrollPane(cat_ordine);
+			catalogo_ordini.setLayout(new GridLayout(1,1));
+			catalogo_ordini.add(s2);
+		}
+		catch(NullPointerException q){
+			JLabel text2= new JLabel("Non ci sono ordini da evadere.");
+			catalogo_ordini.add(text2);}
 		//organizzo table rifornimento prodotti
 		Vector<String[]> head_rif= new Vector<String[]>();
 		String[] columnNames = {"Id","Nome", "Categoria", "Descrizione","Disponibilità","MaxOrdinabile","Fornitore","Produttore","Prezzo"};
@@ -100,7 +106,7 @@ public class MagazziniereView extends JFrame{
 		    }
 		};
 		model_rif.setColumnIdentifiers(columnNames);
-		Vector<String[]> lista= Magazzino.getInstance().getListaProdottiVicini(mag.getId());
+		Vector<String[]> lista= Magazzino.getInstance().getListaProdottiVicini(mag.getMagazzinoAppartenenza());
 		for(int i=0;i<lista.size();i++){
 			model_rif.addRow(lista.get(i));}
 		final JTable cat_rif= new JTable(model_rif);
@@ -117,6 +123,9 @@ public class MagazziniereView extends JFrame{
 		rifornimento.setActionCommand("RIFORNISCI");
 		rifornimento.addActionListener(listener);
 		pulsantierarif.add(rifornimento);
+		//pannello sostitutivo
+		JPanel pannello_EST= new JPanel();
+		c.add(pannello_EST, BorderLayout.EAST);
 		
 		
 		setSize(800,800);

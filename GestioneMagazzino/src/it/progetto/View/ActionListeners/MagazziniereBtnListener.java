@@ -23,6 +23,8 @@ public class MagazziniereBtnListener implements ActionListener{
 			BorderLayout layout=(BorderLayout) finestramag.getContentPane().getLayout();
 			finestramag.getContentPane().remove(layout.getLayoutComponent(BorderLayout.CENTER));
 			finestramag.getContentPane().add(finestramag.getCatalogo_ordini(),BorderLayout.CENTER);
+			finestramag.getContentPane().remove(layout.getLayoutComponent(BorderLayout.EAST));
+			finestramag.getContentPane().add(finestramag.getpulsantieraordini(),BorderLayout.EAST);
 			finestramag.repaint();
 			finestramag.revalidate();
 		}
@@ -30,6 +32,8 @@ public class MagazziniereBtnListener implements ActionListener{
 			BorderLayout layout=(BorderLayout) finestramag.getContentPane().getLayout();
 			finestramag.getContentPane().remove(layout.getLayoutComponent(BorderLayout.CENTER));
 			finestramag.getContentPane().add(finestramag.getCatalogorif(),BorderLayout.CENTER);
+			finestramag.getContentPane().remove(layout.getLayoutComponent(BorderLayout.EAST));
+			finestramag.getContentPane().add(finestramag.getpulsantierarif(),BorderLayout.EAST);
 			finestramag.repaint();
 			finestramag.revalidate();
 			
