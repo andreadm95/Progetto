@@ -1,6 +1,5 @@
 package it.progetto.Model;
 
-import java.util.ArrayList;
 import java.util.Vector;
 
 import it.progetto.DAO.MagazzinoDAO;

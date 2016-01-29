@@ -33,10 +33,5 @@ private static MagazzinoDAO instance;
 		Vector<String[]> result=DbConnection.getInstance().eseguiQuery("select * from Prodotto");
 		return result;
 	}
-	
-	public boolean Rifornisci(int idprodotto, int quantitàdarifornire){
-		boolean result= DbConnection.getInstance().eseguiAggiornamento("UPDATE Prodotto SET Prodotto.Disponibilità="+quantitàdarifornire+" WHERE Prodotto.idProdotto="+idprodotto);
-		return result;
-	}
 
 }

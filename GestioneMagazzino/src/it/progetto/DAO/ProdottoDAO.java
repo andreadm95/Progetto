@@ -2,7 +2,6 @@ package it.progetto.DAO;
 
 import it.progetto.DbConnection.DbConnection;
 import java.util.ArrayList;
-import java.util.Vector;
 import it.progetto.Model.Prodotto;
 
 public class ProdottoDAO {
@@ -25,4 +24,9 @@ public class ProdottoDAO {
 				boolean result=DbConnection.getInstance().eseguiAggiornamento("update Prodotto,Appartiene set Prodotto.Disponibilità=Prodotto.Disponibilità-1 where Prodotto.Nome="+lista.get(i).getNome()+"and Appartiene.CodMagazzino="+sede+"and Prodotto.IdProdotto=Appartiene.CodProdotto");
 			}
 		}
+	
+	public boolean Rifornisci(int idprodotto, int quantitàdarifornire){
+		boolean result= DbConnection.getInstance().eseguiAggiornamento("UPDATE Prodotto SET Prodotto.Disponibilità=\""+quantitàdarifornire+"\" WHERE Prodotto.idProdotto=\""+idprodotto+"\"");
+		return result;
+	}
 }

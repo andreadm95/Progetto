@@ -1,5 +1,7 @@
 package it.progetto.Model;
 
+import it.progetto.DAO.ProdottoDAO;
+
 public class Prodotto {
 
 	private int idProdotto;
@@ -95,5 +97,9 @@ public class Prodotto {
 		result = prime * result + ((Produttore == null) ? 0 : Produttore.hashCode());
 		result = prime * result + idProdotto;
 		return result;
+	}
+	
+	public boolean Rifornisci(int qnt){
+		return ProdottoDAO.getInstance().Rifornisci(getIdProdotto(), qnt);
 	}
 }

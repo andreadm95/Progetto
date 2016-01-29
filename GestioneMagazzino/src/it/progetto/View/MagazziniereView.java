@@ -1,6 +1,7 @@
 package it.progetto.View;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -12,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 import it.progetto.Model.Magazziniere;
@@ -42,6 +44,18 @@ public class MagazziniereView extends JFrame{
 		return pulsantierarif;
 	}
 	
+	public Component findDescendentByName(Container cnt, String name) {
+		  if (cnt == null) return null;
+		  if (name.equals(cnt.getName())) return cnt;
+		  for (int i = 0; i < cnt.getComponentCount(); ++i) {
+		    Component cmp = cnt.getComponent(i);
+		    if (cmp instanceof Container) {
+		      cmp = findDescendentByName((Container) cmp, name);
+		      if (cmp != null) return cmp;
+		    } else if (name.equals(cmp.getName())) return cmp;
+		  }
+		  return null;
+		}
 	
 	public MagazziniereView(){
 		super("Effettua un operazione");
@@ -85,6 +99,8 @@ public class MagazziniereView extends JFrame{
 			for(int i=0;i<lista_ordini.size();i++){
 				model_ordine.addRow(lista_ordini.get(i));}
 			final JTable cat_ordine= new JTable(model_ordine);
+			cat_ordine.setName("catalogo_ordini");
+			cat_ordine.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 			JScrollPane s2= new JScrollPane(cat_ordine);
 			catalogo_ordini.setLayout(new GridLayout(1,1));
 			catalogo_ordini.add(s2);
@@ -110,6 +126,8 @@ public class MagazziniereView extends JFrame{
 		for(int i=0;i<lista.size();i++){
 			model_rif.addRow(lista.get(i));}
 		final JTable cat_rif= new JTable(model_rif);
+		cat_rif.setName("catalogo_rifornimento");
+		cat_rif.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		JScrollPane s1= new JScrollPane(cat_rif);
 		catalogorif.setLayout(new GridLayout(1,1));
 		catalogorif.add(s1);

@@ -134,7 +134,6 @@ public class DipendenteBtnListener implements ActionListener{
 		}
 		else if("APRICARRELLO".equals(e.getActionCommand())){
 			new CarrelloView();
-			
 		}
 
 }
