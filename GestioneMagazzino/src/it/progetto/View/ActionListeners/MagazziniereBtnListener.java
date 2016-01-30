@@ -12,9 +12,10 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 
+import it.progetto.Business.OrdineBusiness;
 import it.progetto.Business.ProdottoBusiness;
+import it.progetto.View.ListaOrdineView;
 import it.progetto.View.MagazziniereView;
 
 public class MagazziniereBtnListener implements ActionListener{
@@ -50,12 +51,30 @@ public class MagazziniereBtnListener implements ActionListener{
 			
 		}
 		else if("MOSTRA_ORDINE".equals(e.getActionCommand())){
+			JTable tabella=(JTable) finestramag.findDescendentByName(finestramag, "catalogo_ordini");
+			try{
+				int riga=tabella.getSelectedRow();
+				int id_ordine=(int) tabella.getValueAt(riga, 0);
+				 new ListaOrdineView(id_ordine);
+				}
+			catch(NullPointerException q){JOptionPane.showMessageDialog(finestramag, "Selezionare una riga.");}
 			
+		}
+		else if("EVADI_ORDINE".equals(e.getActionCommand())){
+			JTable tabella=(JTable) finestramag.findDescendentByName(finestramag, "catalogo_ordini");
+			try{
+				int riga=tabella.getSelectedRow();
+				int id_ordine=(int) tabella.getValueAt(riga, 0);
+				boolean riuscito=OrdineBusiness.getInstance().evadiOrdine(id_ordine);
+				if(riuscito){JOptionPane.showMessageDialog(finestramag, "Ordine Evaso");}
+				else{JOptionPane.showMessageDialog(finestramag, "ERRORE!Ordine non Evaso");}
+			}
+			catch(NullPointerException q){JOptionPane.showMessageDialog(finestramag, "Selezionare una riga.");}
 		}
 		else if("RIFORNISCI".equals(e.getActionCommand())){
 			JTable tabella=(JTable) finestramag.findDescendentByName(finestramag, "catalogo_rifornimento");
-			int riga=tabella.getSelectedRow();
 			try{
+				int riga=tabella.getSelectedRow();
 				JPanel pannello= new JPanel();
 				pannello.setLayout(new BoxLayout(pannello, BoxLayout.Y_AXIS));
 				JLabel text= new JLabel("Inserire la quantità di cui rifornirsi:");
@@ -74,7 +93,7 @@ public class MagazziniereBtnListener implements ActionListener{
 					tabella.setValueAt(qnt_ordinata,riga,4);
 				}
 			}
-			catch(ArrayIndexOutOfBoundsException q){JOptionPane.showMessageDialog(finestramag, "Selezionare una riga.");}
+			catch(ArrayIndexOutOfBoundsException q){JOptionPane.showMessageDialog(finestramag, "Non hai selezionato un prodotto da rifornire.");}
 		}
 	}
 

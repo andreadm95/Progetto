@@ -13,6 +13,10 @@ public class Ordine {
 	  private int CodiceMagazzino;
 	  private int DipendenteDiRiferimento;
 	  private Vector<String[]> ListaProdotti;
+	  
+	public Ordine(int id){
+		idOrdine=id;
+	}
 
 	public Ordine(int id,String progetto, float spesa, int codmagazzino, int cod_dipendente, Vector<String[]> lista){
 		idOrdine=id;
@@ -80,6 +84,10 @@ public class Ordine {
 		
 		public boolean EvadiOrdine(int id){
 			return OrdineDAO.getInstance().ModificaEvadi(id);
+		}
+		
+		public Vector<String[]> fornisciListaprod(int id_ordine){
+			return OrdineDAO.getInstance().fornisciListaProdOrdinati(id_ordine);
 		}
 
 	

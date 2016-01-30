@@ -7,6 +7,7 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.util.Vector;
 
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -132,10 +133,15 @@ public class MagazziniereView extends JFrame{
 		catalogorif.setLayout(new GridLayout(1,1));
 		catalogorif.add(s1);
 		//pulsantiera ordine
+		pulsantieraordini.setLayout(new BoxLayout(pulsantieraordini, BoxLayout.Y_AXIS));
 		JButton ordine =new JButton("Mostra ordine");
 		ordine.setActionCommand("MOSTRA_ORDINE");
 		ordine.addActionListener(listener);
+		JButton evadi= new JButton("Evadi Ordine");
+		evadi.setActionCommand("EVADI_ORDINE");
+		evadi.addActionListener(listener);
 		pulsantieraordini.add(ordine);
+		pulsantieraordini.add(evadi);
 		//pulsantiera rifornimento
 		JButton rifornimento =new JButton("Rifornisci");
 		rifornimento.setActionCommand("RIFORNISCI");

@@ -50,5 +50,11 @@ private static OrdineDAO instance;
 		boolean res=DbConnection.getInstance().eseguiAggiornamento("UPDATE Progetto SET Progetto.SpesaTotate=Progetto.SpesaTotale"+spesa+"WHERE Progetto.idProgetto=\""+codprogetto+"\"");
 		return result;
 	}
+
+	public Vector<String[]> fornisciListaProdOrdinati(int id_ordine) {
+		// TODO Auto-generated method stub
+		Vector<String[]> result=DbConnection.getInstance().eseguiQuery("select Prodotto.*,CompostoDa.Quantit‡Ordinata from prodotto INNER JOIN compostoda ON CodProdotto=idprodotto where CodOrdine=\""+id_ordine+"\"");
+		return result;	
+	}
 	
 }
