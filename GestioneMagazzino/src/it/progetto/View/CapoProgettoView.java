@@ -37,8 +37,7 @@ public class CapoProgettoView extends JFrame {
 		Container c= getContentPane();
 		c.setLayout(new BorderLayout());
 		CapoProgetto cap=(CapoProgetto) Sessione.getInstance().session.get("utente_corrente");
-		JLabel text1= new JLabel("Accesso effettuato come: "+cap.getNome()+" "+cap.getCognome()+".");
-		JLabel text2= new JLabel("Organizza rapporto per:");
+		JLabel text1= new JLabel("Accesso effettuato come: "+cap.getNome()+" "+cap.getCognome()+".Organizza rapporto per:");
 		JPanel nord= new JPanel();
 		CapoProgettoBtnListener listener= new CapoProgettoBtnListener(this);
 		JButton organizza_dip= new JButton("Dipendente");
@@ -49,7 +48,6 @@ public class CapoProgettoView extends JFrame {
 		organizza_prog.addActionListener(listener);
 		nord.setLayout(new FlowLayout());
 		nord.add(text1);
-		nord.add(text2);
 		nord.add(organizza_dip);
 		nord.add(organizza_prog);
 		c.add(nord, BorderLayout.NORTH);
@@ -79,7 +77,7 @@ public class CapoProgettoView extends JFrame {
 		//table organizzato per progetto 
 		Vector<String[]> head_prog= new Vector<String[]>();
 		String[] columnNames_prog = {"IdProgetto","Nome","SpesaTotale"};
-		head_dip.addElement(columnNames_prog);
+		head_prog.addElement(columnNames_prog);
 		DefaultTableModel model_per_prog= new DefaultTableModel() {
 			
 			public Class getColumnClass(int index) {
@@ -90,7 +88,7 @@ public class CapoProgettoView extends JFrame {
 		       return false;
 		    }
 		};
-		model_per_prog.setColumnIdentifiers(columnNames_dip);
+		model_per_prog.setColumnIdentifiers(columnNames_prog);
 		Vector<String[]> rapporto_per_prog= cap.OrdinaSpeseProgetto(cap.getId());
 		for(int i=0;i<rapporto_per_prog.size()-1;i++){
 			model_per_prog.addRow(rapporto_per_prog.get(i));

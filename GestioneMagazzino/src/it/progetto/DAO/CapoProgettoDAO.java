@@ -69,9 +69,9 @@ private static CapoProgettoDAO instance;
 			Vector<String[]> result= new Vector<String[]>();
 			for(int i=0;i<ricercaprogetti.size();i++){
 				Vector<String[]> ricercadip=DbConnection.getInstance().eseguiQuery("SELECT Dipendente.*,lavorasu.codprogetto FROM Dipendente,lavorasu WHERE CodProgetto=\""+ricercaprogetti.get(i)[0]+"\"");
-				for(int j=0; j<ricercadip.size();j++){
-				result.addElement(ricercadip.get(j));}
-				}
+				//for(int j=0; j<ricercadip.size();j++){
+				result.addElement(ricercadip.get(0));}
+				//}
 			return result;
 			}
 		else{

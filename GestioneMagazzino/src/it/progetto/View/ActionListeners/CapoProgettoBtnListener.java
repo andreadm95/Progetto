@@ -22,14 +22,14 @@ public class CapoProgettoBtnListener implements ActionListener{
 		if("ORGANIZZA_PER_DIP".equals(e.getActionCommand())){
 			BorderLayout layout=(BorderLayout) finestracap.getContentPane().getLayout();
 			finestracap.getContentPane().remove(layout.getLayoutComponent(BorderLayout.CENTER));
-			finestracap.getContentPane().add(finestracap.getRapporto_per_dip(), BorderLayout.NORTH);
+			finestracap.getContentPane().add(finestracap.getRapporto_per_dip(), BorderLayout.CENTER);
 			finestracap.repaint();
 			finestracap.revalidate();
 		}
 		else if("ORGANIZZA_PER_PROG".equals(e.getActionCommand())){
 			BorderLayout layout=(BorderLayout) finestracap.getContentPane().getLayout();
 			finestracap.getContentPane().remove(layout.getLayoutComponent(BorderLayout.CENTER));
-			finestracap.getContentPane().add(finestracap.getRapporto_per_prog(), BorderLayout.NORTH);
+			finestracap.getContentPane().add(finestracap.getRapporto_per_prog(), BorderLayout.CENTER);
 			finestracap.repaint();
 			finestracap.revalidate();
 		}
