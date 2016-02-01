@@ -42,9 +42,9 @@ public class CapoProgetto extends UtenteRegistrato {
 		return CapoProgettoDAO.getInstance().PrelevaInfo(this);
 	}
 	
-	public boolean HasPiuDueProgetti(int idCapo){
-		return CapoProgettoDAO.getInstance().PiùDiDueProgetti(idCapo);
-	}
+//	public boolean HasPiuDueProgetti(int idCapo){
+//		return CapoProgettoDAO.getInstance().PiùDiDueProgetti(idCapo);
+//	}
 	
 	public Vector<String[]> OrdinaSpeseProgetto(int idCapo){
 		return CapoProgettoDAO.getInstance().OrdinaSpeseProgetto(idCapo);

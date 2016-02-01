@@ -1,5 +1,6 @@
 package it.progetto.DAO;
 
+import java.util.ArrayList;
 import java.util.Vector;
 
 import it.progetto.DbConnection.DbConnection;
@@ -45,13 +46,13 @@ private static CapoProgettoDAO instance;
 			}
 	}
 	
-	public boolean PiùDiDueProgetti(int idCapo){
-		Vector<String[]> result=DbConnection.getInstance().eseguiQuery("SELECT * FROM progetto WHERE CodCapoProgetto=\""+idCapo+"\"");
-		if(result.size()<2){
-			return false;
-		}
-		else{return true;}
-	}
+//	public boolean PiùDiDueProgetti(int idCapo){
+//		Vector<String[]> result=DbConnection.getInstance().eseguiQuery("SELECT * FROM progetto WHERE CodCapoProgetto=\""+idCapo+"\"");
+//		if(result.size()<2){
+//			return false;
+//		}
+//		else{return true;}
+//	}
 	
 	public Vector<String[]> OrdinaSpeseProgetto(int idCapo){
 		Vector<String[]> result=DbConnection.getInstance().eseguiQuery("SELECT * FROM progetto WHERE CodCapoProgetto=\""+idCapo+"\" ORDER BY idProgetto");
@@ -64,18 +65,7 @@ private static CapoProgettoDAO instance;
 	}
 	
 	public Vector<String[]> OrdinaSpeseDipendente(int idCapo){
-		Vector<String[]> ricercaprogetti=DbConnection.getInstance().eseguiQuery("SELECT * FROM progetto WHERE CodCapoProgetto=\""+idCapo+"\"");
-		if(ricercaprogetti.size()!=0){
-			Vector<String[]> result= new Vector<String[]>();
-			for(int i=0;i<ricercaprogetti.size();i++){
-				Vector<String[]> ricercadip=DbConnection.getInstance().eseguiQuery("SELECT Dipendente.*,lavorasu.codprogetto FROM Dipendente,lavorasu WHERE CodProgetto=\""+ricercaprogetti.get(i)[0]+"\"");
-				//for(int j=0; j<ricercadip.size();j++){
-				result.addElement(ricercadip.get(0));}
-				//}
-			return result;
+		Vector<String[]> ricercaperdip=DbConnection.getInstance().eseguiQuery("SELECT distinct Dipendente.* FROM dipendente,lavorasu,progetto WHERE CodCapoProgetto=\""+idCapo+"\" and CodProgetto=IdProgetto and idDipendente=codDipendente");
+			return ricercaperdip;
 			}
-		else{
-		return null;
-			}
-	}
 }

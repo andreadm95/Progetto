@@ -53,7 +53,7 @@ public class CapoProgettoView extends JFrame {
 		c.add(nord, BorderLayout.NORTH);
 		//table organizzato per dipendente
 		Vector<String[]> head_dip= new Vector<String[]>();
-		String[] columnNames_dip = {"IdDipendente","CodMagazzino","Spesa","CodProgetto"};
+		String[] columnNames_dip = {"IdDipendente","CodMagazzino","Spesa"};
 		head_dip.addElement(columnNames_dip);
 		DefaultTableModel model_per_dip= new DefaultTableModel() {
 			
@@ -90,8 +90,8 @@ public class CapoProgettoView extends JFrame {
 		};
 		model_per_prog.setColumnIdentifiers(columnNames_prog);
 		Vector<String[]> rapporto_per_prog= cap.OrdinaSpeseProgetto(cap.getId());
-		for(int i=0;i<rapporto_per_prog.size()-1;i++){
-			model_per_prog.addRow(rapporto_per_prog.get(i));
+		for(int j=0;j<rapporto_per_prog.size();j++){
+			model_per_prog.addRow(rapporto_per_prog.get(j));
 		}
 		final JTable cat_per_prog=new JTable(model_per_prog);
 		JScrollPane s2= new JScrollPane(cat_per_prog);
