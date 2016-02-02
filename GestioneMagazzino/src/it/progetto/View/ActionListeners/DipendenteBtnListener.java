@@ -73,7 +73,9 @@ public class DipendenteBtnListener implements ActionListener{
 							//ritorna 0 se premo ok, altrimenti -1
 							int result= JOptionPane.showOptionDialog(null, pannello, null, JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
 							if(result==0){int qnt_ordinata=(int)scelta.getSelectedItem();
-							Carrello.getInstance().aggiungiProdottoACarrello(prodotto,qnt_ordinata);}
+								boolean aggiunto=Carrello.getInstance().aggiungiProdottoACarrello(prodotto,qnt_ordinata);
+								if(aggiunto==false){JOptionPane.showMessageDialog(finestradip, "Impossibile aggiungere il prodotto;Scegliere prodotti dello stesso catalogo.");}
+							}
 						}
 						else{
 							for(int j=1;j<=max_ordinabile;j++){
@@ -84,8 +86,10 @@ public class DipendenteBtnListener implements ActionListener{
 							//ritorna 0 se premo ok, altrimenti -1
 							int result= JOptionPane.showOptionDialog(null, pannello, null, JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
 							if(result==0){int qnt_ordinata=(int)scelta.getSelectedItem();
-							Carrello.getInstance().aggiungiProdottoACarrello(prodotto,qnt_ordinata);}
-							}	
+								boolean aggiunto=Carrello.getInstance().aggiungiProdottoACarrello(prodotto,qnt_ordinata);
+								if(aggiunto==false){JOptionPane.showMessageDialog(finestradip, "Impossibile aggiungere il prodotto;Scegliere prodotti dello stesso catalogo.");}
+							}
+						}	
 					}
 					else{JOptionPane.showMessageDialog(finestradip, "Prodotto non disponibile.");}
 				}
@@ -114,7 +118,9 @@ public class DipendenteBtnListener implements ActionListener{
 						//ritorna 0 se premo ok, altrimenti -1
 						int result= JOptionPane.showOptionDialog(null, pannello, null, JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
 						if(result==0){int qnt_ordinata=(int)scelta.getSelectedItem();
-						Carrello.getInstance().aggiungiProdottoACarrello(prodotto,qnt_ordinata);}
+							boolean aggiunto=Carrello.getInstance().aggiungiProdottoACarrello(prodotto,qnt_ordinata);
+							if(aggiunto==false){JOptionPane.showMessageDialog(finestradip, "Impossibile aggiungere il prodotto;Scegliere prodotti dello stesso catalogo.");}
+						}
 					}
 					else{
 						for(int j=1;j<=max_ordinabile;j++){
@@ -125,8 +131,10 @@ public class DipendenteBtnListener implements ActionListener{
 						//ritorna 0 se premo ok, altrimenti -1
 						int result= JOptionPane.showOptionDialog(null, pannello, null, JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
 						if(result==0){int qnt_ordinata=(int)scelta.getSelectedItem();
-						Carrello.getInstance().aggiungiProdottoACarrello(prodotto,qnt_ordinata);}
-						}	
+							boolean aggiunto=Carrello.getInstance().aggiungiProdottoACarrello(prodotto,qnt_ordinata);
+							if(aggiunto==false){JOptionPane.showMessageDialog(finestradip, "Impossibile aggiungere il prodotto;Scegliere prodotti dello stesso catalogo.");}
+						}
+					}	
 				}
 				else{JOptionPane.showMessageDialog(finestradip, "Prodotto non disponibile.");}
 			}

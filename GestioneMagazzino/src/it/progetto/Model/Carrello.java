@@ -6,6 +6,8 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.Vector;
 
+import it.progetto.Business.ProdottoBusiness;
+
 
 
 public class Carrello {
@@ -23,20 +25,26 @@ private static HashMap<Prodotto,Integer> ListaProdottiAcquisto;
 		return instance;		
 	}
 	//da testare
-	public void aggiungiProdottoACarrello(ArrayList<String> a,int quantità)
+	public boolean aggiungiProdottoACarrello(ArrayList<String> a,int quantità)
     {
 		Prodotto ordinato=new Prodotto(Integer.parseInt(a.get(0)), a.get(1), a.get(2),a.get(3),Float.parseFloat(a.get(8)),Integer.parseInt(a.get(4)),Integer.parseInt(a.get(5)),a.get(6),a.get(7));
 		Set<Prodotto> keySet=ListaProdottiAcquisto.keySet();
 		Iterator<Prodotto> it= keySet.iterator();
+		int mag_prodordinato=ProdottoBusiness.getInstance().verificaMagazzino(ordinato);
 			while(it.hasNext()){
 				Prodotto key= it.next();
-				if(ordinato.hashCode()==key.hashCode()){
-					ListaProdottiAcquisto.remove(key);
-					ListaProdottiAcquisto.put(ordinato, quantità);
-					break;
+				int mag_prodlista=ProdottoBusiness.getInstance().verificaMagazzino(key);
+				if(mag_prodordinato==mag_prodlista){
+					if(ordinato.hashCode()==key.hashCode()){
+						ListaProdottiAcquisto.remove(key);
+						ListaProdottiAcquisto.put(ordinato, quantità);
+						return true;
+					}
 				}
+				else{return false;}
 			}
 		ListaProdottiAcquisto.put(ordinato, quantità);
+		return true;
     }
 	
 	public Vector<String[]> getListaProdottiAcquisto() {
@@ -84,5 +92,14 @@ private static HashMap<Prodotto,Integer> ListaProdottiAcquisto;
 		}
 		String troncamento= String.format("%.2f", SpesaTotale);
 		return troncamento;
+	}
+	
+	public int getCodMagazzino(){
+		Set<Prodotto> keySet=ListaProdottiAcquisto.keySet();
+		Iterator<Prodotto> it= keySet.iterator();
+		Prodotto key= it.next();
+		int mag_ordine=ProdottoBusiness.getInstance().verificaMagazzino(key);
+		return mag_ordine;
+		
 	}
 }

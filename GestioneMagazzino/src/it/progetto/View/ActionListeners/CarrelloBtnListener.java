@@ -89,7 +89,7 @@ public class CarrelloBtnListener implements ActionListener{
 			int result= JOptionPane.showOptionDialog(null, pannello, null, JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
 			if(result==0){
 				String progetto_scelto= (String) scelta_progetto.getSelectedItem();
-				OrdineBusiness.getInstance().salvaOrdine(progetto_scelto, Float.parseFloat(Carrello.getInstance().calcoloSpesaTotale()), 1, dip.getId(), Carrello.getInstance().getListaProdottiAcquisto());
+				OrdineBusiness.getInstance().salvaOrdine(progetto_scelto, Float.parseFloat(Carrello.getInstance().calcoloSpesaTotale()), Carrello.getInstance().getCodMagazzino(), dip.getId(), Carrello.getInstance().getListaProdottiAcquisto());
 			}
 			
 			

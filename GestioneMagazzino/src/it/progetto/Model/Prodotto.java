@@ -102,4 +102,8 @@ public class Prodotto {
 	public boolean Rifornisci(int qnt){
 		return ProdottoDAO.getInstance().Rifornisci(getIdProdotto(), qnt);
 	}
+	
+	public int verificaAppartenenza(){
+		return ProdottoDAO.getInstance().verificaMag(getIdProdotto());
+	}
 }
