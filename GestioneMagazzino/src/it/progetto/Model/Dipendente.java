@@ -21,6 +21,11 @@ public class Dipendente extends UtenteRegistrato {
 		// TODO Auto-generated constructor stub
 		super(username,password);
 	}
+	
+	public Dipendente(int id) {
+		// TODO Auto-generated constructor stub
+		super(id);
+	}
 
 	public Float getSpesa() {
 		return Spesa;
@@ -40,6 +45,11 @@ public class Dipendente extends UtenteRegistrato {
 	
 	public Vector<String> progettiDipendente(int id_dip){
 		return DipendenteDAO.getInstance().fornisciProgettiDelDipendente(id_dip);
+	}
+
+	public void aggiornaSpesa(float spesa) {
+		// TODO Auto-generated method stub
+		DipendenteDAO.getInstance().aggiornaSpesa(getId(),spesa);
 	}
 	
 }

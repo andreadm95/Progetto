@@ -29,6 +29,11 @@ public class UtenteRegistrato {
 		Password = password;
 	}
 	
+	public UtenteRegistrato(int id) {
+		// TODO Auto-generated constructor stub
+		Id=id;
+	}
+
 	public int getId() {
 		return Id;
 	}

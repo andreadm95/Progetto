@@ -29,7 +29,7 @@ public class ProdottoDAO {
 	}
 	
 	public void SalvaProdottoOrdinato(int codprodotto,int codordine, int quantit‡ordinata){
-		boolean inserisciprodotti= DbConnection.getInstance().eseguiAggiornamento("INSERT INTO CompostoDa(CodProdotto,CodOrdine,Quantit‡Ordinata) VALUES("+codprodotto+","+codordine+","+quantit‡ordinata+"\"");
+		boolean inserisciprodotti= DbConnection.getInstance().eseguiAggiornamento("INSERT INTO CompostoDa(CodProdotto,CodOrdine,Quantit‡Ordinata) VALUES("+codprodotto+","+codordine+","+quantit‡ordinata+")");
 		boolean riduciqnt=DbConnection.getInstance().eseguiAggiornamento("UPDATE Prodotto SET Prodotto.Disponibilit‡=Prodotto.Disponibilit‡-1 where Prodotto.IdProdotto=\""+codprodotto+"\"");
 	}
 }

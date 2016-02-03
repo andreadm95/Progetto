@@ -18,7 +18,7 @@ private static ProgettoDAO instance;
 	}
 	
 	public boolean aggiornaSpesaProgetto(int idprogetto, float spesa){
-		boolean result=DbConnection.getInstance().eseguiAggiornamento("UPDATE Progetto SET Progetto.SpesaTotate=Progetto.SpesaTotale"+spesa+"WHERE Progetto.idProgetto="+idprogetto);
+		boolean result=DbConnection.getInstance().eseguiAggiornamento("UPDATE Progetto SET SpesaTotale=SpesaTotale+"+spesa+"WHERE Progetto.idProgetto=\""+idprogetto+"\"");
 		return result;
 	}
 

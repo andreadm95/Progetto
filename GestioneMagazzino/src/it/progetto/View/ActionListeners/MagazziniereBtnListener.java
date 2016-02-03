@@ -64,9 +64,10 @@ public class MagazziniereBtnListener implements ActionListener{
 			JTable tabella=(JTable) finestramag.findDescendentByName(finestramag, "catalogo_ordini");
 			try{
 				int riga=tabella.getSelectedRow();
-				int id_ordine=(int) tabella.getValueAt(riga, 0);
+				int id_ordine=Integer.parseInt((String)tabella.getValueAt(riga, 0));
 				boolean riuscito=OrdineBusiness.getInstance().evadiOrdine(id_ordine);
-				if(riuscito){JOptionPane.showMessageDialog(finestramag, "Ordine Evaso");}
+				if(riuscito){JOptionPane.showMessageDialog(finestramag, "Ordine Evaso");
+					tabella.setValueAt(1, riga, 4);}
 				else{JOptionPane.showMessageDialog(finestramag, "ERRORE!Ordine non Evaso");}
 			}
 			catch(NullPointerException q){JOptionPane.showMessageDialog(finestramag, "Selezionare una riga.");}
@@ -90,7 +91,9 @@ public class MagazziniereBtnListener implements ActionListener{
 					ArrayList<String> prodotto= new ArrayList<String>();
 					for(int i=0;i<n_col;i++){prodotto.add((String) tabella.getValueAt(riga, i));}
 					ProdottoBusiness.getInstance().Rifornimento(prodotto, qnt_ordinata);
-					tabella.setValueAt(qnt_ordinata,riga,4);
+					int disponibile=Integer.parseInt((String)tabella.getValueAt(riga, 4));
+					int nuova_disp=disponibile+qnt_ordinata;
+					tabella.setValueAt(nuova_disp,riga,4);
 				}
 			}
 			catch(ArrayIndexOutOfBoundsException q){JOptionPane.showMessageDialog(finestramag, "Non hai selezionato un prodotto da rifornire.");}

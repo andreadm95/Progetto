@@ -24,4 +24,10 @@ private static DipendenteBusiness instance;
 		Sessione.getInstance().session.put("utente_corrente", d.RecuperaInfo());
 	}
 
+	public void aggiornaSpesa(int id, float spesa) {
+		// TODO Auto-generated method stub
+		Dipendente d=new Dipendente(id);
+		d.aggiornaSpesa(spesa);
+	}
+
 }

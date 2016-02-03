@@ -51,5 +51,6 @@ public class Sistema {
 			ProdottoBusiness.getInstance().salvaProdotto(prodotto, codordine);
 		}
 		ProgettoBusiness.getInstance().aggiornaSpesa(idprogetto, spesa);
+		DipendenteBusiness.getInstance().aggiornaSpesa(cod_dip,spesa);
 	}
 }

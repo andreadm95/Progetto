@@ -65,6 +65,11 @@ private static DipendenteDAO instance;
 			return ListaProgettiDelDipendente;}
 		else{
 		return null;}
+	}
+
+	public void aggiornaSpesa(int id, float spesa) {
+		// TODO Auto-generated method stub
+		boolean result=DbConnection.getInstance().eseguiAggiornamento("UPDATE Dipendente SET Spesa=Spesa+"+spesa+"WHERE idDipendente=\""+ id +"\"");
 	} 
 
 }

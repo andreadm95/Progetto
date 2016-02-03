@@ -47,7 +47,7 @@ public class ListaOrdineView extends JFrame {
 		 c.add(s1, BorderLayout.CENTER);
 		 
 		 setSize(800,800);
-		 setDefaultCloseOperation(EXIT_ON_CLOSE);
+		 setDefaultCloseOperation(HIDE_ON_CLOSE);
 		 setVisible(true);
 	}
 }
