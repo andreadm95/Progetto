@@ -17,6 +17,7 @@ import it.progetto.Business.OrdineBusiness;
 import it.progetto.Model.Carrello;
 import it.progetto.Model.Dipendente;
 import it.progetto.Model.Sessione;
+import it.progetto.Model.Sistema;
 import it.progetto.View.CarrelloView;
 
 public class CarrelloBtnListener implements ActionListener{
@@ -90,6 +91,8 @@ public class CarrelloBtnListener implements ActionListener{
 			if(result==0){
 				String progetto_scelto= (String) scelta_progetto.getSelectedItem();
 				OrdineBusiness.getInstance().salvaOrdine(progetto_scelto, Float.parseFloat(Carrello.getInstance().calcoloSpesaTotale()), Carrello.getInstance().getCodMagazzino(), dip.getId(), Carrello.getInstance().getListaProdottiAcquisto());
+				JTable dati=(JTable) finestra.findDescendentByName(finestra, "lista_prodotti");
+				Sistema.getInstance().GeneraPdf(dati);
 			}
 			
 			

@@ -4,6 +4,9 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JTable;
+
+import it.progetto.Model.Sistema;
 import it.progetto.View.CapoProgettoView;
 
 public class CapoProgettoBtnListener implements ActionListener{
@@ -32,6 +35,14 @@ public class CapoProgettoBtnListener implements ActionListener{
 			finestracap.getContentPane().add(finestracap.getRapporto_per_prog(), BorderLayout.CENTER);
 			finestracap.repaint();
 			finestracap.revalidate();
+		}
+		else if("STAMPA_DISTINTA".equals(e.getActionCommand())){
+			JTable tabella1=(JTable) finestracap.findDescendentByName(finestracap, "RAPPORTO PER DIPENDENTE");
+			JTable tabella2=(JTable)finestracap.findDescendentByName(finestracap, "RAPPORTO PER PROGETTO");
+			if(finestracap.getContentPane().isAncestorOf(tabella1)){
+			Sistema.getInstance().GeneraPdf(tabella1);}
+			else if(finestracap.getContentPane().isAncestorOf(tabella2)){
+				Sistema.getInstance().GeneraPdf(tabella2);}
 		}
 	}
 

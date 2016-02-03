@@ -1,6 +1,7 @@
 package it.progetto.View;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -31,6 +32,19 @@ public class CapoProgettoView extends JFrame {
 	public JPanel getRapporto_per_prog() {
 		return catalogo_per_prog;
 	}
+	
+	public Component findDescendentByName(Container cnt, String name) {
+		  if (cnt == null) return null;
+		  if (name.equals(cnt.getName())) return cnt;
+		  for (int i = 0; i < cnt.getComponentCount(); ++i) {
+		    Component cmp = cnt.getComponent(i);
+		    if (cmp instanceof Container) {
+		      cmp = findDescendentByName((Container) cmp, name);
+		      if (cmp != null) return cmp;
+		    } else if (name.equals(cmp.getName())) return cmp;
+		  }
+		  return null;
+		}
 
 	public CapoProgettoView(){
 		super("Riordina spese");
@@ -71,6 +85,7 @@ public class CapoProgettoView extends JFrame {
 			model_per_dip.addRow(rapporto_per_dip.get(i));
 		}
 		final JTable cat_per_dip=new JTable(model_per_dip);
+		cat_per_dip.setName("RAPPORTO PER DIPENDENTE");
 		JScrollPane s1= new JScrollPane(cat_per_dip);
 		catalogo_per_dip.setLayout(new GridLayout(1,1));
 		catalogo_per_dip.add(s1);	
@@ -94,6 +109,7 @@ public class CapoProgettoView extends JFrame {
 			model_per_prog.addRow(rapporto_per_prog.get(j));
 		}
 		final JTable cat_per_prog=new JTable(model_per_prog);
+		cat_per_prog.setName("RAPPORTO PER PROGETTO");
 		JScrollPane s2= new JScrollPane(cat_per_prog);
 		catalogo_per_prog.setLayout(new GridLayout(1,1));
 		catalogo_per_prog.add(s2);	
