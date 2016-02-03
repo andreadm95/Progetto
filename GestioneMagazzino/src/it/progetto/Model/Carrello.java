@@ -91,7 +91,7 @@ private static HashMap<Prodotto,Integer> ListaProdottiAcquisto;
 			SpesaTotale=SpesaTotale+key.getPrezzo();}
 		}
 		String troncamento= String.format("%.2f", SpesaTotale);
-		return troncamento;
+		return troncamento.replace(",", ".");
 	}
 	
 	public int getCodMagazzino(){

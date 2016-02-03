@@ -144,10 +144,5 @@ public class DipendenteBtnListener implements ActionListener{
 		else if("APRICARRELLO".equals(e.getActionCommand())){
 			new CarrelloView();
 		}
-		else if("LOGOUT".equals(e.getActionCommand())){
-			System.exit(0);
-			new LoginView();
-		}
-
 }
 }

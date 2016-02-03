@@ -106,4 +106,8 @@ public class Prodotto {
 	public int verificaAppartenenza(){
 		return ProdottoDAO.getInstance().verificaMag(getIdProdotto());
 	}
+	
+	public void salvaProdOrdinato(int codordine, int quantitàordinata){
+		ProdottoDAO.getInstance().SalvaProdottoOrdinato(getIdProdotto(), codordine, quantitàordinata);
+	}
 }

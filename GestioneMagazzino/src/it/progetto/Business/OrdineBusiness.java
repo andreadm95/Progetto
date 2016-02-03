@@ -15,9 +15,9 @@ public class OrdineBusiness {
 		return instance;
 	}
 	
-	public boolean salvaOrdine(String progetto,float spesa,int codmagazzino,int cod_dip,Vector<String[]> lista_prodotti){
-		Ordine q= new Ordine(progetto,spesa,codmagazzino,cod_dip,lista_prodotti);
-		return q.SalvaOrdine(lista_prodotti, codmagazzino, cod_dip, progetto,spesa);
+	public boolean salvaOrdine(int codprogetto,float spesa,int codmagazzino,int cod_dip){
+		Ordine q= new Ordine(codprogetto,spesa,codmagazzino,cod_dip);
+		return q.SalvaOrdine(codmagazzino, cod_dip, codprogetto,spesa);
 	}
 	
 	public Vector<String[]> recuperoListaProdotti(int id_ordine){
@@ -29,4 +29,9 @@ public class OrdineBusiness {
 		Ordine q= new Ordine(id_ordine);
 		return q.EvadiOrdine(id_ordine);
 		}
+	
+	public int recuperaidOrdinedaSalvare(){
+		Ordine q=new Ordine();
+		return q.recuperoOrdineDaSalvare();
+	}
 }

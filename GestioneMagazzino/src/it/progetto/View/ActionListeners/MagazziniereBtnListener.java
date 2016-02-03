@@ -54,7 +54,7 @@ public class MagazziniereBtnListener implements ActionListener{
 			JTable tabella=(JTable) finestramag.findDescendentByName(finestramag, "catalogo_ordini");
 			try{
 				int riga=tabella.getSelectedRow();
-				int id_ordine=(int) tabella.getValueAt(riga, 0);
+				int id_ordine=Integer.parseInt((String) tabella.getValueAt(riga, 0));
 				 new ListaOrdineView(id_ordine);
 				}
 			catch(NullPointerException q){JOptionPane.showMessageDialog(finestramag, "Selezionare una riga.");}

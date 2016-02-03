@@ -1,10 +1,7 @@
 package it.progetto.DAO;
 
 import it.progetto.DbConnection.DbConnection;
-import java.util.ArrayList;
 import java.util.Vector;
-
-import it.progetto.Model.Prodotto;
 
 public class ProdottoDAO {
 	
@@ -29,5 +26,10 @@ public class ProdottoDAO {
 		Vector<String[]> result=DbConnection.getInstance().eseguiQuery("SELECT * FROM Appartiene WHERE CodProdotto=\""+idProdotto+"\"");
 		int mag_appartenenza= Integer.parseInt(result.get(0)[1]);
 		return mag_appartenenza;
+	}
+	
+	public void SalvaProdottoOrdinato(int codprodotto,int codordine, int quantit‡ordinata){
+		boolean inserisciprodotti= DbConnection.getInstance().eseguiAggiornamento("INSERT INTO CompostoDa(CodProdotto,CodOrdine,Quantit‡Ordinata) VALUES("+codprodotto+","+codordine+","+quantit‡ordinata+"\"");
+		boolean riduciqnt=DbConnection.getInstance().eseguiAggiornamento("UPDATE Prodotto SET Prodotto.Disponibilit‡=Prodotto.Disponibilit‡-1 where Prodotto.IdProdotto=\""+codprodotto+"\"");
 	}
 }

@@ -65,10 +65,6 @@ public class DipendenteView extends JFrame {
 		JLabel text= new JLabel("Accesso effettuato come: "+dip.getNome()+" "+dip.getCognome()+".");
 		c.add(text, BorderLayout.NORTH);
 		DipendenteBtnListener listener=new DipendenteBtnListener(this);
-		JButton logout=new JButton("LOGOUT");
-		logout.setActionCommand("LOGOUT");
-		logout.addActionListener(listener);
-		c.add(logout, BorderLayout.NORTH);
 		Vector<String[]> head= new Vector<String[]>();
 		String[] columnNames = {"Id","Nome", "Categoria", "Descrizione","Disponibilità","MaxOrdinabile","Fornitore","Produttore","Prezzo"};
 		head.addElement(columnNames);
