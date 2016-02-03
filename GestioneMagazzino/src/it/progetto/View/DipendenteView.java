@@ -64,10 +64,14 @@ public class DipendenteView extends JFrame {
 		Dipendente dip=(Dipendente) Sessione.getInstance().session.get("utente_corrente");
 		JLabel text= new JLabel("Accesso effettuato come: "+dip.getNome()+" "+dip.getCognome()+".");
 		c.add(text, BorderLayout.NORTH);
+		DipendenteBtnListener listener=new DipendenteBtnListener(this);
+		JButton logout=new JButton("LOGOUT");
+		logout.setActionCommand("LOGOUT");
+		logout.addActionListener(listener);
+		c.add(logout, BorderLayout.NORTH);
 		Vector<String[]> head= new Vector<String[]>();
 		String[] columnNames = {"Id","Nome", "Categoria", "Descrizione","Disponibilità","MaxOrdinabile","Fornitore","Produttore","Prezzo"};
 		head.addElement(columnNames);
-		DipendenteBtnListener listener=new DipendenteBtnListener(this);
 		//organizzo catalogo vicino
 		DefaultTableModel model1= new DefaultTableModel() {
 			

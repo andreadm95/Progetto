@@ -16,6 +16,7 @@ import javax.swing.JTable;
 import it.progetto.Model.Carrello;
 import it.progetto.View.CarrelloView;
 import it.progetto.View.DipendenteView;
+import it.progetto.View.LoginView;
 
 public class DipendenteBtnListener implements ActionListener{
 	
@@ -142,6 +143,10 @@ public class DipendenteBtnListener implements ActionListener{
 		}
 		else if("APRICARRELLO".equals(e.getActionCommand())){
 			new CarrelloView();
+		}
+		else if("LOGOUT".equals(e.getActionCommand())){
+			System.exit(0);
+			new LoginView();
 		}
 
 }
