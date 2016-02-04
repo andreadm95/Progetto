@@ -12,7 +12,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import it.progetto.Model.Magazzino;
+import it.progetto.Business.MagazzinoBusiness;
 import it.progetto.View.ActionListeners.LoginBtnListener;
 
 public class OspiteView extends JFrame {
@@ -31,7 +31,7 @@ public class OspiteView extends JFrame {
 		    }
 		};
 		model.setColumnIdentifiers(columnNames);
-		Vector<String[]> lista=Magazzino.getInstance().getListaProdottiTot();
+		Vector<String[]> lista=MagazzinoBusiness.getInstance().getListaProdottiTot();
 		for(int i=0;i<lista.size();i++){
 		model.addRow(lista.get(i));}
 		final JTable catalogo= new JTable(model);

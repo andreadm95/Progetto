@@ -4,7 +4,6 @@ import java.util.Vector;
 
 import it.progetto.DbConnection.DbConnection;
 import it.progetto.Model.Dipendente;
-import it.progetto.Model.UtenteRegistrato;
 
 public class DipendenteDAO {
 
@@ -67,9 +66,10 @@ private static DipendenteDAO instance;
 		return null;}
 	}
 
-	public void aggiornaSpesa(int id, float spesa) {
+	public boolean aggiornaSpesa(int id, float spesa) {
 		// TODO Auto-generated method stub
 		boolean result=DbConnection.getInstance().eseguiAggiornamento("UPDATE Dipendente SET Spesa=Spesa+"+spesa+"WHERE idDipendente=\""+ id +"\"");
+		return result;
 	} 
 
 }

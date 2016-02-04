@@ -47,8 +47,8 @@ public class Progetto {
 		return ProgettoDAO.getInstance().recuperaid(nomeprogetto);
 	}
 
-	public void aggiornaSpesa(float spesa) {
+	public boolean aggiornaSpesa(float spesa) {
 		// TODO Auto-generated method stub
-		ProgettoDAO.getInstance().aggiornaSpesaProgetto(getId(), spesa);
+		return ProgettoDAO.getInstance().aggiornaSpesaProgetto(getId(), spesa);
 	}
 }

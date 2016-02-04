@@ -17,8 +17,8 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
+import it.progetto.Business.MagazzinoBusiness;
 import it.progetto.Model.Magazziniere;
-import it.progetto.Model.Magazzino;
 import it.progetto.Model.Sessione;
 import it.progetto.View.ActionListeners.MagazziniereBtnListener;
 
@@ -95,7 +95,7 @@ public class MagazziniereView extends JFrame{
 		};
 		model_ordine.setColumnIdentifiers(columnNames_ordine);
 		Vector<String[]> lista_ordini=new Vector<String[]>();
-		lista_ordini= Magazzino.getInstance().getListaOrdiniPendenti(mag.getMagazzinoAppartenenza());
+		lista_ordini= MagazzinoBusiness.getInstance().getListaOrdiniPendenti(mag.getMagazzinoAppartenenza());
 		try{
 			for(int i=0;i<lista_ordini.size();i++){
 				model_ordine.addRow(lista_ordini.get(i));}
@@ -123,7 +123,7 @@ public class MagazziniereView extends JFrame{
 		    }
 		};
 		model_rif.setColumnIdentifiers(columnNames);
-		Vector<String[]> lista= Magazzino.getInstance().getListaProdottiVicini(mag.getMagazzinoAppartenenza());
+		Vector<String[]> lista= MagazzinoBusiness.getInstance().getListaProdottiVicini(mag.getMagazzinoAppartenenza());
 		for(int i=0;i<lista.size();i++){
 			model_rif.addRow(lista.get(i));}
 		final JTable cat_rif= new JTable(model_rif);

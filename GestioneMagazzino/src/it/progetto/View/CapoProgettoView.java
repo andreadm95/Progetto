@@ -67,7 +67,7 @@ public class CapoProgettoView extends JFrame {
 		c.add(nord, BorderLayout.NORTH);
 		//table organizzato per dipendente
 		Vector<String[]> head_dip= new Vector<String[]>();
-		String[] columnNames_dip = {"IdDipendente","CodMagazzino","Spesa"};
+		String[] columnNames_dip = {"Nome","Cognome","Spesa"};
 		head_dip.addElement(columnNames_dip);
 		DefaultTableModel model_per_dip= new DefaultTableModel() {
 			

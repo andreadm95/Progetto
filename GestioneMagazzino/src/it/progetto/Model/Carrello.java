@@ -8,8 +8,6 @@ import java.util.Vector;
 
 import it.progetto.Business.ProdottoBusiness;
 
-
-
 public class Carrello {
 
 private static Carrello instance;

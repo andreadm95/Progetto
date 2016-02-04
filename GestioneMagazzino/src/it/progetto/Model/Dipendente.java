@@ -47,9 +47,9 @@ public class Dipendente extends UtenteRegistrato {
 		return DipendenteDAO.getInstance().fornisciProgettiDelDipendente(id_dip);
 	}
 
-	public void aggiornaSpesa(float spesa) {
+	public boolean aggiornaSpesa(float spesa) {
 		// TODO Auto-generated method stub
-		DipendenteDAO.getInstance().aggiornaSpesa(getId(),spesa);
+		return DipendenteDAO.getInstance().aggiornaSpesa(getId(),spesa);
 	}
 	
 }

@@ -1,11 +1,9 @@
 package it.progetto.DAO;
 
-import java.util.ArrayList;
 import java.util.Vector;
 
 import it.progetto.DbConnection.DbConnection;
 import it.progetto.Model.CapoProgetto;
-import it.progetto.Model.UtenteRegistrato;
 
 public class CapoProgettoDAO {
 
@@ -46,14 +44,6 @@ private static CapoProgettoDAO instance;
 			}
 	}
 	
-//	public boolean PiùDiDueProgetti(int idCapo){
-//		Vector<String[]> result=DbConnection.getInstance().eseguiQuery("SELECT * FROM progetto WHERE CodCapoProgetto=\""+idCapo+"\"");
-//		if(result.size()<2){
-//			return false;
-//		}
-//		else{return true;}
-//	}
-	
 	public Vector<String[]> OrdinaSpeseProgetto(int idCapo){
 		Vector<String[]> result=DbConnection.getInstance().eseguiQuery("SELECT * FROM progetto WHERE CodCapoProgetto=\""+idCapo+"\" ORDER BY idProgetto");
 		if(result.size()!=0){
@@ -63,9 +53,8 @@ private static CapoProgettoDAO instance;
 			}
 		
 	}
-	
 	public Vector<String[]> OrdinaSpeseDipendente(int idCapo){
-		Vector<String[]> ricercaperdip=DbConnection.getInstance().eseguiQuery("SELECT distinct Dipendente.* FROM dipendente,lavorasu,progetto WHERE CodCapoProgetto=\""+idCapo+"\" and CodProgetto=IdProgetto and idDipendente=codDipendente");
-			return ricercaperdip;
+		Vector<String[]> ricercaperdip=DbConnection.getInstance().eseguiQuery("SELECT distinct UtenteRegistrato.Nome,UtenteRegistrato.Cognome,Dipendente.spesa FROM utenteregistrato,dipendente,lavorasu,progetto WHERE CodCapoProgetto=\""+idCapo+"\" and CodProgetto=IdProgetto and idDipendente=codDipendente and idDipendente=idutenteregistrato");
+		return ricercaperdip;
 			}
 }

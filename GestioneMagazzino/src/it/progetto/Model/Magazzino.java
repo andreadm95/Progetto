@@ -6,29 +6,36 @@ import it.progetto.DAO.MagazzinoDAO;
 import it.progetto.DAO.OrdineDAO;
 
 public class Magazzino {
-
-private static Magazzino instance;
 	
-	public static Magazzino getInstance() {
-		   if(instance == null){
-			   instance = new Magazzino();
-			   }
-		   return instance;
+private int idMagazzino;
+
+	public Magazzino(){}
+	
+	public Magazzino(int id){
+		idMagazzino=id;
 	}
 	
 	public Vector<String[]> getListaProdottiTot(){
 		return MagazzinoDAO.getInstance().fornisciCatalogo();
 	}
 	 
-	public Vector<String[]> getListaProdottiVicini(int sede) {
-		return MagazzinoDAO.getInstance().FornisciCatalogoVicino(sede);
+	public Vector<String[]> getListaProdottiVicini() {
+		return MagazzinoDAO.getInstance().FornisciCatalogoVicino(getIdMagazzino());
 	}
 	
-	public Vector<String[]> getListaProdottiLontano(int sede) {
-		return MagazzinoDAO.getInstance().FornisciCatalogoLontano(sede);
+	public Vector<String[]> getListaProdottiLontano() {
+		return MagazzinoDAO.getInstance().FornisciCatalogoLontano(getIdMagazzino());
 	}
 
-	public Vector<String[]> getListaOrdiniPendenti(int codmag) {
-		return OrdineDAO.getInstance().fornisciOrdiniPendenti(codmag);
+	public Vector<String[]> getListaOrdiniPendenti() {
+		return OrdineDAO.getInstance().fornisciOrdiniPendenti(getIdMagazzino());
+	}
+
+	public int getIdMagazzino() {
+		return idMagazzino;
+	}
+
+	public void setIdMagazzino(int idMagazzino) {
+		this.idMagazzino = idMagazzino;
 	}
 }

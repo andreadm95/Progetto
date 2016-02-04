@@ -41,16 +41,22 @@ public class Sistema {
 		}
 	}
 	
-	public void SalvaOrdine(String progetto,String costo,int codmagazzino,int cod_dip,Vector<String[]> listaprodotti){
+	public boolean SalvaOrdine(String progetto,String costo,int codmagazzino,int cod_dip,Vector<String[]> listaprodotti){
 		int idprogetto=ProgettoBusiness.getInstance().Recuperoid(progetto);
 		float spesa=Float.parseFloat(costo);
-		OrdineBusiness.getInstance().salvaOrdine(idprogetto,spesa, codmagazzino, cod_dip);
-		int codordine=OrdineBusiness.getInstance().recuperaidOrdinedaSalvare();
-		for(int i=0;i<listaprodotti.size();i++){
-			String[] prodotto=listaprodotti.get(i);
-			ProdottoBusiness.getInstance().salvaProdotto(prodotto, codordine);
+		if(OrdineBusiness.getInstance().salvaOrdine(idprogetto,spesa, codmagazzino, cod_dip)){
+			int codordine=OrdineBusiness.getInstance().recuperaidOrdinedaSalvare();
+			for(int i=0;i<listaprodotti.size();i++){
+				String[] prodotto=listaprodotti.get(i);
+				ProdottoBusiness.getInstance().salvaProdotto(prodotto, codordine);}
+			if(ProgettoBusiness.getInstance().aggiornaSpesa(idprogetto, spesa)){
+				if(DipendenteBusiness.getInstance().aggiornaSpesa(cod_dip,spesa)){
+					return true;
+				}
+				else return false;
+			}
+			else{return false;}
 		}
-		ProgettoBusiness.getInstance().aggiornaSpesa(idprogetto, spesa);
-		DipendenteBusiness.getInstance().aggiornaSpesa(cod_dip,spesa);
+		else{return false;}
 	}
 }

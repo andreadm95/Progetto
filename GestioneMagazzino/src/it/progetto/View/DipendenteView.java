@@ -16,8 +16,8 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
+import it.progetto.Business.MagazzinoBusiness;
 import it.progetto.Model.Dipendente;
-import it.progetto.Model.Magazzino;
 import it.progetto.Model.Sessione;
 import it.progetto.View.ActionListeners.DipendenteBtnListener;
 
@@ -80,7 +80,7 @@ public class DipendenteView extends JFrame {
 		    }
 		};
 		model1.setColumnIdentifiers(columnNames);
-		Vector<String[]> lista= Magazzino.getInstance().getListaProdottiVicini(dip.getId());
+		Vector<String[]> lista= MagazzinoBusiness.getInstance().getListaProdottiVicini(dip.getId());
 		for(int i=0; i<lista.size();i++){
 			model1.addRow(lista.get(i));}
 		final JTable catalogovicino= new JTable(model1);
@@ -103,7 +103,7 @@ public class DipendenteView extends JFrame {
 		    }
 		};
 		model2.setColumnIdentifiers(columnNames);
-		Vector<String[]> lista2= Magazzino.getInstance().getListaProdottiLontano(dip.getId());
+		Vector<String[]> lista2= MagazzinoBusiness.getInstance().getListaProdottiLontano(dip.getId());
 		for(int j=0; j<lista2.size();j++){
 			model2.addRow(lista2.get(j));}
 		final JTable catalogolontano= new JTable(model2);

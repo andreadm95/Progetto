@@ -16,7 +16,6 @@ import javax.swing.JTable;
 import it.progetto.Model.Carrello;
 import it.progetto.View.CarrelloView;
 import it.progetto.View.DipendenteView;
-import it.progetto.View.LoginView;
 
 public class DipendenteBtnListener implements ActionListener{
 	

@@ -18,8 +18,8 @@ public class ProgettoBusiness {
 		return a.recuperoid(progetto);
 	}
 	
-	public void aggiornaSpesa(int idprogetto,float spesa){
+	public boolean aggiornaSpesa(int idprogetto,float spesa){
 		Progetto a=new Progetto(idprogetto);
-		a.aggiornaSpesa(spesa);
+		return a.aggiornaSpesa(spesa);
 	}
 }
