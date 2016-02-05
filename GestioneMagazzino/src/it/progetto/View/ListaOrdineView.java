@@ -25,7 +25,7 @@ public class ListaOrdineView extends JFrame {
 		JLabel text= new JLabel("Accesso effettuato come: "+mag.getNome()+" "+mag.getCognome()+".");
 		c.add(text, BorderLayout.NORTH);
 		Vector<String[]> head= new Vector<String[]>();
-		String[] columnNames = {"Id","Nome", "Categoria", "Descrizione","Disponibilità","MaxOrdinabile","Fornitore","Produttore","Prezzo","QntOrdinata"};
+		String[] columnNames = {"Id","Nome", "Categoria", "Descrizione","Fornitore","Produttore","Prezzo","QntOrdinata"};
 		head.addElement(columnNames);
 		DefaultTableModel model= new DefaultTableModel() {
 			

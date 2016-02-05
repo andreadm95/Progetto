@@ -4,13 +4,10 @@ import java.util.Vector;
 
 import javax.swing.JTable;
 
-import it.progetto.Business.CapoProgettoBusiness;
 import it.progetto.Business.DipendenteBusiness;
-import it.progetto.Business.MagazziniereBusiness;
 import it.progetto.Business.OrdineBusiness;
 import it.progetto.Business.ProdottoBusiness;
 import it.progetto.Business.ProgettoBusiness;
-import it.progetto.Business.UtenteRegistratoBusiness;
 
 public class Sistema {
 	
@@ -21,15 +18,6 @@ public class Sistema {
 			   instance = new Sistema();
 			   }
 		   return instance;
-	}
-	
-	public void Autenticazione(String username, String password){
-		boolean UtenteEsiste= UtenteRegistratoBusiness.getInstance().verificaLogin(username,password);
-		if (UtenteEsiste){
-			if(DipendenteBusiness.getInstance().isDipendente(username, password)){DipendenteBusiness.getInstance().RecuperoInfo(username,password);}
-			else if(MagazziniereBusiness.getInstance().isMagazziniere(username, password)){MagazziniereBusiness.getInstance().RecuperoInfo(username, password);}
-			else {CapoProgettoBusiness.getInstance().RecuperoInfo(username, password);}
-		}
 	}
 	
 	public void GeneraPdf(JTable dati){
@@ -44,6 +32,8 @@ public class Sistema {
 	public boolean SalvaOrdine(String progetto,String costo,int codmagazzino,int cod_dip,Vector<String[]> listaprodotti){
 		int idprogetto=ProgettoBusiness.getInstance().Recuperoid(progetto);
 		float spesa=Float.parseFloat(costo);
+		//Se ordina da magazzino lontano ci aggiunge il costo di spedizione
+		if(Integer.parseInt(listaprodotti.get(0)[0])!=cod_dip){spesa+=3.99;}
 		if(OrdineBusiness.getInstance().salvaOrdine(idprogetto,spesa, codmagazzino, cod_dip)){
 			int codordine=OrdineBusiness.getInstance().recuperaidOrdinedaSalvare();
 			for(int i=0;i<listaprodotti.size();i++){

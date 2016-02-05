@@ -38,7 +38,7 @@ private static OrdineDAO instance;
 
 	public Vector<String[]> fornisciListaProdOrdinati(int id_ordine) {
 		// TODO Auto-generated method stub
-		Vector<String[]> result=DbConnection.getInstance().eseguiQuery("select Prodotto.*,CompostoDa.Quantit‡Ordinata from prodotto INNER JOIN compostoda ON CodProdotto=idprodotto where CodOrdine=\""+id_ordine+"\"");
+		Vector<String[]> result=DbConnection.getInstance().eseguiQuery("select Prodotto.idProdotto,Prodotto.Nome,Prodotto.Categoria,Prodotto.Descrizione,Prodotto.Fornitore,Prodotto.Produttore,Prodotto.Prezzo,CompostoDa.Quantit‡Ordinata from prodotto INNER JOIN compostoda ON CodProdotto=idprodotto where CodOrdine=\""+id_ordine+"\"");
 		return result;	
 	}
 	

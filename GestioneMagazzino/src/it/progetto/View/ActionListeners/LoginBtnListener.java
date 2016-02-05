@@ -9,7 +9,6 @@ import it.progetto.Model.CapoProgetto;
 import it.progetto.Model.Dipendente;
 import it.progetto.Model.Magazziniere;
 import it.progetto.Model.Sessione;
-import it.progetto.Model.Sistema;
 import it.progetto.View.CapoProgettoView;
 import it.progetto.View.DipendenteView;
 import it.progetto.View.LoginView;
@@ -36,7 +35,7 @@ public class LoginBtnListener implements ActionListener{
 		if("REGISTRATO".equals(e.getActionCommand())){
 			String username = finestralogin.username.getText();
 			String password = finestralogin.password.getText();
-			Sistema.getInstance().Autenticazione(username, password);
+			Sessione.getInstance().Autenticazione(username, password);
 			if(Sessione.getInstance().session.get("utente_corrente") instanceof Dipendente){
 				finestralogin.setVisible(false);
 				new DipendenteView();}

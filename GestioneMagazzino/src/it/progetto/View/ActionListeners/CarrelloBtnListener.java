@@ -79,24 +79,26 @@ public class CarrelloBtnListener implements ActionListener{
 			spesa.setText("La spesa totale è:"+Carrello.getInstance().calcoloSpesaTotale());
 		}
 		else if("CONFERMA".equals(e.getActionCommand())){
-			Dipendente dip=(Dipendente) Sessione.getInstance().session.get("utente_corrente");
-			Vector<String> progetti= new Vector<String>(dip.progettiDipendente(dip.getId()));
-			JComboBox<String> scelta_progetto= new JComboBox<>(progetti);
-			JPanel pannello= new JPanel(new FlowLayout());
-			JLabel text= new JLabel("Selezionare il progetto su cui scaricare la spesa:");
-			pannello.add(text);
-			pannello.add(scelta_progetto);
-			int result= JOptionPane.showOptionDialog(null, pannello, null, JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
-			if(result==0){
-				String progetto_scelto= (String) scelta_progetto.getSelectedItem();
-				if(Sistema.getInstance().SalvaOrdine(progetto_scelto, Carrello.getInstance().calcoloSpesaTotale(), Carrello.getInstance().getCodMagazzino(), dip.getId(), Carrello.getInstance().getListaProdottiAcquisto())){
-				JTable dati=(JTable) finestra.findDescendentByName(finestra, "lista_prodotti");
-				Sistema.getInstance().GeneraPdf(dati);
+			JTable tabella=(JTable) finestra.findDescendentByName(finestra, "lista_prodotti");
+			if(tabella.getRowCount()==0){JOptionPane.showMessageDialog(finestra, "Attenzione!Carrello vuoto.");}
+			else{
+				Dipendente dip=(Dipendente) Sessione.getInstance().session.get("utente_corrente");
+				Vector<String> progetti= new Vector<String>(dip.progettiDipendente(dip.getId()));
+				JComboBox<String> scelta_progetto= new JComboBox<>(progetti);
+				JPanel pannello= new JPanel(new FlowLayout());
+				JLabel text= new JLabel("Selezionare il progetto su cui scaricare la spesa:");
+				pannello.add(text);
+				pannello.add(scelta_progetto);
+				int result= JOptionPane.showOptionDialog(null, pannello, null, JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
+				if(result==0){
+					String progetto_scelto= (String) scelta_progetto.getSelectedItem();
+					if(Sistema.getInstance().SalvaOrdine(progetto_scelto, Carrello.getInstance().calcoloSpesaTotale(), Carrello.getInstance().getCodMagazzino(), dip.getId(), Carrello.getInstance().getListaProdottiAcquisto())){
+					JTable dati=(JTable) finestra.findDescendentByName(finestra, "lista_prodotti");
+					Sistema.getInstance().GeneraPdf(dati);
+					}
+					else{JOptionPane.showMessageDialog(finestra, "Impossibile salvare l'ordine.");}
 				}
-				else{JOptionPane.showMessageDialog(finestra, "Impossibile salvare l'ordine.");}
-			}
-			
-			
+			}	
 		}
 	}
 

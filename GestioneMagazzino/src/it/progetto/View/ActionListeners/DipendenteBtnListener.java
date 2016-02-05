@@ -32,6 +32,7 @@ public class DipendenteBtnListener implements ActionListener{
 		// TODO Auto-generated method stub
 		
 		if("LONTANO".equals(e.getActionCommand())){
+			JOptionPane.showMessageDialog(finestradip, "Attenzione! Ordinando dal magazzino lontano, la spesa risultante dovrà essere incrementata con i costi di spedizione");
 			BorderLayout layout=(BorderLayout) finestradip.getContentPane().getLayout();
 			finestradip.getContentPane().remove(layout.getLayoutComponent(BorderLayout.CENTER));
 			finestradip.getContentPane().add(finestradip.getCatlontano(),BorderLayout.CENTER);
