@@ -38,7 +38,8 @@ public class Sistema {
 			int codordine=OrdineBusiness.getInstance().recuperaidOrdinedaSalvare();
 			for(int i=0;i<listaprodotti.size();i++){
 				String[] prodotto=listaprodotti.get(i);
-				ProdottoBusiness.getInstance().salvaProdotto(prodotto, codordine);}
+				ProdottoBusiness.getInstance().salvaProdotto(prodotto, codordine);
+			}
 			if(ProgettoBusiness.getInstance().aggiornaSpesa(idprogetto, spesa)){
 				if(DipendenteBusiness.getInstance().aggiornaSpesa(cod_dip,spesa)){
 					return true;

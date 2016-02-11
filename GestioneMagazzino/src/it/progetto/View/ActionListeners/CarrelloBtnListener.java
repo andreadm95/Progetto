@@ -18,6 +18,7 @@ import it.progetto.Model.Dipendente;
 import it.progetto.Model.Sessione;
 import it.progetto.Model.Sistema;
 import it.progetto.View.CarrelloView;
+import it.progetto.View.DipendenteView;
 
 public class CarrelloBtnListener implements ActionListener{
 	
@@ -95,11 +96,14 @@ public class CarrelloBtnListener implements ActionListener{
 					if(Sistema.getInstance().SalvaOrdine(progetto_scelto, Carrello.getInstance().calcoloSpesaTotale(), Carrello.getInstance().getCodMagazzino(), dip.getId(), Carrello.getInstance().getListaProdottiAcquisto())){
 					JTable dati=(JTable) finestra.findDescendentByName(finestra, "lista_prodotti");
 					Sistema.getInstance().GeneraPdf(dati);
+					JOptionPane.showMessageDialog(finestra, "Ordine salvato correttamente");
+					Carrello.getInstance().pulisciCarrello();
+					finestra.setVisible(false);
+					new DipendenteView();
 					}
 					else{JOptionPane.showMessageDialog(finestra, "Impossibile salvare l'ordine.");}
 				}
 			}	
 		}
 	}
-
 }

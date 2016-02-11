@@ -100,4 +100,8 @@ private static HashMap<Prodotto,Integer> ListaProdottiAcquisto;
 		return mag_ordine;
 		
 	}
+	
+	public void pulisciCarrello(){
+		ListaProdottiAcquisto.clear();
+	}
 }

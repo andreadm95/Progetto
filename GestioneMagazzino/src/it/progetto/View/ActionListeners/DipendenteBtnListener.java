@@ -142,6 +142,7 @@ public class DipendenteBtnListener implements ActionListener{
 			catch(ArrayIndexOutOfBoundsException q){JOptionPane.showMessageDialog(finestradip, "Selezionare una riga.");}
 		}
 		else if("APRICARRELLO".equals(e.getActionCommand())){
+			finestradip.setVisible(false);
 			new CarrelloView();
 		}
 }
