@@ -81,6 +81,7 @@ public class DipendenteView extends JFrame {
 		};
 		model1.setColumnIdentifiers(columnNames);
 		Vector<String[]> lista= MagazzinoBusiness.getInstance().getListaProdottiVicini(dip.getId());
+		try{
 		for(int i=0; i<lista.size();i++){
 			model1.addRow(lista.get(i));}
 		final JTable catalogovicino= new JTable(model1);
@@ -89,7 +90,11 @@ public class DipendenteView extends JFrame {
 		JScrollPane s1=new JScrollPane(catalogovicino);
 		c.add(s1, BorderLayout.CENTER);
 		catvicino.setLayout(new GridLayout(1,1));
-		catvicino.add(s1);
+		catvicino.add(s1);}
+		catch(NullPointerException e){
+			JLabel text2= new JLabel("Catalogo vuoto");
+			catvicino.add(text2);
+		}
 		c.add(catvicino, BorderLayout.CENTER);
 		//organizzo catalogo lontano
 		DefaultTableModel model2= new DefaultTableModel() {
@@ -104,6 +109,7 @@ public class DipendenteView extends JFrame {
 		};
 		model2.setColumnIdentifiers(columnNames);
 		Vector<String[]> lista2= MagazzinoBusiness.getInstance().getListaProdottiLontano(dip.getId());
+		try{
 		for(int j=0; j<lista2.size();j++){
 			model2.addRow(lista2.get(j));}
 		final JTable catalogolontano= new JTable(model2);
@@ -111,7 +117,11 @@ public class DipendenteView extends JFrame {
 		catalogolontano.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		JScrollPane s2=new JScrollPane(catalogolontano);
 		catlontano.setLayout(new GridLayout(1,1));
-		catlontano.add(s2);
+		catlontano.add(s2);}
+		catch(NullPointerException e){
+			JLabel text2= new JLabel("Catalogo vuoto");
+			catlontano.add(text2);
+		}
 		//pulsantiera primaria
 		JButton altrocat=new JButton("Altro Catalogo");
 		altrocat.setActionCommand("LONTANO");
