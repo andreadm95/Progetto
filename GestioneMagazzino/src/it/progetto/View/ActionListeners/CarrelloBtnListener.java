@@ -69,6 +69,7 @@ public class CarrelloBtnListener implements ActionListener{
 		else if("RIMUOVI".equals(e.getActionCommand())){
 			JTable tabella=(JTable) finestra.findDescendentByName(finestra, "lista_prodotti");
 			int riga=tabella.getSelectedRow();
+			try{
 			int n_col=tabella.getColumnCount();
 			ArrayList<String> prodotto= new ArrayList<String>();
 			for(int i=0;i<n_col;i++){prodotto.add((String) tabella.getValueAt(riga, i));}
@@ -77,7 +78,8 @@ public class CarrelloBtnListener implements ActionListener{
 			model.removeRow(riga);
 			tabella.setModel(model);
 			JLabel spesa= (JLabel) finestra.findDescendentByName(finestra, "Spesa");
-			spesa.setText("La spesa totale è:"+Carrello.getInstance().calcoloSpesaTotale());
+			spesa.setText("La spesa totale è:"+Carrello.getInstance().calcoloSpesaTotale());}
+			catch(ArrayIndexOutOfBoundsException q){JOptionPane.showMessageDialog(finestra, "Selezionare una riga.");}
 		}
 		else if("CONFERMA".equals(e.getActionCommand())){
 			JTable tabella=(JTable) finestra.findDescendentByName(finestra, "lista_prodotti");
@@ -109,6 +111,10 @@ public class CarrelloBtnListener implements ActionListener{
 					else{JOptionPane.showMessageDialog(finestra, "Impossibile salvare l'ordine.");}
 				}
 			}	
+		}
+		else if("INDIETRO".equals(e.getActionCommand())){
+			finestra.setVisible(false);
+			new DipendenteView();
 		}
 	}
 }

@@ -78,16 +78,20 @@ public class CarrelloView extends JFrame{
 		JButton conferma= new JButton("Conferma Ordine");
 		conferma.setActionCommand("CONFERMA");
 		conferma.addActionListener(listener);
+		JButton indietro= new JButton("Torna al catalogo");
+		indietro.setActionCommand("INDIETRO");
+		indietro.addActionListener(listener);
 		JLabel spesa= new JLabel("La spesa totale è:"+Carrello.getInstance().calcoloSpesaTotale());
 		spesa.setName("Spesa");
 		pulsantiera.add(modifica_qnt);
 		pulsantiera.add(rimuovi);
 		pulsantiera.add(conferma);
+		pulsantiera.add(indietro);
 		pulsantiera.add(spesa);
 		c.add(pulsantiera, BorderLayout.EAST);
 		
 		setSize(800,800);
-		setDefaultCloseOperation(HIDE_ON_CLOSE);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
 	}
 }
