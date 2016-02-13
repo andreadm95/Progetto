@@ -18,8 +18,11 @@ private static OrdineDAO instance;
 	}
 
 	public Vector<String[]> fornisciOrdiniPendenti(int idmag) {
-		Vector<String[]> result=DbConnection.getInstance().eseguiQuery("select * from Ordine where Evaso=false and CodMagazzino=\""+idmag+"\"");
+		Vector<String[]> result=DbConnection.getInstance().eseguiQuery("select distinct Ordine.idOrdine,Progetto.Nome,Ordine.Evaso,UtenteRegistrato.Nome,UtenteRegistrato.Cognome from utenteregistrato,Ordine,progetto where Evaso=false and codDipendente=idutenteregistrato and codProgetto=idProgetto and CodMagazzino=\""+idmag+"\"");
 		if(result.size()!=0){
+			for(int i=0;i<result.size();i++){
+				result.get(i)[2]="Non Evaso";
+			}
 			return result;}
 		else{
 		return null;}

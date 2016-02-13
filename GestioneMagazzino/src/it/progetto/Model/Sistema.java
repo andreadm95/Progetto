@@ -2,8 +2,6 @@ package it.progetto.Model;
 
 import java.util.Vector;
 
-import javax.swing.JTable;
-
 import it.progetto.Business.DipendenteBusiness;
 import it.progetto.Business.OrdineBusiness;
 import it.progetto.Business.ProdottoBusiness;
@@ -18,15 +16,6 @@ public class Sistema {
 			   instance = new Sistema();
 			   }
 		   return instance;
-	}
-	
-	public void GeneraPdf(JTable dati){
-		try{
-			dati.print(JTable.PrintMode.FIT_WIDTH);
-		}
-		catch(java.awt.print.PrinterException e){
-			System.err.format("Impossibile stampare %s%n", e.getMessage());
-		}
 	}
 	
 	public boolean SalvaOrdine(String progetto,String costo,int codmagazzino,int cod_dip,Vector<String[]> listaprodotti){

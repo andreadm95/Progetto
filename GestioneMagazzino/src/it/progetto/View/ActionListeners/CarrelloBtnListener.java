@@ -95,7 +95,12 @@ public class CarrelloBtnListener implements ActionListener{
 					String progetto_scelto= (String) scelta_progetto.getSelectedItem();
 					if(Sistema.getInstance().SalvaOrdine(progetto_scelto, Carrello.getInstance().calcoloSpesaTotale(), Carrello.getInstance().getCodMagazzino(), dip.getId(), Carrello.getInstance().getListaProdottiAcquisto())){
 					JTable dati=(JTable) finestra.findDescendentByName(finestra, "lista_prodotti");
-					Sistema.getInstance().GeneraPdf(dati);
+					try{
+						dati.print(JTable.PrintMode.FIT_WIDTH);
+					}
+					catch(java.awt.print.PrinterException q){
+						System.err.format("Impossibile stampare %s%n", q.getMessage());
+					}
 					JOptionPane.showMessageDialog(finestra, "Ordine salvato correttamente");
 					Carrello.getInstance().pulisciCarrello();
 					finestra.setVisible(false);

@@ -81,7 +81,7 @@ public class MagazziniereView extends JFrame{
 		c.add(pannello_centrale, BorderLayout.CENTER);
 		//organizzo table ordine
 		Vector<String[]> head_ordine= new Vector<String[]>();
-		String[] columnNames_ordine = {"Id","Magazzino", "Dipendente", "Progetto","Evaso"};
+		String[] columnNames_ordine = {"Id Ordine","Progetto", "Evaso", "Nome Dipendente","Cognome Dipendente"};
 		head_ordine.addElement(columnNames_ordine);
 		DefaultTableModel model_ordine= new DefaultTableModel() {
 			

@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JTable;
 
-import it.progetto.Model.Sistema;
 import it.progetto.View.CapoProgettoView;
 
 public class CapoProgettoBtnListener implements ActionListener{
@@ -40,9 +39,21 @@ public class CapoProgettoBtnListener implements ActionListener{
 			JTable tabella1=(JTable) finestracap.findDescendentByName(finestracap, "RAPPORTO PER DIPENDENTE");
 			JTable tabella2=(JTable)finestracap.findDescendentByName(finestracap, "RAPPORTO PER PROGETTO");
 			if(finestracap.getContentPane().isAncestorOf(tabella1)){
-			Sistema.getInstance().GeneraPdf(tabella1);}
+				try{
+					tabella1.print(JTable.PrintMode.FIT_WIDTH);
+				}
+				catch(java.awt.print.PrinterException q){
+					System.err.format("Impossibile stampare %s%n", q.getMessage());
+				}
+			}
 			else if(finestracap.getContentPane().isAncestorOf(tabella2)){
-				Sistema.getInstance().GeneraPdf(tabella2);}
+				try{
+					tabella2.print(JTable.PrintMode.FIT_WIDTH);
+				}
+				catch(java.awt.print.PrinterException q){
+					System.err.format("Impossibile stampare %s%n", q.getMessage());
+				}
+			}
 		}
 	}
 
