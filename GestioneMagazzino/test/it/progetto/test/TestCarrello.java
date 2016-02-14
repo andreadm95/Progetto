@@ -11,9 +11,10 @@ import it.progetto.Model.Carrello;
 
 
 
-public class testCarrello {
+public class TestCarrello {
 	
 	//FIXTURE
+	//Attributi di prodotto
 	//Id,Nome,Categoria,Descrizione,Disponibilità,MaxOrdinabile,Fornitore,Produttore,Prezzo
 	ArrayList<String> prodotto1=new ArrayList<String>();
 	ArrayList<String> prodotto2=new ArrayList<String>();
@@ -48,7 +49,7 @@ public class testCarrello {
 		prodotto3.add("3");
 		prodotto3.add("Risma di carta");
 		prodotto3.add("Cancelleria");
-		prodotto3.add("200 fogli a4");
+		prodotto3.add("500 fogli a4");
 		prodotto3.add("2");
 		prodotto3.add("2");
 		prodotto3.add("qpo@hotmail.it");
