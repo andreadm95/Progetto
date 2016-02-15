@@ -51,7 +51,7 @@ public class MagazziniereBtnListener implements ActionListener{
 			
 		}
 		else if("MOSTRA_ORDINE".equals(e.getActionCommand())){
-			JTable tabella=(JTable) finestramag.findDescendentByName(finestramag, "catalogo_ordini");
+			JTable tabella=(JTable) finestramag.trovaComponentePerNome(finestramag, "catalogo_ordini");
 			try{
 				int riga=tabella.getSelectedRow();
 				int id_ordine=Integer.parseInt((String) tabella.getValueAt(riga, 0));
@@ -61,7 +61,7 @@ public class MagazziniereBtnListener implements ActionListener{
 			
 		}
 		else if("EVADI_ORDINE".equals(e.getActionCommand())){
-			JTable tabella=(JTable) finestramag.findDescendentByName(finestramag, "catalogo_ordini");
+			JTable tabella=(JTable) finestramag.trovaComponentePerNome(finestramag, "catalogo_ordini");
 			try{
 				int riga=tabella.getSelectedRow();
 				int id_ordine=Integer.parseInt((String)tabella.getValueAt(riga, 0));
@@ -73,7 +73,7 @@ public class MagazziniereBtnListener implements ActionListener{
 			catch(NullPointerException q){JOptionPane.showMessageDialog(finestramag, "Selezionare una riga.");}
 		}
 		else if("RIFORNISCI".equals(e.getActionCommand())){
-			JTable tabella=(JTable) finestramag.findDescendentByName(finestramag, "catalogo_rifornimento");
+			JTable tabella=(JTable) finestramag.trovaComponentePerNome(finestramag, "catalogo_rifornimento");
 			try{
 				int riga=tabella.getSelectedRow();
 				JPanel pannello= new JPanel();

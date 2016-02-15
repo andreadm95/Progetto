@@ -35,6 +35,10 @@ public class Dipendente extends UtenteRegistrato {
 		Spesa = spesa;
 	}
 	
+	public int SedeDipendente(){
+		return DipendenteDAO.getInstance().SedeDipendente(this);
+	}
+	
 	public boolean isDipendente(){
 		return DipendenteDAO.getInstance().DipendenteExists(this);	
 	}
@@ -43,8 +47,8 @@ public class Dipendente extends UtenteRegistrato {
 		return DipendenteDAO.getInstance().PrelevaInfo(this);
 	}
 	
-	public Vector<String> progettiDipendente(int id_dip){
-		return DipendenteDAO.getInstance().fornisciProgettiDelDipendente(id_dip);
+	public Vector<String> progettiDipendente(){
+		return DipendenteDAO.getInstance().fornisciProgettiDelDipendente(getId());
 	}
 
 	public boolean aggiornaSpesa(float spesa) {

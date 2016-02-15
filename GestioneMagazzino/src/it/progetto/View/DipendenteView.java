@@ -44,13 +44,13 @@ public class DipendenteView extends JFrame {
 		return catlontano;
 	}
 	
-	public Component findDescendentByName(Container cnt, String name) {
-		  if (cnt == null) return null;
-		  if (name.equals(cnt.getName())) return cnt;
-		  for (int i = 0; i < cnt.getComponentCount(); ++i) {
-		    Component cmp = cnt.getComponent(i);
+	public Component trovaComponentePerNome(Container c, String name) {
+		  if (c == null) return null;
+		  if (name.equals(c.getName())) return c;
+		  for (int i=0; i<c.getComponentCount(); i++) {
+		    Component cmp = c.getComponent(i);
 		    if (cmp instanceof Container) {
-		      cmp = findDescendentByName((Container) cmp, name);
+		      cmp = trovaComponentePerNome((Container) cmp, name);
 		      if (cmp != null) return cmp;
 		    } else if (name.equals(cmp.getName())) return cmp;
 		  }
@@ -80,7 +80,7 @@ public class DipendenteView extends JFrame {
 		    }
 		};
 		model1.setColumnIdentifiers(columnNames);
-		Vector<String[]> lista= MagazzinoBusiness.getInstance().getListaProdottiVicini(dip.getId());
+		Vector<String[]> lista= MagazzinoBusiness.getInstance().getListaProdottiVicini(dip.SedeDipendente());
 		try{
 		for(int i=0; i<lista.size();i++){
 			model1.addRow(lista.get(i));}
@@ -108,7 +108,7 @@ public class DipendenteView extends JFrame {
 		    }
 		};
 		model2.setColumnIdentifiers(columnNames);
-		Vector<String[]> lista2= MagazzinoBusiness.getInstance().getListaProdottiLontano(dip.getId());
+		Vector<String[]> lista2= MagazzinoBusiness.getInstance().getListaProdottiLontano(dip.SedeDipendente());
 		try{
 		for(int j=0; j<lista2.size();j++){
 			model2.addRow(lista2.get(j));}

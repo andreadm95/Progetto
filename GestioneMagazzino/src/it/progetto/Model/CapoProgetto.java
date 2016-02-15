@@ -42,11 +42,11 @@ public class CapoProgetto extends UtenteRegistrato {
 		return CapoProgettoDAO.getInstance().PrelevaInfo(this);
 	}
 	
-	public Vector<String[]> OrdinaSpeseProgetto(int idCapo){
-		return CapoProgettoDAO.getInstance().OrdinaSpeseProgetto(idCapo);
+	public Vector<String[]> OrdinaSpeseProgetto(){
+		return CapoProgettoDAO.getInstance().OrdinaSpeseProgetto(getId());
 	}
 	
-	public Vector<String[]> OrdinaSpeseDipendente(int idCapo){
-		return CapoProgettoDAO.getInstance().OrdinaSpeseDipendente(idCapo);
+	public Vector<String[]> OrdinaSpeseDipendente(){
+		return CapoProgettoDAO.getInstance().OrdinaSpeseDipendente(getId());
 	}
 }

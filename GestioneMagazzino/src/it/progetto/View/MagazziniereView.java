@@ -45,13 +45,13 @@ public class MagazziniereView extends JFrame{
 		return pulsantierarif;
 	}
 	
-	public Component findDescendentByName(Container cnt, String name) {
-		  if (cnt == null) return null;
-		  if (name.equals(cnt.getName())) return cnt;
-		  for (int i = 0; i < cnt.getComponentCount(); ++i) {
-		    Component cmp = cnt.getComponent(i);
+	public Component trovaComponentePerNome(Container c, String name) {
+		  if (c == null) return null;
+		  if (name.equals(c.getName())) return c;
+		  for (int i=0; i<c.getComponentCount(); i++) {
+		    Component cmp = c.getComponent(i);
 		    if (cmp instanceof Container) {
-		      cmp = findDescendentByName((Container) cmp, name);
+		      cmp = trovaComponentePerNome((Container) cmp, name);
 		      if (cmp != null) return cmp;
 		    } else if (name.equals(cmp.getName())) return cmp;
 		  }

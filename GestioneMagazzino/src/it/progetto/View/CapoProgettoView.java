@@ -33,13 +33,13 @@ public class CapoProgettoView extends JFrame {
 		return catalogo_per_prog;
 	}
 	
-	public Component findDescendentByName(Container cnt, String name) {
-		  if (cnt == null) return null;
-		  if (name.equals(cnt.getName())) return cnt;
-		  for (int i = 0; i < cnt.getComponentCount(); ++i) {
-		    Component cmp = cnt.getComponent(i);
+	public Component trovaComponentePerNome(Container c, String name) {
+		  if (c == null) return null;
+		  if (name.equals(c.getName())) return c;
+		  for (int i=0; i<c.getComponentCount(); i++) {
+		    Component cmp = c.getComponent(i);
 		    if (cmp instanceof Container) {
-		      cmp = findDescendentByName((Container) cmp, name);
+		      cmp = trovaComponentePerNome((Container) cmp, name);
 		      if (cmp != null) return cmp;
 		    } else if (name.equals(cmp.getName())) return cmp;
 		  }
@@ -80,7 +80,7 @@ public class CapoProgettoView extends JFrame {
 		    }
 		};
 		model_per_dip.setColumnIdentifiers(columnNames_dip);
-		Vector<String[]> rapporto_per_dip= cap.OrdinaSpeseDipendente(cap.getId());
+		Vector<String[]> rapporto_per_dip= cap.OrdinaSpeseDipendente();
 		for(int i=0;i<rapporto_per_dip.size();i++){
 			model_per_dip.addRow(rapporto_per_dip.get(i));
 		}
@@ -104,7 +104,7 @@ public class CapoProgettoView extends JFrame {
 		    }
 		};
 		model_per_prog.setColumnIdentifiers(columnNames_prog);
-		Vector<String[]> rapporto_per_prog= cap.OrdinaSpeseProgetto(cap.getId());
+		Vector<String[]> rapporto_per_prog= cap.OrdinaSpeseProgetto();
 		for(int j=0;j<rapporto_per_prog.size();j++){
 			model_per_prog.addRow(rapporto_per_prog.get(j));
 		}

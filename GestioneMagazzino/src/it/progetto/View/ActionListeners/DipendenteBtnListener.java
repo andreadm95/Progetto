@@ -52,7 +52,7 @@ public class DipendenteBtnListener implements ActionListener{
 			
 		}
 		else if("AGGIUNGI1".equals(e.getActionCommand())){
-			JTable tabella=(JTable) finestradip.findDescendentByName(finestradip, "catalogo_vicino");
+			JTable tabella=(JTable) finestradip.trovaComponentePerNome(finestradip, "catalogo_vicino");
 			int riga=tabella.getSelectedRow();
 				try{
 					int disponibile= Integer.parseInt((String)tabella.getValueAt(riga, 4));
@@ -97,7 +97,7 @@ public class DipendenteBtnListener implements ActionListener{
 				catch(ArrayIndexOutOfBoundsException q){JOptionPane.showMessageDialog(finestradip, "Selezionare una riga.");}	
 		}
 		else if("AGGIUNGI2".equals(e.getActionCommand())){
-			JTable tabella=(JTable) finestradip.findDescendentByName(finestradip, "catalogo_lontano");
+			JTable tabella=(JTable) finestradip.trovaComponentePerNome(finestradip, "catalogo_lontano");
 			int riga=tabella.getSelectedRow();
 			try{
 				int disponibile= Integer.parseInt((String)tabella.getValueAt(riga, 4));

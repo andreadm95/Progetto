@@ -36,8 +36,8 @@ public class CapoProgettoBtnListener implements ActionListener{
 			finestracap.revalidate();
 		}
 		else if("STAMPA_DISTINTA".equals(e.getActionCommand())){
-			JTable tabella1=(JTable) finestracap.findDescendentByName(finestracap, "RAPPORTO PER DIPENDENTE");
-			JTable tabella2=(JTable)finestracap.findDescendentByName(finestracap, "RAPPORTO PER PROGETTO");
+			JTable tabella1=(JTable) finestracap.trovaComponentePerNome(finestracap, "RAPPORTO PER DIPENDENTE");
+			JTable tabella2=(JTable)finestracap.trovaComponentePerNome(finestracap, "RAPPORTO PER PROGETTO");
 			if(finestracap.getContentPane().isAncestorOf(tabella1)){
 				try{
 					tabella1.print(JTable.PrintMode.FIT_WIDTH);
