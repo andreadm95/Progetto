@@ -67,7 +67,7 @@ public class MagazziniereBtnListener implements ActionListener{
 				int id_ordine=Integer.parseInt((String)tabella.getValueAt(riga, 0));
 				boolean riuscito=OrdineBusiness.getInstance().evadiOrdine(id_ordine);
 				if(riuscito){JOptionPane.showMessageDialog(finestramag, "Ordine Evaso");
-					tabella.setValueAt(1, riga, 4);}
+					tabella.setValueAt("Evaso", riga, 2);}
 				else{JOptionPane.showMessageDialog(finestramag, "ERRORE!Ordine non Evaso");}
 			}
 			catch(NullPointerException q){JOptionPane.showMessageDialog(finestramag, "Selezionare una riga.");}
