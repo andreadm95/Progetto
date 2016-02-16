@@ -80,16 +80,16 @@ public class Ordine {
 			ListaProdotti = listaProdotti;
 		}
 		
-		public boolean SalvaOrdine(int codmagazzino, int coddipendente, int progetto,float spesa){
-			return OrdineDAO.getInstance().SalvaOrdine(codmagazzino, coddipendente, progetto,spesa);
+		public boolean SalvaOrdine(){
+			return OrdineDAO.getInstance().SalvaOrdine(getCodiceMagazzino(), getDipendenteDiRiferimento(), getProgettoDiRiferimento(),getSpesaOrdine());
 		}
 		
-		public boolean EvadiOrdine(int id){
-			return OrdineDAO.getInstance().ModificaEvadi(id);
+		public boolean EvadiOrdine(){
+			return OrdineDAO.getInstance().ModificaEvadi(getIdOrdine());
 		}
 		
-		public Vector<String[]> fornisciListaprod(int id_ordine){
-			return OrdineDAO.getInstance().fornisciListaProdOrdinati(id_ordine);
+		public Vector<String[]> fornisciListaprod(){
+			return OrdineDAO.getInstance().fornisciListaProdOrdinati(getIdOrdine());
 		}
 		
 		public int recuperoOrdineDaSalvare(){

@@ -15,7 +15,7 @@ public class ProgettoBusiness {
 	
 	public int Recuperoid(String progetto){
 		Progetto a=new Progetto(progetto);
-		return a.recuperoid(progetto);
+		return a.recuperoId();
 	}
 	
 	public boolean aggiornaSpesa(int idprogetto,float spesa){

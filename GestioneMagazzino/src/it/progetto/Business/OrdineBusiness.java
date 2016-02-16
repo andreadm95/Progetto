@@ -17,17 +17,17 @@ public class OrdineBusiness {
 	
 	public boolean salvaOrdine(int codprogetto,float spesa,int codmagazzino,int cod_dip){
 		Ordine q= new Ordine(codprogetto,spesa,codmagazzino,cod_dip);
-		return q.SalvaOrdine(codmagazzino, cod_dip, codprogetto,spesa);
+		return q.SalvaOrdine();
 	}
 	
 	public Vector<String[]> recuperoListaProdotti(int id_ordine){
 		Ordine q= new Ordine(id_ordine);
-		return q.fornisciListaprod(id_ordine);
+		return q.fornisciListaprod();
 	}
 	
 	public boolean evadiOrdine(int id_ordine){
 		Ordine q= new Ordine(id_ordine);
-		return q.EvadiOrdine(id_ordine);
+		return q.EvadiOrdine();
 		}
 	
 	public int recuperaidOrdinedaSalvare(){

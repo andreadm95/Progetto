@@ -43,8 +43,8 @@ public class Progetto {
 		this.id = id;
 	}
 	
-	public int recuperoid(String nomeprogetto){
-		return ProgettoDAO.getInstance().recuperaid(nomeprogetto);
+	public int recuperoId(){
+		return ProgettoDAO.getInstance().recuperaid(getNome());
 	}
 
 	public boolean aggiornaSpesa(float spesa) {
