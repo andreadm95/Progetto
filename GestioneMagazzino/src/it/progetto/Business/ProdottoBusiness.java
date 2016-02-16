@@ -29,4 +29,5 @@ private static ProdottoBusiness instance;
 		int qnt=Integer.parseInt(prod_ordinato[9]);
 		a.salvaProdOrdinato(codordine, qnt);	
 	}
+	
 }

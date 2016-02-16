@@ -28,6 +28,7 @@ public class Prodotto {
 		Produttore = produttore;
 	}
 	
+	
 	public String getNome() {
 		return Nome;
 	}

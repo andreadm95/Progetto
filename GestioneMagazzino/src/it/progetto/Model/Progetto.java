@@ -51,4 +51,5 @@ public class Progetto {
 		// TODO Auto-generated method stub
 		return ProgettoDAO.getInstance().aggiornaSpesaProgetto(getId(), spesa);
 	}
+	
 }

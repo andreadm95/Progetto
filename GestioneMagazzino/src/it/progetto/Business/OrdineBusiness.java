@@ -34,4 +34,5 @@ public class OrdineBusiness {
 		Ordine q=new Ordine();
 		return q.recuperoOrdineDaSalvare();
 	}
+	
 }

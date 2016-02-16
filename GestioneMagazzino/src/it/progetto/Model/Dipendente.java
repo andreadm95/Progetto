@@ -55,5 +55,4 @@ public class Dipendente extends UtenteRegistrato {
 		// TODO Auto-generated method stub
 		return DipendenteDAO.getInstance().aggiornaSpesa(getId(),spesa);
 	}
-	
 }

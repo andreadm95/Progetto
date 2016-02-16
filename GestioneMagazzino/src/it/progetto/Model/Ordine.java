@@ -95,6 +95,5 @@ public class Ordine {
 		public int recuperoOrdineDaSalvare(){
 			return OrdineDAO.getInstance().recuperoidOrdineDaSalvare();
 		}
-
 	
 }
